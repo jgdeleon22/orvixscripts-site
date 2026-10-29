@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pulse Specs · OrvixScripts</title>
+<meta name="description" content="Requirements, compatibility, security and developer exports for the Pulse FiveM phone.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span>Orvix<b>Scripts</b></span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="links" id="site-nav" aria-label="Site"><a href="/">Pulse</a><a href="/install.html">Install</a><a href="/specs.html" aria-current="page">Specs</a><a href="/support.html">Support</a></nav>
+  </div>
+</header>
+<main>
+  <section class="page-head"><div class="wrap">
+    <span class="crumbs"><a href="/">Pulse</a> / Specs</span>
+    <h1>Specs</h1>
+    <p>Everything Pulse needs, everything it works with, and what your other scripts can do with it.</p>
+  </div></section>
+
+  <section class="band"><div class="wrap stack">
+    <section>
+      <h2>At a glance</h2>
+      <dl class="specs">
+        <div class="spec"><dt>Framework</dt><dd>ESX Legacy 1.12+</dd></div>
+        <div class="spec"><dt>Version</dt><dd>0.1</dd></div>
+        <div class="spec"><dt>Database</dt><dd>oxmysql (auto tables)</dd></div>
+        <div class="spec"><dt>Required</dt><dd>ox_lib · pma-voice</dd></div>
+        <div class="spec"><dt>Camera</dt><dd>screenshot-basic + FiveManage</dd></div>
+        <div class="spec"><dt>Optional</dt><dd>esx_billing · cd_garage · esx_addonaccount</dd></div>
+        <div class="spec"><dt>Apps</dt><dd>19 + AirShare</dd></div>
+        <div class="spec"><dt>Default key</dt><dd>F1 (rebindable)</dd></div>
+        <div class="spec"><dt>Phone item</dt><dd>phone / iphone (configurable)</dd></div>
+        <div class="spec"><dt>Languages</dt><dd>English</dd></div>
+      </dl>
+    </section>
+
+    <section>
+      <h2>Works with</h2>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Resource</th><th>Needed?</th><th>What Pulse uses it for</th></tr></thead>
+        <tbody>
+          <tr><td><code>es_extended</code></td><td>Required</td><td>Players, jobs, bank account, admin groups</td></tr>
+          <tr><td><code>oxmysql</code></td><td>Required</td><td>Stores numbers, messages, photos, posts and more</td></tr>
+          <tr><td><code>ox_lib</code></td><td>Required</td><td>Server callbacks</td></tr>
+          <tr><td><code>pma-voice</code></td><td>Required</td><td>Phone call voice channels</td></tr>
+          <tr><td><code>screenshot-basic</code></td><td>For camera</td><td>Taking in-game photos</td></tr>
+          <tr><td><code>esx_billing</code></td><td>Optional</td><td>Paying bills from the Bank app</td></tr>
+          <tr><td><code>esx_addonaccount</code></td><td>Optional</td><td>Paying bills into the right society account</td></tr>
+          <tr><td><code>cd_garage</code></td><td>Optional</td><td>Garage locations in the Garage app</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section>
+      <h2>Security</h2>
+      <ul class="doc-list" style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px;color:#ddd3f2">
+        <li>Every action is checked on the server. The phone screen can only reach a fixed list of actions.</li>
+        <li>Photos and voice memos upload from the server, so your FiveManage token never reaches players.</li>
+        <li>Phone numbers are never shown on Chirp or Lens.</li>
+        <li>Players can only send photos from their own gallery, never outside links.</li>
+        <li>Service request locations are read by the server, so they can't be faked.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Developer exports</h2>
+      <p style="color:var(--haze)">Let your jobs, banks and shops talk to players through the phone.</p>
+      <div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>server exports</span><button class="copy" type="button" data-copy="ex1">Copy</button></div>
+<pre id="ex1">exports.pulse_phone:<span class="k">GetNumber</span>(source)
+exports.pulse_phone:<span class="k">GetSourceByNumber</span>(<span class="g">'555-1234'</span>)
+exports.pulse_phone:<span class="k">HasPhone</span>(source)
+exports.pulse_phone:<span class="k">IsInCall</span>(source)
+exports.pulse_phone:<span class="k">SendMessage</span>(<span class="g">'Fleeca'</span>, <span class="g">'555-1234'</span>, <span class="g">'Your loan was approved'</span>)
+exports.pulse_phone:<span class="k">Notify</span>(source, { app = <span class="g">'bank'</span>, title = <span class="g">'Fleeca'</span>, text = <span class="g">'Payment received'</span> })
+exports.pulse_phone:<span class="k">LogTransaction</span>(source, 2500, <span class="g">'Paycheck'</span>)
+exports.pulse_phone:<span class="k">SendMail</span>(source, { sender = <span class="g">'LSPD'</span>, subject = <span class="g">'Ticket issued'</span>, body = <span class="g">'You were fined $150.'</span> })</pre></div>
+      <div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>client exports</span><button class="copy" type="button" data-copy="ex2">Copy</button></div>
+<pre id="ex2">exports.pulse_phone:<span class="k">IsOpen</span>()
+exports.pulse_phone:<span class="k">Open</span>()
+exports.pulse_phone:<span class="k">Close</span>()</pre></div>
+    </section>
+
+    <div class="cta-strip"><p>Ready to set it up?</p><a class="btn btn-primary" href="/install.html">Install guide</a></div>
+  </div></section>
+</main>
+<footer>
+  <div class="wrap">
+    <span>© 2026 OrvixScripts · Not affiliated with Rockstar Games, Take-Two or Cfx.re.</span>
+    <nav aria-label="Footer"><a href="/">Pulse</a><a href="/install.html">Install</a><a href="/specs.html">Specs</a><a href="/support.html">Support</a></nav>
+  </div>
+</footer>
+<script src="/assets/site.js"></script>
+
+</body>
+</html>

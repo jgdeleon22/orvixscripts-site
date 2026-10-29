@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Install Pulse · OrvixScripts</title>
+<meta name="description" content="How to install the Pulse phone on an ESX Legacy FiveM server.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span>Orvix<b>Scripts</b></span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="links" id="site-nav" aria-label="Site"><a href="/">Pulse</a><a href="/install.html" aria-current="page">Install</a><a href="/specs.html">Specs</a><a href="/support.html">Support</a></nav>
+  </div>
+</header>
+<main>
+  <section class="page-head"><div class="wrap">
+    <span class="crumbs"><a href="/">Pulse</a> / Install</span>
+    <h1>Install Pulse</h1>
+    <p>Most servers are running in under ten minutes. There's no SQL to import: Pulse creates its own database tables the first time it starts.</p>
+  </div></section>
+
+  <section class="band"><div class="wrap stack">
+    <section>
+      <h2>Before you start</h2>
+      <div class="req-grid">
+        <div class="req"><span class="tag">Required</span><span class="name">es_extended</span><p>ESX Legacy 1.12 or newer.</p></div>
+        <div class="req"><span class="tag">Required</span><span class="name">oxmysql</span><p>Database driver. Tables are created automatically.</p></div>
+        <div class="req"><span class="tag">Required</span><span class="name">ox_lib</span><p>Callbacks and shared helpers.</p></div>
+        <div class="req"><span class="tag">Required</span><span class="name">pma-voice</span><p>Voice for phone calls.</p></div>
+        <div class="req"><span class="tag">For camera</span><span class="name">screenshot-basic</span><p>Plus a FiveManage token for photos and voice memos.</p></div>
+        <div class="req"><span class="tag opt">Optional</span><span class="name">esx_billing · cd_garage</span><p>Bills in the Bank app, garage spots in the Garage app.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Step by step</h2>
+      <ol class="big-steps">
+        <li><div><h3>Copy the folder</h3><p>Put the <code>pulse_phone</code> folder in your server's <code>resources</code> folder. Keep the folder name exactly <code>pulse_phone</code>.</p></div></li>
+        <li><div><h3>Add it to server.cfg</h3><p>Add this line <b>after</b> pma-voice, ox_lib and oxmysql:</p>
+          <div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>server.cfg</span><button class="copy" type="button" data-copy="c1">Copy</button></div>
+<pre id="c1"><span class="k">ensure</span> pulse_phone</pre></div></div></li>
+        <li><div><h3>Add your FiveManage token</h3><p>This turns on the Camera, Photos and Voice Memos. Use <code>set</code>, never <code>setr</code>: <code>setr</code> sends the value to every player.</p>
+          <div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>server.cfg</span><button class="copy" type="button" data-copy="c2">Copy</button></div>
+<pre id="c2"><span class="c"># server-only: players never see this</span>
+<span class="k">set</span> pulse_fivemanage_token <span class="g">"your-token"</span></pre></div></div></li>
+        <li><div><h3>Turn off your old phone</h3><p>Only one phone resource can run at a time. Comment out the old one, for example <code>ensure [smartphone]</code> for qs-smartphone.</p></div></li>
+        <li><div><h3>Start the server</h3><p>Pulse creates its tables on first start. Give a player a <code>phone</code> or <code>iphone</code> item and press <b>F1</b>.</p></div></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Updating to a new version</h2>
+      <p style="color:var(--haze)">Copy the new files over the old ones, then run these in the server console. Without <code>refresh</code>, any newly added script files are ignored.</p>
+      <div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>server console</span><button class="copy" type="button" data-copy="c3">Copy</button></div>
+<pre id="c3"><span class="k">refresh</span>
+<span class="k">restart</span> pulse_phone</pre></div>
+    </section>
+
+    <div class="cta-strip"><p>Stuck, or want to change the phone item, key or services? The support docs cover every option.</p><a class="btn btn-primary" href="/support.html">Open the docs</a></div>
+  </div></section>
+</main>
+<footer>
+  <div class="wrap">
+    <span>© 2026 OrvixScripts · Not affiliated with Rockstar Games, Take-Two or Cfx.re.</span>
+    <nav aria-label="Footer"><a href="/">Pulse</a><a href="/install.html">Install</a><a href="/specs.html">Specs</a><a href="/support.html">Support</a></nav>
+  </div>
+</footer>
+<script src="/assets/site.js"></script>
+
+</body>
+</html>

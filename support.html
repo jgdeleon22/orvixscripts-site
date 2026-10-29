@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pulse Support · OrvixScripts</title>
+<meta name="description" content="Pulse phone documentation: installation, configuration, troubleshooting and FAQ.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span>Orvix<b>Scripts</b></span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="links" id="site-nav" aria-label="Site"><a href="/">Pulse</a><a href="/install.html">Install</a><a href="/specs.html">Specs</a><a href="/support.html" aria-current="page">Support</a></nav>
+  </div>
+</header>
+<main>
+  <section class="page-head"><div class="wrap">
+    <span class="crumbs"><a href="/">Pulse</a> / Support</span>
+    <h1>Support &amp; docs</h1>
+    <p>Setup guides, every config option, fixes for common problems, and how to reach us.</p>
+  </div></section>
+
+  <div class="wrap docs">
+    <nav class="toc" aria-label="On this page">
+      <span class="eyebrow">Docs</span>
+      <a href="#start">Getting started</a>
+      <a href="#install">Installation</a>
+      <a href="#camera">Camera &amp; voice memos</a>
+      <a href="#item">Phone item &amp; key</a>
+      <a href="#config">Configuration</a>
+      <a href="#services">Services &amp; 911</a>
+      <a href="#updating">Updating</a>
+      <a href="#exports">Developer exports</a>
+      <a href="#troubleshooting">Troubleshooting</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <article class="doc">
+      <section id="start">
+        <h2>Getting started</h2>
+        <p>Pulse is a smartphone for ESX Legacy servers. It's one resource, <code>pulse_phone</code>, and it sets up its own database tables. New here? Start with the install guide, then come back for the details.</p>
+        <div class="help-cards">
+          <a href="/install.html"><b>Install guide</b><span>Up and running in five steps</span></a>
+          <a href="#config"><b>Configuration</b><span>Every option in config.lua</span></a>
+          <a href="#troubleshooting"><b>Troubleshooting</b><span>Fixes for common problems</span></a>
+        </div>
+      </section>
+
+      <section id="install">
+        <h2>Installation</h2>
+        <ol>
+          <li>Make sure <code>es_extended</code>, <code>oxmysql</code>, <code>ox_lib</code> and <code>pma-voice</code> are running. Add <code>screenshot-basic</code> if you want the camera.</li>
+          <li>Copy the <code>pulse_phone</code> folder into <code>resources</code>.</li>
+          <li>Add <code>ensure pulse_phone</code> to <code>server.cfg</code>, after the resources above.</li>
+          <li>Turn off any other phone resource.</li>
+          <li>Start the server. There's nothing to import: the tables are created on first start.</li>
+        </ol>
+        <div class="note"><b>Tip</b><span>The full walkthrough with copy-ready lines is on the <a href="/install.html">Install page</a>.</span></div>
+      </section>
+
+      <section id="camera">
+        <h2>Camera &amp; voice memos</h2>
+        <p>Photos and voice memos are stored on FiveManage. Create a token in your FiveManage dashboard, then add it to <code>server.cfg</code>:</p>
+        <div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>server.cfg</span><button class="copy" type="button" data-copy="d1">Copy</button></div>
+<pre id="d1"><span class="k">set</span> pulse_fivemanage_token <span class="g">"your-token"</span></pre></div>
+        <div class="note warn"><b>Use set</b><span>Never use <code>setr</code> for the token. <code>setr</code> sends it to every player's game, where anyone could copy it.</span></div>
+        <p>Uploads happen from the server, so players never see the token. Photo settings (folder, jpg or webp, quality, cooldown, gallery limit) are in <code>Config.Photos</code>. Voice memos also need players to allow microphone access in FiveM.</p>
+      </section>
+
+      <section id="item">
+        <h2>Phone item &amp; key</h2>
+        <p>By default players need a <code>phone</code> or <code>iphone</code> item. Change the names in <code>Config.PhoneItems</code>, or set <code>Config.RequireItem = false</code> so everyone has a phone.</p>
+        <p>The phone opens with <b>F1</b>. Change the default with <code>Config.OpenKey</code>. Players can pick their own key in GTA Settings › Key Bindings › FiveM.</p>
+      </section>
+
+      <section id="config">
+        <h2>Configuration</h2>
+        <p>Everything lives in <code>config.lua</code>. These are the options most servers change:</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Option</th><th>Default</th><th>What it does</th></tr></thead>
+          <tbody><tr><td><code>Config.PhoneName</code></td><td><code>'Pulse 1'</code></td><td>Name shown on the lock screen and in Settings</td></tr><tr><td><code>Config.OpenKey</code></td><td><code>'F1'</code></td><td>Default key to open the phone. Players can rebind it in Settings > Key Bindings > FiveM</td></tr><tr><td><code>Config.RequireItem</code></td><td><code>true</code></td><td>Players need a phone item to use the phone. Set to false to let everyone use it</td></tr><tr><td><code>Config.PhoneItems</code></td><td><code>{ 'phone', 'iphone' }</code></td><td>Item names that count as a phone</td></tr><tr><td><code>Config.WalkWhileOpen</code></td><td><code>true</code></td><td>Players can walk with the phone open (aiming and attacks stay blocked)</td></tr><tr><td><code>Config.UseGameTime</code></td><td><code>true</code></td><td>Show the in-game clock instead of real time</td></tr><tr><td><code>Config.NumberFormat</code></td><td><code>'XXX-XXXX'</code></td><td>Phone number format. Every X becomes a random digit</td></tr><tr><td><code>Config.RingTimeout</code></td><td><code>30</code></td><td>Seconds before an unanswered call becomes missed</td></tr><tr><td><code>Config.CallChannelOffset</code></td><td><code>5000</code></td><td>Where pma-voice call channels start, so they never clash with radio</td></tr><tr><td><code>Config.MaxMessageLength</code></td><td><code>500</code></td><td>Longest text message allowed</td></tr><tr><td><code>Config.MaxContacts</code></td><td><code>300</code></td><td>Contacts per phone</td></tr><tr><td><code>Config.Photos</code></td><td><code>table</code></td><td>Folder, image format, quality, cooldown and gallery limit (250 per phone)</td></tr><tr><td><code>Config.Social</code></td><td><code>table</code></td><td>Chirp and Lens post length, cooldowns and which ESX groups can delete posts</td></tr><tr><td><code>Config.Bank</code></td><td><code>table</code></td><td>Bank name shown in the app ('Fleeca'), max transfer and cooldown</td></tr><tr><td><code>Config.Garage.Locations</code></td><td><code>{}</code></td><td>Extra garage spots if you don't use cd_garage</td></tr><tr><td><code>Config.Services</code></td><td><code>table</code></td><td>Jobs players can call from the Services app. Job names must match your ESX jobs</td></tr><tr><td><code>Config.EmergencyNumbers</code></td><td><code>911 / 912</code></td><td>Numbers that open a Police or EMS request instead of a call</td></tr><tr><td><code>Config.Market</code></td><td><code>table</code></td><td>Ad categories, days before ads expire (7), ads per player (5)</td></tr><tr><td><code>Config.MaxGroupSize</code></td><td><code>20</code></td><td>People per group chat</td></tr><tr><td><code>Config.AirShareRange</code></td><td><code>6.0</code></td><td>How close (meters) players must be to AirShare</td></tr><tr><td><code>Config.MaxVoiceMemos</code></td><td><code>50</code></td><td>Voice memos per phone</td></tr></tbody>
+        </table></div>
+      </section>
+
+      <section id="services">
+        <h2>Services &amp; 911</h2>
+        <p>The Services app sends a request to everyone on duty in a job. Each entry in <code>Config.Services</code> needs a <code>job</code> name that matches your ESX job exactly:</p>
+        <div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>config.lua</span><button class="copy" type="button" data-copy="d2">Copy</button></div>
+<pre id="d2">Config.Services = {
+    { job = <span class="g">'police'</span>,    label = <span class="g">'Police'</span>,   icon = <span class="g">'shield'</span>, color = <span class="g">'#2563eb'</span> },
+    { job = <span class="g">'ambulance'</span>, label = <span class="g">'EMS'</span>,      icon = <span class="g">'cross'</span>,  color = <span class="g">'#dc2626'</span> },
+    { job = <span class="g">'mechanic'</span>,  label = <span class="g">'Mechanic'</span>, icon = <span class="g">'wrench'</span>, color = <span class="g">'#f59e0b'</span> },
+    { job = <span class="g">'taxi'</span>,      label = <span class="g">'Taxi'</span>,     icon = <span class="g">'car'</span>,    color = <span class="g">'#ca8a04'</span> },
+}
+Config.EmergencyNumbers = { [<span class="g">'911'</span>] = <span class="g">'police'</span>, [<span class="g">'912'</span>] = <span class="g">'ambulance'</span> }</pre></div>
+        <p>Dialing 911 or 912 on the keypad opens a Police or EMS request instead of a call. The player's location is read by the server.</p>
+      </section>
+
+      <section id="updating">
+        <h2>Updating</h2>
+        <p>Copy the new files over the old ones, then run <code>refresh</code> and <code>restart pulse_phone</code> in the server console. Your players' data stays in the database, and new tables or columns are added automatically.</p>
+      </section>
+
+      <section id="exports">
+        <h2>Developer exports</h2>
+        <p>Send texts, mail, notifications and bank history from your own scripts. The full list with examples is on the <a href="/specs.html">Specs page</a>. The most used:</p>
+        <div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>server.lua</span><button class="copy" type="button" data-copy="d3">Copy</button></div>
+<pre id="d3">exports.pulse_phone:<span class="k">SendMessage</span>(<span class="g">'Fleeca'</span>, <span class="g">'555-1234'</span>, <span class="g">'Your loan was approved'</span>)
+exports.pulse_phone:<span class="k">Notify</span>(source, { app = <span class="g">'bank'</span>, title = <span class="g">'Fleeca'</span>, text = <span class="g">'Payment received'</span> })</pre></div>
+      </section>
+
+      <section id="troubleshooting">
+        <h2>Troubleshooting</h2>
+        <details class="faq"><summary>The phone won't open when I press F1</summary><div>
+          <p>Check the player has a <code>phone</code> or <code>iphone</code> item, or set <code>Config.RequireItem = false</code>. If they changed the key in GTA's Key Bindings, F1 won't work for them anymore. Also make sure no other phone resource is running.</p></div></details>
+        <details class="faq"><summary>Photos won't take or upload</summary><div>
+          <p>Make sure <code>screenshot-basic</code> is started and the token is set with <code>set pulse_fivemanage_token</code> in <code>server.cfg</code>. Restart the server after adding it. Check the server console for a FiveManage error message.</p></div></details>
+        <details class="faq"><summary>Calls connect but there's no voice</summary><div>
+          <p>Pulse uses pma-voice call channels starting at <code>Config.CallChannelOffset</code> (5000). Make sure pma-voice starts before Pulse, and that no radio script uses the same channel numbers.</p></div></details>
+        <details class="faq"><summary>Nobody gets service requests</summary><div>
+          <p>The <code>job</code> names in <code>Config.Services</code> must match your ESX job names exactly, and the player has to be on duty in that job.</p></div></details>
+        <details class="faq"><summary>I updated Pulse and something's missing</summary><div>
+          <p>Run <code>refresh</code> before <code>restart pulse_phone</code>. Without it, FiveM ignores newly added files.</p></div></details>
+        <details class="faq"><summary>Voice memos don't record</summary><div>
+          <p>Voice memos need the FiveManage token and the player's microphone allowed in FiveM's settings.</p></div></details>
+      </section>
+
+      <section id="faq">
+        <h2>FAQ</h2>
+        <details class="faq"><summary>Does Pulse work with QBCore?</summary><div><p>Not right now. Pulse is built for ESX Legacy.</p></div></details>
+        <details class="faq"><summary>Do I need to import an SQL file?</summary><div><p>No. Pulse creates and updates its own tables when it starts.</p></div></details>
+        <details class="faq"><summary>Can I remove apps I don't want?</summary><div><p>Yes. Players can remove and re-add apps from their home screen with the App Store app.</p></div></details>
+        <details class="faq"><summary>Can players see each other's phone numbers on Chirp or Lens?</summary><div><p>No. Numbers are never shown on the social apps.</p></div></details>
+        <details class="faq"><summary>Where do I buy Pulse?</summary><div><p>Pulse will be sold on Tebex at launch. It's in final testing now.</p></div></details>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Still stuck? Our support Discord opens with the Pulse launch. Include your server's console error and your <code>server.cfg</code> resource order when you ask, and we can usually fix it in one reply.</p>
+      </section>
+    </article>
+  </div>
+</main>
+<footer>
+  <div class="wrap">
+    <span>© 2026 OrvixScripts · Not affiliated with Rockstar Games, Take-Two or Cfx.re.</span>
+    <nav aria-label="Footer"><a href="/">Pulse</a><a href="/install.html">Install</a><a href="/specs.html">Specs</a><a href="/support.html">Support</a></nav>
+  </div>
+</footer>
+<script src="/assets/site.js"></script>
+<script>
+// Highlight the docs section in view
+const links = [...document.querySelectorAll('.toc a')];
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id)); }), { rootMargin: '-30% 0px -60% 0px' });
+document.querySelectorAll('.doc section[id]').forEach(s => io.observe(s));
+</script>
+</body>
+</html>

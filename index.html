@@ -7,188 +7,16 @@
 <meta name="description" content="OrvixScripts makes FiveM resources. Meet Pulse, the smartphone for ESX Legacy servers.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
-<style>
-/* Layout: Los Santos after dark. Left-weighted hero with a live Pulse phone, then
-   a product sheet that reads like a server resource: apps, install console, specs. */
-:root { padding: 0;
-  color-scheme: dark;
-  --night: #120b22;        /* page ground: deep Vinewood night */
-  --night-2: #1b1233;      /* raised surfaces */
-  --night-3: #261a45;      /* borders, chips */
-  --sodium: #ff8a4c;       /* street-light orange: the one bold accent */
-  --sodium-soft: #ffb07f;
-  --haze: #b9a8dd;         /* secondary text, purple-grey biased to the night */
-  --ink: #f5f0ff;          /* primary text */
-  --ok: #4ade80;
-  --display: "Bricolage Grotesque", "Figtree", system-ui, sans-serif;
-  --body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
-  --step-0: 1rem; --step-1: 1.25rem; --step-2: 1.6rem; --step-3: 2.3rem; --step-4: clamp(2.6rem, 6vw, 4.4rem);
-}
-* { box-sizing: border-box; }
-body { margin: 0; }
-img { max-width: 100%; }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--night); color: var(--ink); font-family: var(--body); font-size: var(--step-0); line-height: 1.6;
-  -webkit-font-smoothing: antialiased; overflow-x: hidden;
-}
-a { color: inherit; }
-.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-h1, h2, h3 { font-family: var(--display); line-height: 1.05; text-wrap: balance; margin: 0; letter-spacing: -0.02em; }
-p { margin: 0; }
-.eyebrow { font-family: var(--mono); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--sodium); }
-:focus-visible { outline: 2px solid var(--sodium); outline-offset: 3px; border-radius: 6px; }
-
-/* Header */
-header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--night) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--night-3); }
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--night); }
-.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
-.brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 800; font-size: 1.2rem; text-decoration: none; }
-.brand-mark { width: 30px; height: 30px; border-radius: 9px; background: conic-gradient(from 210deg, var(--sodium), #ff4f8a, #7c5cff, var(--sodium)); display: grid; place-items: center; }
-.brand-mark::after { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--night); }
-.brand b { color: var(--sodium); font-weight: 800; }
-nav.links { display: flex; gap: 22px; font-size: .95rem; color: var(--haze); }
-nav.links a { text-decoration: none; }
-nav.links a:hover { color: var(--ink); }
-@media (max-width: 640px) { nav.links { display: none; } }
-
-/* Hero */
-.hero { position: relative; overflow: hidden; }
-.hero::before { content: ""; position: absolute; inset: -20% -10% auto auto; width: 900px; height: 900px; pointer-events: none;
-  background: radial-gradient(closest-side, transparent 62%, color-mix(in srgb, var(--sodium) 70%, transparent) 63%, transparent 70%); opacity: .55; }
-.hero .wrap { position: relative; display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; padding-block: 64px 72px; }
-.hero-copy { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
-.hero h1 { font-size: var(--step-4); font-weight: 800; }
-.hero h1 em { font-style: normal; color: var(--sodium); }
-.lede { font-size: var(--step-1); color: var(--haze); max-width: 34ch; }
-.cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-.btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 12px; font-weight: 700; font-size: 1rem; text-decoration: none; border: 1px solid transparent; cursor: pointer; font-family: var(--body); }
-.btn-primary { background: var(--sodium); color: #1a0d06; }
-.btn-primary:hover { background: var(--sodium-soft); }
-.btn-ghost { border-color: var(--night-3); color: var(--ink); background: var(--night-2); }
-.btn-ghost:hover { border-color: var(--haze); }
-.btn[aria-disabled="true"] { cursor: default; }
-.soon { font-family: var(--mono); font-size: .75rem; padding: 3px 8px; border-radius: 6px; background: rgba(0,0,0,.18); }
-.stack-line { display: flex; flex-wrap: wrap; gap: 8px; font-family: var(--mono); font-size: .78rem; color: var(--haze); }
-.stack-line span { padding: 4px 9px; border: 1px solid var(--night-3); border-radius: 7px; }
-@media (max-width: 880px) { .hero .wrap { grid-template-columns: 1fr; padding-block: 40px 56px; } .hero-copy { align-items: flex-start; } }
-
-/* Live phone mockup */
-.stage { display: grid; place-items: center; }
-.phone { width: min(300px, 82vw); aspect-ratio: 372 / 780; border-radius: 48px; padding: 10px; position: relative;
-  background: linear-gradient(145deg, #3a3a42, #121216 40%, #26262c); box-shadow: 0 0 0 2px #4a4a52 inset, 0 40px 90px rgba(0,0,0,.55), 0 0 120px color-mix(in srgb, var(--sodium) 25%, transparent);
-  transform: rotate(-4deg); animation: float 7s ease-in-out infinite; max-width: 100%; }
-@keyframes float { 50% { transform: rotate(-4deg) translateY(-10px); } }
-@media (prefers-reduced-motion: reduce) { .phone { animation: none; } }
-.screen { position: relative; width: 100%; height: 100%; border-radius: 39px; overflow: hidden; display: flex; flex-direction: column; padding: 34px 14px 12px; gap: 12px;
-  background:
-    radial-gradient(120% 60% at 110% 38%, transparent 47%, rgba(255,138,76,.95) 48%, rgba(255,120,60,.25) 52%, transparent 60%),
-    radial-gradient(90% 55% at -15% 75%, transparent 52%, rgba(255,98,84,.9) 53%, rgba(255,98,84,.2) 57%, transparent 64%),
-    radial-gradient(70% 45% at 85% 5%, rgba(168,85,247,.65), transparent 70%),
-    linear-gradient(170deg, #3b1a5c 0%, #241040 45%, #2a0f2e 70%, #130816 100%); }
-.island { position: absolute; top: 9px; left: 50%; transform: translateX(-50%); width: 84px; height: 24px; border-radius: 14px; background: #000; }
-.sbar { position: absolute; top: 12px; left: 22px; right: 20px; display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; color: #fff; }
-.widgets { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.wg { aspect-ratio: 1; border-radius: 18px; padding: 10px; color: #fff; font-size: 10px; font-weight: 600; display: flex; flex-direction: column; }
-.wg-w { background: linear-gradient(160deg, #4f9cf5, #1d5fd1); }
-.wg-w b { font-family: var(--body); font-size: 30px; font-weight: 400; line-height: 1.1; letter-spacing: -1px; }
-.wg-w i { margin-top: auto; font-style: normal; }
-.wg-c { background: rgba(28,28,32,.85); }
-.wg-c .m { color: #f43f5e; font-size: 8px; font-weight: 800; letter-spacing: .5px; text-align: center; }
-.wg-c .d { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; text-align: center; font-size: 7px; margin-top: 3px; }
-.wg-c .d .t { background: #ef4444; border-radius: 50%; }
-.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px 6px; justify-items: center; }
-.ico { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 9px; color: #fff; font-weight: 500; text-shadow: 0 1px 3px rgba(0,0,0,.45); }
-.tile { width: 46px; height: 46px; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 12px rgba(0,0,0,.35); position: relative; }
-.tile svg { width: 100%; height: 100%; display: block; }
-.tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,.26), rgba(255,255,255,0) 45%); }
-.dock { margin-top: auto; display: flex; justify-content: space-around; padding: 9px 6px; border-radius: 24px; background: rgba(255,255,255,.16); backdrop-filter: blur(16px); }
-.homebar { width: 90px; height: 4px; border-radius: 3px; background: #fff; opacity: .8; align-self: center; }
-.toast { position: absolute; top: 40px; left: 10px; right: 10px; display: flex; gap: 8px; align-items: center; padding: 8px 10px; border-radius: 16px; background: rgba(30,30,38,.72); backdrop-filter: blur(20px); color: #fff; font-size: 10px; box-shadow: 0 8px 20px rgba(0,0,0,.3);
-  animation: toast 9s ease-in-out infinite; }
-.toast .tile { width: 26px; height: 26px; border-radius: 7px; flex-shrink: 0; box-shadow: none; }
-.toast b { display: block; font-size: 10.5px; }
-@keyframes toast { 0%, 8% { transform: translateY(-70px); opacity: 0; } 14%, 46% { transform: none; opacity: 1; } 54%, 100% { transform: translateY(-70px); opacity: 0; } }
-@media (prefers-reduced-motion: reduce) { .toast { animation: none; } }
-
-/* Sections */
-section.band { padding-block: 72px; border-top: 1px solid var(--night-3); }
-.sec-head { display: flex; flex-direction: column; gap: 12px; max-width: 62ch; margin-bottom: 36px; }
-.sec-head h2 { font-size: var(--step-3); font-weight: 800; }
-.sec-head p { color: var(--haze); font-size: 1.08rem; }
-
-/* App picker */
-.apps-layout { display: grid; grid-template-columns: 1.2fr .8fr; gap: 28px; align-items: start; }
-@media (max-width: 880px) { .apps-layout { grid-template-columns: 1fr; } }
-.app-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 18px 10px; }
-.app-btn { display: flex; flex-direction: column; align-items: center; gap: 7px; background: none; border: 0; color: var(--ink); font-family: var(--body); font-size: .82rem; font-weight: 600; cursor: pointer; padding: 6px 2px; border-radius: 14px; }
-.app-btn .tile { width: 58px; height: 58px; border-radius: 15px; transition: transform .15s; }
-.app-btn:hover .tile { transform: translateY(-3px); }
-.app-btn[aria-pressed="true"] { background: var(--night-2); box-shadow: inset 0 0 0 1px var(--night-3); }
-.app-detail { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 84px); background: var(--night-2); border: 1px solid var(--night-3); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
-.app-detail .row { display: flex; gap: 14px; align-items: center; }
-.app-detail .tile { width: 64px; height: 64px; border-radius: 16px; flex-shrink: 0; }
-.app-detail h3 { font-size: var(--step-2); }
-.app-detail p { color: var(--haze); }
-.app-detail ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; }
-.app-detail li::marker { color: var(--sodium); }
-.count { font-family: var(--mono); color: var(--sodium); }
-
-/* Why */
-.why { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 28px; }
-@media (max-width: 880px) { .why { grid-template-columns: 1fr; } }
-.why h3 { font-size: 1.25rem; margin-bottom: 8px; }
-.why p { color: var(--haze); }
-.why code { font-family: var(--mono); font-size: .85em; color: var(--sodium-soft); }
-
-/* Install console */
-.install { display: grid; grid-template-columns: .9fr 1.1fr; gap: 36px; align-items: center; }
-@media (max-width: 880px) { .install { grid-template-columns: 1fr; } }
-.steps { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 18px; counter-reset: s; }
-.steps li { display: grid; grid-template-columns: 34px 1fr; gap: 12px; counter-increment: s; }
-.steps li::before { content: counter(s); width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-family: var(--mono); font-size: .85rem; font-weight: 600; background: var(--night-3); color: var(--sodium); }
-.steps b { display: block; }
-.steps span { color: var(--haze); font-size: .95rem; }
-.console { background: #0a0614; border: 1px solid var(--night-3); border-radius: 16px; overflow: hidden; min-width: 0; }
-.console-bar { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid var(--night-3); font-family: var(--mono); font-size: .78rem; color: var(--haze); }
-.dots { display: flex; gap: 6px; }
-.dots i { width: 10px; height: 10px; border-radius: 50%; background: var(--night-3); }
-.copy { background: var(--night-2); color: var(--ink); border: 1px solid var(--night-3); border-radius: 8px; padding: 4px 10px; font-family: var(--mono); font-size: .75rem; cursor: pointer; }
-pre { margin: 0; padding: 18px; overflow-x: auto; font-family: var(--mono); font-size: .86rem; line-height: 1.75; color: #e8defa; }
-pre .c { color: #7d6aa8; }
-pre .k { color: var(--sodium); }
-pre .g { color: var(--ok); }
-
-/* Specs */
-.specs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 40px; }
-@media (max-width: 720px) { .specs { grid-template-columns: 1fr; } }
-.spec { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--night-3); }
-.spec dt { color: var(--haze); }
-.spec dd { margin: 0; font-weight: 600; text-align: right; font-family: var(--mono); font-size: .9rem; }
-
-/* Closing CTA */
-.closer { text-align: left; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; padding: 36px; border-radius: 24px;
-  background: radial-gradient(120% 140% at 100% 0%, color-mix(in srgb, var(--sodium) 32%, transparent), transparent 60%), var(--night-2); border: 1px solid var(--night-3); }
-.closer h2 { font-size: var(--step-3); font-weight: 800; }
-.closer p { color: var(--haze); margin-top: 8px; }
-@media (max-width: 720px) { .closer { grid-template-columns: 1fr; padding: 26px; } }
-
-footer { padding-block: 40px 56px; color: var(--haze); font-size: .85rem; }
-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
-</style>
-
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>Orvix<b>Scripts</b></a>
-    <nav class="links" aria-label="Sections">
-      <a href="#apps">Apps</a><a href="#why">Why Pulse</a><a href="#install">Install</a><a href="#specs">Specs</a>
-    </nav>
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span>Orvix<b>Scripts</b></span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="links" id="site-nav" aria-label="Site"><a href="/" aria-current="page">Pulse</a><a href="/install.html">Install</a><a href="/specs.html">Specs</a><a href="/support.html">Support</a></nav>
   </div>
 </header>
-
 <main id="top">
   <section class="hero">
     <div class="wrap">
@@ -198,7 +26,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <p class="lede">19 apps, real voice calls, and a design players want to open. Built for ESX Legacy, checked on the server, set up in minutes.</p>
         <div class="cta-row">
           <span class="btn btn-primary" aria-disabled="true">Buy on Tebex <span class="soon">Coming soon</span></span>
-          <a class="btn btn-ghost" href="#apps">Explore the apps</a>
+          <a class="btn btn-ghost" href="/install.html">Install guide</a>
         </div>
         <div class="stack-line" aria-label="Works with">
           <span>es_extended</span><span>oxmysql</span><span>ox_lib</span><span>pma-voice</span><span>cd_garage</span>
@@ -251,47 +79,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         <div><h3>Real calls</h3><p>Proper ringing, answering and hang-ups over <code>pma-voice</code> call channels, with a live call bar while you use other apps.</p></div>
         <div><h3>Easy to extend</h3><p>Exports for texts, mail, notifications and bank history, so your jobs and shops can talk to players through the phone.</p></div>
       </div>
-    </div>
-  </section>
-
-  <section class="band" id="install">
-    <div class="wrap install">
-      <div>
-        <div class="sec-head" style="margin-bottom:24px">
-          <span class="eyebrow">Setup</span>
-          <h2>Running in four steps.</h2>
-        </div>
-        <ol class="steps">
-          <li><div><b>Drop it in</b><span>Copy <code>pulse_phone</code> into your resources folder.</span></div></li>
-          <li><div><b>Ensure it</b><span>Add it to server.cfg after pma-voice, ox_lib and oxmysql.</span></div></li>
-          <li><div><b>Add your token</b><span>One server-only line turns on the camera and voice memos.</span></div></li>
-          <li><div><b>Restart</b><span>Tables are created automatically. Hand out a phone item and press F1.</span></div></li>
-        </ol>
-      </div>
-      <div class="console">
-        <div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>server.cfg</span><button class="copy" id="copy-btn" type="button">Copy</button></div>
-<pre id="cfg"><span class="c"># Pulse phone</span>
-<span class="k">ensure</span> pulse_phone
-
-<span class="c"># server-only: players never see this</span>
-<span class="k">set</span> pulse_fivemanage_token <span class="g">"your-token"</span></pre>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" id="specs">
-    <div class="wrap">
-      <div class="sec-head"><span class="eyebrow">Specs</span><h2>The details.</h2></div>
-      <dl class="specs">
-        <div class="spec"><dt>Framework</dt><dd>ESX Legacy 1.12+</dd></div>
-        <div class="spec"><dt>Database</dt><dd>oxmysql (auto tables)</dd></div>
-        <div class="spec"><dt>Required</dt><dd>ox_lib · pma-voice</dd></div>
-        <div class="spec"><dt>Camera</dt><dd>screenshot-basic + FiveManage</dd></div>
-        <div class="spec"><dt>Optional</dt><dd>esx_billing · cd_garage</dd></div>
-        <div class="spec"><dt>Apps</dt><dd>19 + AirShare</dd></div>
-        <div class="spec"><dt>Default key</dt><dd>F1 (rebindable)</dd></div>
-        <div class="spec"><dt>Languages</dt><dd>English</dd></div>
-      </dl>
+      <div class="cta-strip" style="margin-top:40px"><p>Full requirements, every config option and the developer exports are on the Specs page.</p><a class="btn btn-ghost" href="/specs.html">See the specs</a></div>
     </div>
   </section>
 
@@ -307,14 +95,13 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     </div>
   </section>
 </main>
-
 <footer>
   <div class="wrap">
-    <span>© 2026 OrvixScripts</span>
-    <span>Not affiliated with Rockstar Games, Take-Two or Cfx.re.</span>
+    <span>© 2026 OrvixScripts · Not affiliated with Rockstar Games, Take-Two or Cfx.re.</span>
+    <nav aria-label="Footer"><a href="/">Pulse</a><a href="/install.html">Install</a><a href="/specs.html">Specs</a><a href="/support.html">Support</a></nav>
   </div>
 </footer>
-
+<script src="/assets/site.js"></script>
 <script>
 // Pulse's own app icon artwork (same set the phone ships with). {u} keeps gradient ids unique.
 let n = 0;
@@ -409,15 +196,6 @@ grid.innerHTML = APPS.map(a => `<button class="app-btn" type="button" data-id="$
 grid.addEventListener('click', e => { const b = e.target.closest('.app-btn'); if (b) show(b.dataset.id); });
 show('messages');
 
-// Copy the server.cfg lines
-document.getElementById('copy-btn').addEventListener('click', async e => {
-  const text = document.getElementById('cfg').innerText;
-  const btn = e.currentTarget;
-  try { await navigator.clipboard.writeText(text); btn.textContent = 'Copied'; }
-  catch { const r = document.createRange(); r.selectNodeContents(document.getElementById('cfg')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Press Ctrl+C'; }
-  setTimeout(() => { btn.textContent = 'Copy'; }, 1800);
-});
 </script>
-
 </body>
 </html>
