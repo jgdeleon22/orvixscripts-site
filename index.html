@@ -110,7 +110,12 @@
 
   <section class="band" id="colors" style="padding-top:0">
     <div class="wrap colors">
-      <div class="color-stage" id="color-stage"><img id="color-img" src="/img/shots/frame-neon.webp" alt="Pulse phone in Neon Pink" width="420" height="880" loading="lazy"></div>
+      <div class="color-stage" id="color-stage">
+        <div class="duo" id="duo" aria-hidden="true">
+          <div class="ph-back"><div class="ph-side"><i></i><i></i><i></i></div><div class="glass"><div class="cam"><i></i><i></i><i></i><b></b><s></s></div><div class="ph-logo"></div><div class="ph-word">PULSE</div></div></div>
+          <img class="ph-front" id="color-img" src="/img/shots/frame-neon.webp" alt="" width="420" height="880" loading="lazy">
+        </div>
+      </div>
       <div>
         <span class="eyebrow">12 colors</span>
         <h2 style="font-size:clamp(2rem,4.2vw,3.1rem);font-weight:800;margin-top:12px">Pick a color that <span class="grad">fits your character.</span></h2>
@@ -194,21 +199,29 @@ APPS.forEach(a => {
 });
 show('spark');
 </script><script>
-const COLORS = [['neon','Neon Pink','#ff3d9a',1],['teal','Vice Teal','#22c3d6',1],['sunset','Sunset','#ff8a3d',1],['sand','Sand','#c8b293',1],
-  ['graphite','Graphite','#2a2a30'],['silver','Silver','#d4d4d8'],['gold','Gold','#e7c992'],['blue','Pacific Blue','#2f4a6b'],
-  ['purple','Deep Purple','#4c3a5e'],['red','Red','#a3202c'],['green','Alpine Green','#3b4f45'],['pink','Pink','#f2c5cf']];
-const sw = document.getElementById('swatches'), cimg = document.getElementById('color-img'), cname = document.getElementById('color-name'), stage = document.getElementById('color-stage');
-COLORS.forEach(([id, name, hex, isNew]) => {
+// [id, name, swatch, new, light, dark, mid, rim]
+const COLORS = [
+  ['neon','Neon Pink','#ff3d9a',1,'#ff7cc0','#b0105f','#ff4fa6','#ff6fb6'], ['teal','Vice Teal','#22c3d6',1,'#7ee7f2','#0b7285','#3cc9da','#5fd6e4'],
+  ['sunset','Sunset','#ff8a3d',1,'#ffc08a','#c2470f','#ff9a52','#ffab6e'], ['sand','Sand','#c8b293',1,'#eadcc6','#8f7a5d','#d6c3a5','#dccab0'],
+  ['graphite','Graphite','#2a2a30',0,'#4a4a54','#121216','#2c2c33','#55555e'], ['silver','Silver','#d4d4d8',0,'#f4f4f5','#a1a1aa','#e4e4e7','#d4d4d8'],
+  ['gold','Gold','#e7c992',0,'#f6e3bd','#b8925a','#ead2a4','#e7c992'], ['blue','Pacific Blue','#2f4a6b',0,'#4d6c92','#1e3048','#3d5a7d','#56789f'],
+  ['purple','Deep Purple','#4c3a5e',0,'#6f5884','#2f2140','#5a4570','#7a6290'], ['red','Red','#a3202c',0,'#d1404d','#6d0f18','#b8303c','#c93642'],
+  ['green','Alpine Green','#3b4f45',0,'#5a7366','#22302a','#4b6157','#607a6d'], ['pink','Pink','#f2c5cf',0,'#fbe0e6','#d39aa8','#f4cdd6','#f2c5cf'],
+];
+const sw = document.getElementById('swatches'), cimg = document.getElementById('color-img'), cname = document.getElementById('color-name'), stage = document.getElementById('color-stage'), duo = document.getElementById('duo');
+const paint = c => { const [, name, hex, , b1, b2, b3, rim] = c;
+  duo.style.setProperty('--b1', b1); duo.style.setProperty('--b2', b2); duo.style.setProperty('--b3', b3); duo.style.setProperty('--rim', rim);
+  stage.style.setProperty('--swatch', hex); cname.textContent = name; cimg.src = `/img/shots/frame-${c[0]}.webp`; };
+COLORS.forEach(c => {
+  const [id, name, hex, isNew] = c;
   new Image().src = `/img/shots/frame-${id}.webp`;
   const b = document.createElement('button'); b.type = 'button'; b.className = 'swatch'; b.style.background = hex; b.title = name; b.setAttribute('aria-label', name);
   b.setAttribute('aria-pressed', String(id === 'neon'));
   if (isNew) { const n = document.createElement('span'); n.className = 'new'; n.textContent = 'NEW'; b.append(n); }
-  b.addEventListener('click', () => {
-    sw.querySelectorAll('.swatch').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
-    cimg.src = `/img/shots/frame-${id}.webp`; cimg.alt = `Pulse phone in ${name}`; cname.textContent = name; stage.style.setProperty('--swatch', hex);
-  });
+  b.addEventListener('click', () => { sw.querySelectorAll('.swatch').forEach(x => x.setAttribute('aria-pressed', String(x === b))); paint(c); });
   sw.append(b);
 });
+paint(COLORS[0]);
 </script>
 </body>
 </html>
