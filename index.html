@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OrvixScripts</title>
+<meta name="description" content="OrvixScripts makes FiveM resources. Meet Pulse, the smartphone for ESX Legacy servers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: Los Santos after dark. Left-weighted hero with a live Pulse phone, then
+   a product sheet that reads like a server resource: apps, install console, specs. */
+:root { padding: 0;
+  color-scheme: dark;
+  --night: #120b22;        /* page ground: deep Vinewood night */
+  --night-2: #1b1233;      /* raised surfaces */
+  --night-3: #261a45;      /* borders, chips */
+  --sodium: #ff8a4c;       /* street-light orange: the one bold accent */
+  --sodium-soft: #ffb07f;
+  --haze: #b9a8dd;         /* secondary text, purple-grey biased to the night */
+  --ink: #f5f0ff;          /* primary text */
+  --ok: #4ade80;
+  --display: "Bricolage Grotesque", "Figtree", system-ui, sans-serif;
+  --body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  --step-0: 1rem; --step-1: 1.25rem; --step-2: 1.6rem; --step-3: 2.3rem; --step-4: clamp(2.6rem, 6vw, 4.4rem);
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+img { max-width: 100%; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--night); color: var(--ink); font-family: var(--body); font-size: var(--step-0); line-height: 1.6;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+a { color: inherit; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); line-height: 1.05; text-wrap: balance; margin: 0; letter-spacing: -0.02em; }
+p { margin: 0; }
+.eyebrow { font-family: var(--mono); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--sodium); }
+:focus-visible { outline: 2px solid var(--sodium); outline-offset: 3px; border-radius: 6px; }
+
+/* Header */
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--night) 82%, transparent); backdrop-filter: blur(14px); border-bottom: 1px solid var(--night-3); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--night); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 800; font-size: 1.2rem; text-decoration: none; }
+.brand-mark { width: 30px; height: 30px; border-radius: 9px; background: conic-gradient(from 210deg, var(--sodium), #ff4f8a, #7c5cff, var(--sodium)); display: grid; place-items: center; }
+.brand-mark::after { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--night); }
+.brand b { color: var(--sodium); font-weight: 800; }
+nav.links { display: flex; gap: 22px; font-size: .95rem; color: var(--haze); }
+nav.links a { text-decoration: none; }
+nav.links a:hover { color: var(--ink); }
+@media (max-width: 640px) { nav.links { display: none; } }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; }
+.hero::before { content: ""; position: absolute; inset: -20% -10% auto auto; width: 900px; height: 900px; pointer-events: none;
+  background: radial-gradient(closest-side, transparent 62%, color-mix(in srgb, var(--sodium) 70%, transparent) 63%, transparent 70%); opacity: .55; }
+.hero .wrap { position: relative; display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; padding-block: 64px 72px; }
+.hero-copy { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.hero h1 { font-size: var(--step-4); font-weight: 800; }
+.hero h1 em { font-style: normal; color: var(--sodium); }
+.lede { font-size: var(--step-1); color: var(--haze); max-width: 34ch; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 12px; font-weight: 700; font-size: 1rem; text-decoration: none; border: 1px solid transparent; cursor: pointer; font-family: var(--body); }
+.btn-primary { background: var(--sodium); color: #1a0d06; }
+.btn-primary:hover { background: var(--sodium-soft); }
+.btn-ghost { border-color: var(--night-3); color: var(--ink); background: var(--night-2); }
+.btn-ghost:hover { border-color: var(--haze); }
+.btn[aria-disabled="true"] { cursor: default; }
+.soon { font-family: var(--mono); font-size: .75rem; padding: 3px 8px; border-radius: 6px; background: rgba(0,0,0,.18); }
+.stack-line { display: flex; flex-wrap: wrap; gap: 8px; font-family: var(--mono); font-size: .78rem; color: var(--haze); }
+.stack-line span { padding: 4px 9px; border: 1px solid var(--night-3); border-radius: 7px; }
+@media (max-width: 880px) { .hero .wrap { grid-template-columns: 1fr; padding-block: 40px 56px; } .hero-copy { align-items: flex-start; } }
+
+/* Live phone mockup */
+.stage { display: grid; place-items: center; }
+.phone { width: min(300px, 82vw); aspect-ratio: 372 / 780; border-radius: 48px; padding: 10px; position: relative;
+  background: linear-gradient(145deg, #3a3a42, #121216 40%, #26262c); box-shadow: 0 0 0 2px #4a4a52 inset, 0 40px 90px rgba(0,0,0,.55), 0 0 120px color-mix(in srgb, var(--sodium) 25%, transparent);
+  transform: rotate(-4deg); animation: float 7s ease-in-out infinite; max-width: 100%; }
+@keyframes float { 50% { transform: rotate(-4deg) translateY(-10px); } }
+@media (prefers-reduced-motion: reduce) { .phone { animation: none; } }
+.screen { position: relative; width: 100%; height: 100%; border-radius: 39px; overflow: hidden; display: flex; flex-direction: column; padding: 34px 14px 12px; gap: 12px;
+  background:
+    radial-gradient(120% 60% at 110% 38%, transparent 47%, rgba(255,138,76,.95) 48%, rgba(255,120,60,.25) 52%, transparent 60%),
+    radial-gradient(90% 55% at -15% 75%, transparent 52%, rgba(255,98,84,.9) 53%, rgba(255,98,84,.2) 57%, transparent 64%),
+    radial-gradient(70% 45% at 85% 5%, rgba(168,85,247,.65), transparent 70%),
+    linear-gradient(170deg, #3b1a5c 0%, #241040 45%, #2a0f2e 70%, #130816 100%); }
+.island { position: absolute; top: 9px; left: 50%; transform: translateX(-50%); width: 84px; height: 24px; border-radius: 14px; background: #000; }
+.sbar { position: absolute; top: 12px; left: 22px; right: 20px; display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; color: #fff; }
+.widgets { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.wg { aspect-ratio: 1; border-radius: 18px; padding: 10px; color: #fff; font-size: 10px; font-weight: 600; display: flex; flex-direction: column; }
+.wg-w { background: linear-gradient(160deg, #4f9cf5, #1d5fd1); }
+.wg-w b { font-family: var(--body); font-size: 30px; font-weight: 400; line-height: 1.1; letter-spacing: -1px; }
+.wg-w i { margin-top: auto; font-style: normal; }
+.wg-c { background: rgba(28,28,32,.85); }
+.wg-c .m { color: #f43f5e; font-size: 8px; font-weight: 800; letter-spacing: .5px; text-align: center; }
+.wg-c .d { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; text-align: center; font-size: 7px; margin-top: 3px; }
+.wg-c .d .t { background: #ef4444; border-radius: 50%; }
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px 6px; justify-items: center; }
+.ico { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 9px; color: #fff; font-weight: 500; text-shadow: 0 1px 3px rgba(0,0,0,.45); }
+.tile { width: 46px; height: 46px; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 12px rgba(0,0,0,.35); position: relative; }
+.tile svg { width: 100%; height: 100%; display: block; }
+.tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,.26), rgba(255,255,255,0) 45%); }
+.dock { margin-top: auto; display: flex; justify-content: space-around; padding: 9px 6px; border-radius: 24px; background: rgba(255,255,255,.16); backdrop-filter: blur(16px); }
+.homebar { width: 90px; height: 4px; border-radius: 3px; background: #fff; opacity: .8; align-self: center; }
+.toast { position: absolute; top: 40px; left: 10px; right: 10px; display: flex; gap: 8px; align-items: center; padding: 8px 10px; border-radius: 16px; background: rgba(30,30,38,.72); backdrop-filter: blur(20px); color: #fff; font-size: 10px; box-shadow: 0 8px 20px rgba(0,0,0,.3);
+  animation: toast 9s ease-in-out infinite; }
+.toast .tile { width: 26px; height: 26px; border-radius: 7px; flex-shrink: 0; box-shadow: none; }
+.toast b { display: block; font-size: 10.5px; }
+@keyframes toast { 0%, 8% { transform: translateY(-70px); opacity: 0; } 14%, 46% { transform: none; opacity: 1; } 54%, 100% { transform: translateY(-70px); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .toast { animation: none; } }
+
+/* Sections */
+section.band { padding-block: 72px; border-top: 1px solid var(--night-3); }
+.sec-head { display: flex; flex-direction: column; gap: 12px; max-width: 62ch; margin-bottom: 36px; }
+.sec-head h2 { font-size: var(--step-3); font-weight: 800; }
+.sec-head p { color: var(--haze); font-size: 1.08rem; }
+
+/* App picker */
+.apps-layout { display: grid; grid-template-columns: 1.2fr .8fr; gap: 28px; align-items: start; }
+@media (max-width: 880px) { .apps-layout { grid-template-columns: 1fr; } }
+.app-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 18px 10px; }
+.app-btn { display: flex; flex-direction: column; align-items: center; gap: 7px; background: none; border: 0; color: var(--ink); font-family: var(--body); font-size: .82rem; font-weight: 600; cursor: pointer; padding: 6px 2px; border-radius: 14px; }
+.app-btn .tile { width: 58px; height: 58px; border-radius: 15px; transition: transform .15s; }
+.app-btn:hover .tile { transform: translateY(-3px); }
+.app-btn[aria-pressed="true"] { background: var(--night-2); box-shadow: inset 0 0 0 1px var(--night-3); }
+.app-detail { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 84px); background: var(--night-2); border: 1px solid var(--night-3); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.app-detail .row { display: flex; gap: 14px; align-items: center; }
+.app-detail .tile { width: 64px; height: 64px; border-radius: 16px; flex-shrink: 0; }
+.app-detail h3 { font-size: var(--step-2); }
+.app-detail p { color: var(--haze); }
+.app-detail ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; }
+.app-detail li::marker { color: var(--sodium); }
+.count { font-family: var(--mono); color: var(--sodium); }
+
+/* Why */
+.why { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 28px; }
+@media (max-width: 880px) { .why { grid-template-columns: 1fr; } }
+.why h3 { font-size: 1.25rem; margin-bottom: 8px; }
+.why p { color: var(--haze); }
+.why code { font-family: var(--mono); font-size: .85em; color: var(--sodium-soft); }
+
+/* Install console */
+.install { display: grid; grid-template-columns: .9fr 1.1fr; gap: 36px; align-items: center; }
+@media (max-width: 880px) { .install { grid-template-columns: 1fr; } }
+.steps { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 18px; counter-reset: s; }
+.steps li { display: grid; grid-template-columns: 34px 1fr; gap: 12px; counter-increment: s; }
+.steps li::before { content: counter(s); width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-family: var(--mono); font-size: .85rem; font-weight: 600; background: var(--night-3); color: var(--sodium); }
+.steps b { display: block; }
+.steps span { color: var(--haze); font-size: .95rem; }
+.console { background: #0a0614; border: 1px solid var(--night-3); border-radius: 16px; overflow: hidden; min-width: 0; }
+.console-bar { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid var(--night-3); font-family: var(--mono); font-size: .78rem; color: var(--haze); }
+.dots { display: flex; gap: 6px; }
+.dots i { width: 10px; height: 10px; border-radius: 50%; background: var(--night-3); }
+.copy { background: var(--night-2); color: var(--ink); border: 1px solid var(--night-3); border-radius: 8px; padding: 4px 10px; font-family: var(--mono); font-size: .75rem; cursor: pointer; }
+pre { margin: 0; padding: 18px; overflow-x: auto; font-family: var(--mono); font-size: .86rem; line-height: 1.75; color: #e8defa; }
+pre .c { color: #7d6aa8; }
+pre .k { color: var(--sodium); }
+pre .g { color: var(--ok); }
+
+/* Specs */
+.specs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 40px; }
+@media (max-width: 720px) { .specs { grid-template-columns: 1fr; } }
+.spec { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--night-3); }
+.spec dt { color: var(--haze); }
+.spec dd { margin: 0; font-weight: 600; text-align: right; font-family: var(--mono); font-size: .9rem; }
+
+/* Closing CTA */
+.closer { text-align: left; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; padding: 36px; border-radius: 24px;
+  background: radial-gradient(120% 140% at 100% 0%, color-mix(in srgb, var(--sodium) 32%, transparent), transparent 60%), var(--night-2); border: 1px solid var(--night-3); }
+.closer h2 { font-size: var(--step-3); font-weight: 800; }
+.closer p { color: var(--haze); margin-top: 8px; }
+@media (max-width: 720px) { .closer { grid-template-columns: 1fr; padding: 26px; } }
+
+footer { padding-block: 40px 56px; color: var(--haze); font-size: .85rem; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+</style>
+
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"></span>Orvix<b>Scripts</b></a>
+    <nav class="links" aria-label="Sections">
+      <a href="#apps">Apps</a><a href="#why">Why Pulse</a><a href="#install">Install</a><a href="#specs">Specs</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">FiveM resources · First release</span>
+        <h1>Pulse. The phone your city <em>actually uses.</em></h1>
+        <p class="lede">19 apps, real voice calls, and a design players want to open. Built for ESX Legacy, checked on the server, set up in minutes.</p>
+        <div class="cta-row">
+          <span class="btn btn-primary" aria-disabled="true">Buy on Tebex <span class="soon">Coming soon</span></span>
+          <a class="btn btn-ghost" href="#apps">Explore the apps</a>
+        </div>
+        <div class="stack-line" aria-label="Works with">
+          <span>es_extended</span><span>oxmysql</span><span>ox_lib</span><span>pma-voice</span><span>cd_garage</span>
+        </div>
+      </div>
+      <div class="stage" aria-hidden="true">
+        <div class="phone">
+          <div class="screen" id="hero-screen">
+            <div class="island"></div>
+            <div class="sbar"><span>9:41</span><span>▮▮▮ ◖</span></div>
+            <div class="toast"><span class="tile" data-art="messages"></span><span><b>Jordan Reyes</b>Pier at 8? Bring the car 🚗</span></div>
+            <div class="widgets">
+              <div class="wg wg-w">Del Perro Beach ➤<b>31°</b><i>☀️<br>Sunny</i></div>
+              <div class="wg wg-c"><div class="m">OCTOBER</div><div class="d" id="mini-cal"></div></div>
+            </div>
+            <div class="grid" id="hero-grid"></div>
+            <div class="dock" id="hero-dock"></div>
+            <div class="homebar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="apps">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">What's inside</span>
+        <h2>Everything a citizen needs, in one pocket.</h2>
+        <p>Tap an app to see what it does. Server owners can hide any of them, and players can add or remove them from their own home screen in the App Store.</p>
+      </div>
+      <div class="apps-layout">
+        <div class="app-grid" id="app-grid" role="group" aria-label="Pulse apps"></div>
+        <aside class="app-detail" id="app-detail" aria-live="polite"></aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="why">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Why Pulse</span>
+        <h2>Built like a server owner would build it.</h2>
+      </div>
+      <div class="why">
+        <div><h3>Nothing trusted from the client</h3><p>Every text, payment, post and call is checked on the server. The UI can only reach a fixed list of actions, so modders can't fake messages or move money.</p></div>
+        <div><h3>No SQL to import</h3><p>Pulse creates and upgrades its own tables on first start. Copy the folder, add one <code>ensure</code> line, and you're live.</p></div>
+        <div><h3>Your secrets stay secret</h3><p>Photos and voice memos upload from the server, so your FiveManage token never reaches a player's game.</p></div>
+        <div><h3>Works with what you run</h3><p>Uses ESX bank accounts, pays <code>esx_billing</code> bills to the right society, and reads garage spots straight from <code>cd_garage</code>.</p></div>
+        <div><h3>Real calls</h3><p>Proper ringing, answering and hang-ups over <code>pma-voice</code> call channels, with a live call bar while you use other apps.</p></div>
+        <div><h3>Easy to extend</h3><p>Exports for texts, mail, notifications and bank history, so your jobs and shops can talk to players through the phone.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="install">
+    <div class="wrap install">
+      <div>
+        <div class="sec-head" style="margin-bottom:24px">
+          <span class="eyebrow">Setup</span>
+          <h2>Running in four steps.</h2>
+        </div>
+        <ol class="steps">
+          <li><div><b>Drop it in</b><span>Copy <code>pulse_phone</code> into your resources folder.</span></div></li>
+          <li><div><b>Ensure it</b><span>Add it to server.cfg after pma-voice, ox_lib and oxmysql.</span></div></li>
+          <li><div><b>Add your token</b><span>One server-only line turns on the camera and voice memos.</span></div></li>
+          <li><div><b>Restart</b><span>Tables are created automatically. Hand out a phone item and press F1.</span></div></li>
+        </ol>
+      </div>
+      <div class="console">
+        <div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>server.cfg</span><button class="copy" id="copy-btn" type="button">Copy</button></div>
+<pre id="cfg"><span class="c"># Pulse phone</span>
+<span class="k">ensure</span> pulse_phone
+
+<span class="c"># server-only: players never see this</span>
+<span class="k">set</span> pulse_fivemanage_token <span class="g">"your-token"</span></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="specs">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Specs</span><h2>The details.</h2></div>
+      <dl class="specs">
+        <div class="spec"><dt>Framework</dt><dd>ESX Legacy 1.12+</dd></div>
+        <div class="spec"><dt>Database</dt><dd>oxmysql (auto tables)</dd></div>
+        <div class="spec"><dt>Required</dt><dd>ox_lib · pma-voice</dd></div>
+        <div class="spec"><dt>Camera</dt><dd>screenshot-basic + FiveManage</dd></div>
+        <div class="spec"><dt>Optional</dt><dd>esx_billing · cd_garage</dd></div>
+        <div class="spec"><dt>Apps</dt><dd>19 + AirShare</dd></div>
+        <div class="spec"><dt>Default key</dt><dd>F1 (rebindable)</dd></div>
+        <div class="spec"><dt>Languages</dt><dd>English</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="closer">
+        <div>
+          <h2>Pulse is launching soon.</h2>
+          <p>We're finishing in-city testing now. It will be available on Tebex at launch.</p>
+        </div>
+        <span class="btn btn-primary" aria-disabled="true">Buy on Tebex <span class="soon">Coming soon</span></span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 OrvixScripts</span>
+    <span>Not affiliated with Rockstar Games, Take-Two or Cfx.re.</span>
+  </div>
+</footer>
+
+<script>
+// Pulse's own app icon artwork (same set the phone ships with). {u} keeps gradient ids unique.
+let n = 0;
+const T = (bg, body) => `<svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><defs>${bg}</defs>${body}</svg>`;
+const lin = (id, a, b, x2 = 0, y2 = 1) => `<linearGradient id="${id}{u}" x1="0" y1="0" x2="${x2}" y2="${y2}"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient>`;
+const rad = (id, a, b) => `<radialGradient id="${id}{u}" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></radialGradient>`;
+const tile = (g) => `<rect width="60" height="60" fill="url(#${g}{u})"/>`;
+const shade = `<filter id="sh{u}" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="1.6" stdDeviation="1.4" flood-color="#000" flood-opacity=".35"/></filter>`;
+const ART = {
+  phone: T(lin('bg', '#6fe08a', '#18a34a') + lin('h', '#ffffff', '#dfe9e2') + shade, tile('bg') +
+    `<g filter="url(#sh{u})"><path fill="url(#h{u})" d="M21.3 15.5c1.1-.9 2.7-.7 3.5.4l3.4 4.6c.7 1 .6 2.4-.3 3.2l-2.2 2c1.6 3.6 4.4 6.5 8 8.2l2-2.2c.8-.9 2.2-1 3.2-.3l4.6 3.4c1.1.8 1.3 2.4.4 3.5l-2 2.5c-1.4 1.7-3.8 2.3-5.9 1.4C27.5 39.8 20.2 32.5 17.7 23.9c-.7-2.2-.1-4.5 1.6-6z"/></g><path d="M36 15.5a10 10 0 0 1 8.5 8.5" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".9"/><path d="M35.5 21a5 5 0 0 1 3.6 3.6" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".9"/>`),
+  messages: T(lin('bg', '#5ee6b0', '#0f9f6e') + lin('b1', '#ffffff', '#e4f1ea') + lin('b2', '#c9f7df', '#8fe3bb') + shade, tile('bg') +
+    `<g filter="url(#sh{u})"><path fill="url(#b2{u})" d="M27 22h17a6 6 0 0 1 6 6v8a6 6 0 0 1-6 6h-1v5l-6-5H27a6 6 0 0 1-6-6v-8a6 6 0 0 1 6-6z"/><path fill="url(#b1{u})" d="M15 12h18a6 6 0 0 1 6 6v9a6 6 0 0 1-6 6H22l-7 6v-6a6 6 0 0 1-6-6v-9a6 6 0 0 1 6-6z"/></g><circle cx="17.5" cy="22.5" r="2" fill="#16a36d"/><circle cx="24" cy="22.5" r="2" fill="#16a36d"/><circle cx="30.5" cy="22.5" r="2" fill="#16a36d"/>`),
+  contacts: T(lin('bg', '#8b95a7', '#3f4756') + lin('c', '#ffffff', '#e6e9ef') + lin('p', '#7aa2ff', '#3b66e0') + shade, tile('bg') +
+    `<g filter="url(#sh{u})"><rect x="14" y="11" width="32" height="38" rx="5" fill="url(#c{u})"/></g><rect x="44" y="16" width="4" height="7" rx="1.5" fill="#f59e0b"/><rect x="44" y="25" width="4" height="7" rx="1.5" fill="#22c55e"/><rect x="44" y="34" width="4" height="7" rx="1.5" fill="#ef4444"/><circle cx="30" cy="25" r="6.5" fill="url(#p{u})"/><path d="M19.5 41c1.5-5.5 5.6-8 10.5-8s9 2.5 10.5 8z" fill="url(#p{u})"/>`),
+  camera: T(lin('bg', '#4b4f58', '#15171b') + rad('l', '#4b6cff', '#060a1a') + lin('ring', '#c9ccd3', '#5d616b') + shade, tile('bg') +
+    `<rect x="9" y="17" width="42" height="28" rx="7" fill="#2a2d33" stroke="#555a63" stroke-width="1"/><rect x="15" y="13" width="10" height="5" rx="2" fill="#3a3e46"/><g filter="url(#sh{u})"><circle cx="30" cy="31" r="11.5" fill="url(#ring{u})"/></g><circle cx="30" cy="31" r="8.6" fill="#0b0d12"/><circle cx="30" cy="31" r="6.6" fill="url(#l{u})"/><circle cx="30" cy="31" r="2.6" fill="#030510"/><ellipse cx="27.3" cy="28.2" rx="2.4" ry="1.5" fill="#fff" opacity=".7" transform="rotate(-30 27.3 28.2)"/><circle cx="45" cy="22" r="1.8" fill="#fbbf24"/>`),
+  photos: T(lin('bg', '#ffffff', '#eef0f5') + lin('sky', '#ffb36b', '#ff5e8a') + lin('sky2', '#7dd3fc', '#4f7cff') + shade, tile('bg') +
+    `<g filter="url(#sh{u})" transform="rotate(-10 30 30)"><rect x="13" y="14" width="28" height="31" rx="2.5" fill="#fff"/><rect x="15.5" y="16.5" width="23" height="21" rx="1" fill="url(#sky2{u})"/><path d="M15.5 37.5l7-8 4 4 5-6 7 10z" fill="#1e3a8a" opacity=".8"/></g><g filter="url(#sh{u})" transform="rotate(8 32 32)"><rect x="20" y="16" width="28" height="31" rx="2.5" fill="#fff"/><rect x="22.5" y="18.5" width="23" height="21" rx="1" fill="url(#sky{u})"/><circle cx="39" cy="25" r="3.2" fill="#fff4c2"/><path d="M22.5 39.5l7.5-9 4.5 5 4.5-5.5 6.5 9.5z" fill="#5b1440" opacity=".85"/></g>`),
+  settings: T(lin('bg', '#5b6b8c', '#1f2a44') + lin('k', '#ffffff', '#cfd6e4') + shade, tile('bg') +
+    `<g stroke="#9fb0d0" stroke-width="3" stroke-linecap="round" opacity=".55"><path d="M15 19h30M15 30h30M15 41h30"/></g><path d="M15 19h12" stroke="#60a5fa" stroke-width="3" stroke-linecap="round"/><path d="M15 30h22" stroke="#34d399" stroke-width="3" stroke-linecap="round"/><path d="M15 41h8" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/><g filter="url(#sh{u})" fill="url(#k{u})"><circle cx="27" cy="19" r="4.6"/><circle cx="37" cy="30" r="4.6"/><circle cx="23" cy="41" r="4.6"/></g>`),
+  chirp: T(lin('bg', '#5cc8ff', '#1677d8') + lin('b', '#ffffff', '#dceeff') + shade, tile('bg') +
+    `<g filter="url(#sh{u})"><path fill="url(#b{u})" d="M16 13h28a6 6 0 0 1 6 6v16a6 6 0 0 1-6 6H29l-9 7v-7h-4a6 6 0 0 1-6-6V19a6 6 0 0 1 6-6z"/></g><path d="M34.6 31.2a6.3 6.3 0 1 1 2.1-4.7v1.6a2.3 2.3 0 0 1-4.6 0V22.8m0 3.7a2.9 2.9 0 1 1-5.8 0 2.9 2.9 0 0 1 5.8 0z" fill="none" stroke="#1677d8" stroke-width="2.4" stroke-linecap="round"/>`),
+  lens: T(lin('bg', '#22d3ee', '#4338ca', 1, 1) + shade, tile('bg') + `<circle cx="30" cy="30" r="18" fill="#0b1030" opacity=".35"/>` +
+    `<g filter="url(#sh{u})"><circle cx="30" cy="30" r="15" fill="none" stroke="#fff" stroke-width="3.2"/><g fill="#fff" opacity=".95"><path d="M30 18.5l5 8.5h-10z"/><path d="M40.5 25.5l-5 8.6-5-8.6z" transform="rotate(5 30 30)"/><path d="M38 39l-10 .1 5-8.7z"/><path d="M22 39l-5-8.6 10 0z"/><path d="M19.5 25l10 .1-5 8.6z"/></g></g><circle cx="30" cy="30" r="4" fill="#4338ca"/><circle cx="43" cy="17" r="2.2" fill="#fff"/>`),
+  market: T(lin('bg', '#ffb056', '#e0561a') + lin('t', '#ffffff', '#ffe9d6') + lin('coin', '#ffe27a', '#e3a008') + shade, tile('bg') +
+    `<g filter="url(#sh{u})"><path fill="url(#t{u})" d="M14 16.5a3 3 0 0 1 3-3h13.5l15.4 15.4a3 3 0 0 1 0 4.3L35.3 43.8a3 3 0 0 1-4.3 0L14.9 27.7a3 3 0 0 1-.9-2.1z"/></g><circle cx="21" cy="21" r="3" fill="#e0561a"/><path d="M21 21C17 13 10 13 9 18" stroke="#7c2d12" stroke-width="1.4" fill="none"/><g filter="url(#sh{u})"><circle cx="42" cy="42" r="8" fill="url(#coin{u})" stroke="#b77900" stroke-width="1"/></g><path d="M42 37.5v9m2.4-6.9c-.4-1-1.3-1.5-2.4-1.5-1.4 0-2.4.8-2.4 1.8 0 2.4 4.8 1.2 4.8 3.6 0 1-1 1.8-2.4 1.8-1.1 0-2-.5-2.4-1.5" stroke="#8a5a00" stroke-width="1.4" fill="none" stroke-linecap="round"/>`),
+  mail: T(lin('bg', '#60b0ff', '#1d4ed8') + lin('e', '#ffffff', '#e2ebf7') + lin('f', '#f3f7fd', '#cdd9ea') + shade, tile('bg') +
+    `<g filter="url(#sh{u})"><rect x="10" y="17" width="40" height="27" rx="4" fill="url(#e{u})"/></g><path d="M10.8 19.5L30 33.5l19.2-14" fill="url(#f{u})" stroke="#b9c7dc" stroke-width="1"/><path d="M11 43l14-12m24 12L35 31" stroke="#c9d5e6" stroke-width="1.2"/><circle cx="46" cy="18" r="5.5" fill="#ef4444" stroke="#fff" stroke-width="1.5"/>`),
+  bank: T(lin('bg', '#3ee0a1', '#047857') + lin('card', '#1f2937', '#0b1220') + lin('gold', '#ffe58a', '#d79a00') + shade, tile('bg') +
+    `<g filter="url(#sh{u})" transform="rotate(-12 28 28)"><rect x="9" y="17" width="34" height="22" rx="3.5" fill="url(#card{u})"/><rect x="9" y="22" width="34" height="4" fill="#374151"/><rect x="13" y="30" width="7" height="5" rx="1" fill="url(#gold{u})"/></g><g filter="url(#sh{u})"><ellipse cx="42" cy="44" rx="9" ry="3.2" fill="#b77900"/><rect x="33" y="38" width="18" height="6" fill="url(#gold{u})"/><ellipse cx="42" cy="38" rx="9" ry="3.2" fill="#ffe58a"/><rect x="33" y="33" width="18" height="5" fill="url(#gold{u})"/><ellipse cx="42" cy="33" rx="9" ry="3.2" fill="#fff0b3"/></g>`),
+  garage: T(lin('bg', '#8b8cff', '#3123ae') + lin('car', '#f4f6fb', '#c6ccdc') + shade, tile('bg') + `<path d="M6 46h48" stroke="#ffffff" stroke-opacity=".25" stroke-width="2"/>` +
+    `<g filter="url(#sh{u})"><path fill="url(#car{u})" d="M16 30l3.5-8.5A4 4 0 0 1 23.2 19h13.6a4 4 0 0 1 3.7 2.5L44 30a4 4 0 0 1 3 3.9V41a2 2 0 0 1-2 2h-2.5v2.5a2 2 0 0 1-2 2H38a2 2 0 0 1-2-2V43H24v2.5a2 2 0 0 1-2 2h-2.5a2 2 0 0 1-2-2V43H15a2 2 0 0 1-2-2v-7.1a4 4 0 0 1 3-3.9z"/></g><path d="M19.6 29.5l2.6-6.4a2 2 0 0 1 1.9-1.3h11.8a2 2 0 0 1 1.9 1.3l2.6 6.4z" fill="#2b3a67"/><circle cx="19.5" cy="36" r="2.8" fill="#fde68a"/><circle cx="40.5" cy="36" r="2.8" fill="#fde68a"/><rect x="25" y="35" width="10" height="2.4" rx="1.2" fill="#6b7280"/>`),
+  services: T(lin('bg', '#ff6b6b', '#b91c1c') + rad('glow', '#ffffff', '#ff2d2d') + lin('base', '#3f3f46', '#18181b') + shade, tile('bg') +
+    `<circle cx="30" cy="27" r="17" fill="#fff" opacity=".15"/><g filter="url(#sh{u})"><path d="M19 38v-9a11 11 0 0 1 22 0v9z" fill="url(#glow{u})"/><rect x="15" y="38" width="30" height="7" rx="2" fill="url(#base{u})"/></g><path d="M24.5 28a5.5 5.5 0 0 1 5.5-5.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round" fill="none"/><g stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M30 8.5v4M15.5 14.5l2.8 2.8M44.5 14.5l-2.8 2.8M9.5 28h3.5M47 28h3.5"/></g>`),
+  weather: T(lin('bg', '#38bdf8', '#1e3a8a') + rad('sun', '#fff7b0', '#f59e0b') + lin('cl', '#ffffff', '#d4e3f5') + shade, tile('bg') +
+    `<g filter="url(#sh{u})"><circle cx="37" cy="22" r="9" fill="url(#sun{u})"/></g><g stroke="#fde68a" stroke-width="2.2" stroke-linecap="round" opacity=".9"><path d="M37 8.5v3M49.5 22h3M46 13l2-2M28 13l-2-2M46 31l2 2"/></g><g filter="url(#sh{u})"><path fill="url(#cl{u})" d="M19 44a8 8 0 0 1-.9-15.9A10 10 0 0 1 37.4 31 6.5 6.5 0 0 1 37 44z"/></g><g stroke="#7dd3fc" stroke-width="2.4" stroke-linecap="round"><path d="M21 48l-1.5 3.5M28 48l-1.5 3.5M35 48l-1.5 3.5"/></g>`),
+  clock: T(lin('bg', '#2dd4bf', '#0f766e') + lin('w', '#ffffff', '#dfe7ea') + shade, tile('bg') +
+    `<rect x="27" y="8.5" width="6" height="5" rx="1.5" fill="#e2e8f0"/><path d="M42 14.5l3 3" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round"/><g filter="url(#sh{u})"><circle cx="30" cy="33" r="17" fill="url(#w{u})"/></g><path d="M30 33V21.5A11.5 11.5 0 0 1 40.4 28z" fill="#2dd4bf" opacity=".45"/><path d="M30 33l7-6" stroke="#0f172a" stroke-width="2.4" stroke-linecap="round"/><path d="M30 33V21" stroke="#ef4444" stroke-width="1.6" stroke-linecap="round"/><circle cx="30" cy="33" r="2.2" fill="#0f172a"/>`),
+  notes: T(lin('bg', '#fbbf24', '#b45309') + lin('p', '#fffdf5', '#f1e8cf') + lin('pen', '#60a5fa', '#1d4ed8') + shade, tile('bg') +
+    `<g filter="url(#sh{u})"><rect x="14" y="12" width="28" height="37" rx="3" fill="url(#p{u})"/></g><g fill="#9ca3af"><circle cx="19" cy="12" r="1.6"/><circle cx="25" cy="12" r="1.6"/><circle cx="31" cy="12" r="1.6"/><circle cx="37" cy="12" r="1.6"/></g><g stroke="#cbd5e1" stroke-width="1.4"><path d="M18 22h20M18 28h20M18 34h14M18 40h10"/></g><g filter="url(#sh{u})" transform="rotate(40 42 34)"><rect x="39" y="20" width="6" height="24" rx="1.5" fill="url(#pen{u})"/><path d="M39 44h6l-3 5z" fill="#f5deb3"/></g>`),
+  calculator: T(lin('bg', '#a78bfa', '#5b21b6') + lin('k', '#ffffff', '#e9e3fb') + lin('o', '#fbbf24', '#ea7a00') + shade, tile('bg') +
+    `<g filter="url(#sh{u})"><rect x="12" y="12" width="16" height="16" rx="4.5" fill="url(#k{u})"/><rect x="32" y="12" width="16" height="16" rx="4.5" fill="url(#k{u})"/><rect x="12" y="32" width="16" height="16" rx="4.5" fill="url(#k{u})"/><rect x="32" y="32" width="16" height="16" rx="4.5" fill="url(#o{u})"/></g><g stroke="#5b21b6" stroke-width="2.4" stroke-linecap="round"><path d="M20 16.5v7M16.5 20h7M36.5 20h7M16.8 36.8l6.4 6.4M23.2 36.8l-6.4 6.4"/></g><g stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M36.5 38h7M36.5 42h7"/></g>`),
+  store: T(lin('bg', '#f472b6', '#7c3aed', 1, 1) + lin('bag', '#ffffff', '#ece4ff') + shade, tile('bg') +
+    `<path d="M23 21v-2.5a7 7 0 0 1 14 0V21" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round"/><g filter="url(#sh{u})"><path fill="url(#bag{u})" d="M15.5 21h29l-2.2 23.5a3 3 0 0 1-3 2.7H20.7a3 3 0 0 1-3-2.7z"/></g><rect x="22" y="27" width="7" height="7" rx="2" fill="#f472b6"/><rect x="31" y="27" width="7" height="7" rx="2" fill="#7c3aed"/><rect x="22" y="36" width="7" height="7" rx="2" fill="#22d3ee"/><rect x="31" y="36" width="7" height="7" rx="2" fill="#f59e0b"/>`),
+  voice: T(lin('bg', '#fb7185', '#9f1239') + lin('m', '#ffffff', '#d7dbe3') + shade, tile('bg') +
+    `<g filter="url(#sh{u})"><rect x="23.5" y="10" width="13" height="23" rx="6.5" fill="url(#m{u})"/></g><g stroke="#9f1239" stroke-width="1.2" opacity=".45"><path d="M25 17h10M25 20.5h10M25 24h10"/></g><path d="M18 27a12 12 0 0 0 24 0" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M30 39v7M23.5 47h13" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><g stroke="#fecdd3" stroke-width="2" stroke-linecap="round"><path d="M10 26v6M14 23v12M46 23v12M50 26v6"/></g>`),
+};
+const art = id => ART[id].replaceAll('{u}', `-${id}-${++n}`); // static markup from this file only
+
+// What each app does (matches the shipping phone)
+const APPS = [
+  ['phone', 'Phone', 'Real voice calls over pma-voice.', ['Keypad, recents and favorites', 'Live call bar while you use other apps', 'Dial 911 or 912 to reach Police or EMS']],
+  ['messages', 'Messages', 'Texts, group chats, photos and locations.', ['Group chats with names on every message', 'Share your location, tap to set GPS', 'Send photos and voice messages']],
+  ['contacts', 'Contacts', 'Your people, searchable.', ['Favorites and A to Z search', 'Block a number from calling or texting', 'AirShare a contact to someone nearby']],
+  ['camera', 'Camera', 'GTA\'s own phone camera, with selfies.', ['Take photos and flip to selfie mode', 'HUD hides while you shoot', 'Uploads from the server, token stays private']],
+  ['photos', 'Photos', 'A gallery for everything you shoot.', ['Set any photo as your wallpaper', 'Send in a chat or AirShare nearby', 'Use photos on Lens and Market']],
+  ['chirp', 'Chirp', 'The city\'s short-post feed.', ['Posts, replies and likes', '@mentions that notify the player', 'Admins can remove posts']],
+  ['lens', 'Lens', 'A photo feed for the city.', ['Double-tap to like', 'Comments on every post', 'Profile grid of your shots']],
+  ['market', 'Market', 'Classified ads with photos.', ['Categories and prices', 'Buyers call or text the seller', 'Listings expire after a week']],
+  ['mail', 'Mail', 'Email between players and businesses.', ['Write to any phone number', 'Your scripts can send mail too', 'Inbox with unread badges']],
+  ['bank', 'Bank', 'ESX bank account in your pocket.', ['Send money by phone number', 'Pay esx_billing bills in one tap', 'Recent activity history']],
+  ['garage', 'Garage', 'Every vehicle you own.', ['In garage, out or impounded at a glance', 'GPS to the car or its garage', 'Reads cd_garage locations']],
+  ['services', 'Services', 'Call for help, or answer it.', ['Police, EMS, mechanic and taxi', 'Location sent by the server, can\'t be faked', 'On-duty players get a dispatch list']],
+  ['weather', 'Weather', 'The real in-game weather.', ['Area name and wind speed', 'Home screen widget', 'Changes for day and night']],
+  ['clock', 'Clock', 'Stopwatch and timer.', ['Laps on the stopwatch', 'Timer rings when it ends', 'Keeps running with the phone away']],
+  ['notes', 'Notes', 'Quick notes that save themselves.', ['Autosaves as you type', 'Saved to your phone number', 'Search by title']],
+  ['voice', 'Voice Memos', 'Record and send voice clips.', ['Up to 60 seconds per memo', 'Send as voice messages in chats', 'Rename and delete']],
+  ['calculator', 'Calculator', 'Works with the keyboard too.', ['Standard operations', 'Percent and sign keys', 'Type numbers on your keyboard']],
+  ['store', 'App Store', 'Choose what\'s on your home screen.', ['Remove apps you don\'t use', 'Get them back any time', 'Your data stays put']],
+  ['settings', 'Settings', 'Make the phone yours.', ['8 phone colors and wallpapers', 'Passcode, Airplane mode, Do Not Disturb', 'Ringtones, volume and phone size']],
+];
+
+// Hero phone
+const tileEl = id => `<span class="tile">${art(id)}</span>`;
+document.getElementById('hero-grid').innerHTML = ['photos', 'chirp', 'lens', 'bank', 'garage', 'services', 'store', 'settings']
+  .map(id => `<span class="ico">${tileEl(id)}${APPS.find(a => a[0] === id)[1]}</span>`).join('');
+document.getElementById('hero-dock').innerHTML = ['phone', 'messages', 'camera', 'contacts'].map(tileEl).join('');
+document.querySelectorAll('[data-art]').forEach(e => { e.innerHTML = art(e.dataset.art); });
+const cal = document.getElementById('mini-cal');
+cal.innerHTML = 'MTWTFSS'.split('').map(c => `<span style="opacity:.5">${c}</span>`).join('') + '<span></span><span></span>' +
+  Array.from({ length: 31 }, (_, i) => `<span class="${i + 1 === 29 ? 't' : ''}">${i + 1}</span>`).join('');
+
+// App picker
+const grid = document.getElementById('app-grid'), detail = document.getElementById('app-detail');
+function show(id) {
+  const a = APPS.find(x => x[0] === id);
+  grid.querySelectorAll('.app-btn').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.id === id)));
+  detail.innerHTML = `<div class="row">${tileEl(a[0])}<div><span class="eyebrow">App <span class="count">${APPS.indexOf(a) + 1}/${APPS.length}</span></span><h3>${a[1]}</h3></div></div><p>${a[2]}</p><ul>${a[3].map(x => `<li>${x}</li>`).join('')}</ul>`;
+}
+grid.innerHTML = APPS.map(a => `<button class="app-btn" type="button" data-id="${a[0]}" aria-pressed="false">${tileEl(a[0])}${a[1]}</button>`).join('');
+grid.addEventListener('click', e => { const b = e.target.closest('.app-btn'); if (b) show(b.dataset.id); });
+show('messages');
+
+// Copy the server.cfg lines
+document.getElementById('copy-btn').addEventListener('click', async e => {
+  const text = document.getElementById('cfg').innerText;
+  const btn = e.currentTarget;
+  try { await navigator.clipboard.writeText(text); btn.textContent = 'Copied'; }
+  catch { const r = document.createRange(); r.selectNodeContents(document.getElementById('cfg')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Press Ctrl+C'; }
+  setTimeout(() => { btn.textContent = 'Copy'; }, 1800);
+});
+</script>
+
+</body>
+</html>
