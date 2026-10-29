@@ -1,4 +1,7 @@
-// Mobile menu + copy buttons (shared)
+// Header, mobile menu, copy buttons
+const hdr = document.querySelector('header.top');
+const onScroll = () => hdr && hdr.classList.toggle('solid', scrollY > 40);
+addEventListener('scroll', onScroll, { passive: true }); onScroll();
 const mb = document.querySelector('.menu-btn'), nl = document.querySelector('nav.links');
 if (mb) mb.addEventListener('click', () => { const o = nl.classList.toggle('open'); mb.setAttribute('aria-expanded', String(o)); });
 document.querySelectorAll('[data-copy]').forEach(btn => btn.addEventListener('click', async () => {
