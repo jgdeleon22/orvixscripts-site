@@ -25,9 +25,3 @@ document.querySelectorAll('img[data-zoom]').forEach(img => {
   };
   img.addEventListener('click', open); img.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
 });
-// Fade sections in as they scroll into view
-const rv = document.querySelectorAll('.reveal');
-if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const io2 = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io2.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
-  rv.forEach(el => io2.observe(el));
-} else rv.forEach(el => el.classList.add('in'));

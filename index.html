@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#0c0716">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/site.css?v=f73af44b">
 </head>
 <body>
 <header class="top">
@@ -22,88 +22,79 @@
   </div>
 </header>
 
-<main>
-  <section class="s-hero">
-    <div class="s-hero-bg" aria-hidden="true"></div>
+<main class="home">
+  <section class="h-hero">
     <div class="wrap">
-      <div class="hero-copy">
-        <span class="eyebrow">OrvixScripts · FiveM store</span>
-        <h1>Scripts that make your city <span class="grad">feel alive.</span></h1>
-        <p class="lede">A 25-app phone your players live on, and a staff panel that keeps the city in order. Built for ESX Legacy and QBCore.</p>
-        <div class="cta-row"><a class="btn btn-primary" href="#shop">Shop scripts</a><a class="btn btn-ghost" href="/docs/">Read the docs</a></div>
-        <div class="chips"><span class="chip hot">ESX Legacy</span><span class="chip hot">QBCore</span><span class="chip">ox_lib</span><span class="chip">oxmysql</span><span class="chip">One-time price</span></div>
-      </div>
-      <div class="stage" aria-hidden="true">
-        <img class="admin-shot" src="/img/shots/admin/dashboard.webp" alt="" width="1800" height="1085" fetchpriority="high">
-        <img class="phone-shot" src="/img/shots/home.webp" alt="" width="496" height="1040">
-        <div class="float-card fc-1"><span class="fi" style="background:rgba(255,61,154,.18)">💘</span><span><b>It's a match!</b><small>Spark · Pulse Phone</small></span></div>
-        <div class="float-card fc-2"><span class="fi" style="background:rgba(250,204,21,.16)">⭐</span><span><b>Watched player joined</b><small>Dante Moreno · ID 12</small></span></div>
-        <div class="float-card fc-3"><span class="fi" style="background:rgba(56,189,248,.18)">🧊</span><span><b>Froze 5 players near you</b><small>Orvix Admin</small></span></div>
+      <a class="h-pill" href="/admin/"><span class="h-pill-tag">New</span>Orvix Admin is on the way <span aria-hidden="true">→</span></a>
+      <h1>FiveM scripts your players <span class="grad">will love.</span></h1>
+      <p class="h-lede">Easy to install, built for ESX and QBCore, and yours to keep. Pay once and every update is free.</p>
+      <div class="cta-row h-ctas"><a class="btn btn-primary" href="#scripts">Browse scripts</a><a class="btn btn-ghost" href="/docs/">Read the docs</a></div>
+      <div class="h-works"><span>Works with</span><b>ESX Legacy</b><b>QBCore</b><b>ox_lib</b><b>oxmysql</b><b>pma-voice</b></div>
+      <div class="h-show" aria-hidden="true">
+        <div class="h-window"><div class="h-window-bar"><i></i><i></i><i></i><span>Orvix Admin</span></div><img src="/img/shots/admin/dashboard.webp" alt="" width="1800" height="1085" fetchpriority="high"></div>
+        <img class="h-phone" src="/img/shots/home.webp" alt="" width="496" height="1040">
       </div>
     </div>
   </section>
 
-  <div class="trust"><div class="wrap">
-    <div><span class="ti"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h7v9H3zM14 3h7v5h-7zM14 12h7v9h-7zM3 16h7v5H3z"/></svg></span><span><b>ESX + QBCore</b><small>Detected automatically</small></span></div>
-    <div><span class="ti"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8c4.4 0 8-1.3 8-3s-3.6-3-8-3-8 1.3-8 3 3.6 3 8 3zM4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span><b>No SQL to import</b><small>Tables set themselves up</small></span></div>
-    <div><span class="ti"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><span><b>Server-checked</b><small>Nothing trusted from players</small></span></div>
-    <div><span class="ti"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M23 4v6h-6M1 20v-6h6M3.5 9a9 9 0 0 1 14.9-3.4L23 10M1 14l4.6 4.4A9 9 0 0 0 20.5 15"/></svg></span><span><b>Free updates</b><small>Pay once, keep improving</small></span></div>
-  </div></div>
-
-  <section class="band" id="shop">
+  <section class="h-band" id="scripts">
     <div class="wrap">
-      <div class="sec-head reveal"><span class="eyebrow">The store</span><h2>Two scripts. <span class="grad">One city that runs itself.</span></h2><p>Every screenshot on this site is the real thing, not a mockup.</p></div>
-      <div class="products">
-        <article class="product p-pulse reveal">
-          <div class="p-top"><span class="p-badge">Smartphone</span><div class="p-price"><b>$49.99</b><small>one-time · 1 server</small></div></div>
-          <h3>Pulse Phone</h3>
-          <p class="tagline">The phone your city lives on. 25 apps: dating, rides, food delivery, navigation, snaps, real calls and banking.</p>
-          <ul class="p-list"><li>Spark &amp; Kindred dating</li><li>Ryde rides &amp; GrubGo delivery</li><li>Cruise nav with road reports</li><li>Calls over pma-voice</li><li>Chirp, Lens &amp; Blink social</li><li>12 colors &amp; photo wallpapers</li></ul>
-          <div class="p-cta"><a class="btn btn-primary" href="/pulse/">Explore Pulse</a><a class="btn btn-ghost" href="/pulse/install.html">Install guide</a></div>
-          <div class="p-visual" aria-hidden="true"><img src="/img/shots/spark.webp" alt="" loading="lazy"><img src="/img/shots/home.webp" alt="" loading="lazy"><img src="/img/shots/ryde.webp" alt="" loading="lazy"></div>
-        </article>
-        <article class="product p-admin reveal">
-          <div class="p-top"><span class="p-badge">Staff panel</span><div class="p-price"><b>$39.99</b><small>one-time · 1 server</small></div></div>
-          <h3>Orvix Admin</h3>
-          <p class="tagline">Run your whole city from one panel. Players, reports, a live map, cheat alerts, bans, jobs and your server, with an F2 search for everything.</p>
-          <ul class="p-list"><li>Live map + 7-day trails</li><li>Reports with chat &amp; ratings</li><li>Kill log &amp; cheat alerts</li><li>Bans, jail &amp; community service</li><li>Whitelist, queue &amp; jobs</li><li>Staff watch keeps staff honest</li></ul>
-          <div class="p-cta"><a class="btn btn-primary" href="/admin/">Explore Orvix Admin</a><a class="btn btn-ghost" href="/admin/docs.html">Docs</a></div>
-          <div class="p-visual" aria-hidden="true"><img src="/img/shots/admin/players.webp" alt="" loading="lazy"></div>
-        </article>
+      <div class="h-head"><span class="eyebrow">Our scripts</span><h2>Pick what your city needs.</h2><p>Each one works on its own. Together they talk to each other.</p></div>
+      <div class="h-products">
+        <a class="h-card h-pulse" href="/pulse/">
+          <div class="h-card-art"><img src="/img/shots/spark.webp" alt="" decoding="async"><img src="/img/shots/home.webp" alt="" decoding="async"><img src="/img/shots/ryde.webp" alt="" decoding="async"></div>
+          <div class="h-card-body">
+            <div class="h-card-top"><div><span class="h-tag">Smartphone</span><h3>Pulse Phone</h3></div><div class="h-price">$49.99<small>one-time</small></div></div>
+            <p>A phone your players actually use: 25 apps including dating, rides, food delivery, navigation and real calls.</p>
+            <ul class="h-checks"><li>25 apps in one resource</li><li>Real voice calls</li><li>12 phone colors</li></ul>
+            <span class="h-link">See Pulse Phone <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
+        <a class="h-card h-admin" href="/admin/">
+          <div class="h-card-art"><img src="/img/shots/admin/players.webp" alt="" decoding="async"></div>
+          <div class="h-card-body">
+            <div class="h-card-top"><div><span class="h-tag">Staff panel · coming soon</span><h3>Orvix Admin</h3></div><div class="h-price">$39.99<small>one-time</small></div></div>
+            <p>Everything your staff needs in one panel: players, reports, a live map, bans and cheat alerts. Press F2 and type.</p>
+            <ul class="h-checks"><li>Live map and reports</li><li>Bans, jail and alerts</li><li>F2 command search</li></ul>
+            <span class="h-link">See Orvix Admin <span aria-hidden="true">→</span></span>
+          </div>
+        </a>
       </div>
-      <div class="bundle reveal"><div class="bundle-in">
-        <div class="bundle-art" aria-hidden="true"><img src="/img/shots/admin/dashboard.webp" alt=""><img src="/img/shots/home.webp" alt=""></div>
-        <div><span class="eyebrow">Bundle</span><h3>Pulse Phone + Orvix Admin</h3><p>Everything both scripts do, for one price. Same license terms, same free updates.</p></div>
-        <div class="p-price"><div><s>$89.98</s><b>$74.99</b></div><span class="save">Save $14.99</span><div style="margin-top:12px"><span class="btn btn-primary" aria-disabled="true">Coming soon</span></div></div>
-      </div></div>
-    </div>
-  </section>
-
-  <section class="band" style="padding-top:20px">
-    <div class="wrap">
-      <div class="sec-head reveal"><span class="eyebrow">In game</span><h2>See it before you buy it.</h2><p>Hover to pause, click any screen to zoom in.</p></div>
-    </div>
-    <div class="marquee reveal"><div class="marquee-track"><img src="/img/shots/admin/dashboard.webp" alt="Orvix Admin dashboard" loading="lazy" data-zoom><img src="/img/shots/spark.webp" alt="Spark dating app on Pulse" loading="lazy" data-zoom><img src="/img/shots/admin/map.webp" alt="Orvix Admin live map with a 7-day trail" loading="lazy" data-zoom><img src="/img/shots/ryde.webp" alt="Ryde rides app on Pulse" loading="lazy" data-zoom><img src="/img/shots/admin/kills.webp" alt="Orvix Admin kill log" loading="lazy" data-zoom><img src="/img/shots/cruise.webp" alt="Cruise navigation on Pulse" loading="lazy" data-zoom><img src="/img/shots/admin/reports.webp" alt="Orvix Admin reports with chat" loading="lazy" data-zoom><img src="/img/shots/grubgo.webp" alt="GrubGo food delivery on Pulse" loading="lazy" data-zoom><img src="/img/shots/admin/alerts.webp" alt="Orvix Admin cheat alerts and rich list" loading="lazy" data-zoom><img src="/img/shots/blink.webp" alt="Blink snaps on Pulse" loading="lazy" data-zoom><img src="/img/shots/admin/players.webp" alt="Orvix Admin player profile" loading="lazy" data-zoom><img src="/img/shots/kindred.webp" alt="Kindred dating on Pulse" loading="lazy" data-zoom><img src="/img/shots/admin/dashboard.webp" alt="Orvix Admin dashboard" loading="lazy" data-zoom aria-hidden="true"><img src="/img/shots/spark.webp" alt="Spark dating app on Pulse" loading="lazy" data-zoom aria-hidden="true"><img src="/img/shots/admin/map.webp" alt="Orvix Admin live map with a 7-day trail" loading="lazy" data-zoom aria-hidden="true"><img src="/img/shots/ryde.webp" alt="Ryde rides app on Pulse" loading="lazy" data-zoom aria-hidden="true"><img src="/img/shots/admin/kills.webp" alt="Orvix Admin kill log" loading="lazy" data-zoom aria-hidden="true"><img src="/img/shots/cruise.webp" alt="Cruise navigation on Pulse" loading="lazy" data-zoom aria-hidden="true"><img src="/img/shots/admin/reports.webp" alt="Orvix Admin reports with chat" loading="lazy" data-zoom aria-hidden="true"><img src="/img/shots/grubgo.webp" alt="GrubGo food delivery on Pulse" loading="lazy" data-zoom aria-hidden="true"><img src="/img/shots/admin/alerts.webp" alt="Orvix Admin cheat alerts and rich list" loading="lazy" data-zoom aria-hidden="true"><img src="/img/shots/blink.webp" alt="Blink snaps on Pulse" loading="lazy" data-zoom aria-hidden="true"><img src="/img/shots/admin/players.webp" alt="Orvix Admin player profile" loading="lazy" data-zoom aria-hidden="true"><img src="/img/shots/kindred.webp" alt="Kindred dating on Pulse" loading="lazy" data-zoom aria-hidden="true"></div></div>
-  </section>
-
-  <section class="band" style="padding-top:40px">
-    <div class="wrap">
-      <div class="sec-head reveal"><span class="eyebrow">Why OrvixScripts</span><h2>Built like a server owner <span class="grad">would build it.</span></h2></div>
-      <div class="why reveal">
-        <div><span class="num">01</span><h3>Both frameworks, no setup</h3><p>Every script detects ESX Legacy or QBCore on start. Jobs, money, items and vehicles just work.</p></div>
-        <div><span class="num">02</span><h3>Nothing trusted from the client</h3><p>Money, bans, teleports and positions are checked or read on the server, so cheaters can't fake them.</p></div>
-        <div><span class="num">03</span><h3>Made to work together</h3><p>Admin reads Pulse and Orvix Characters: CK a character from a player's profile, or check who they texted in a report.</p></div>
-        <div><span class="num">04</span><h3>Drop in and start</h3><p>Copy the folder, add one line to server.cfg. Tables are created and upgraded for you.</p></div>
-        <div><span class="num">05</span><h3>Secrets stay on the server</h3><p>Tokens and webhooks go in server.cfg with <code>set</code>, so they never reach a player's game.</p></div>
-        <div><span class="num">06</span><h3>Real docs</h3><p>Every config option, command and export is written down, with fixes for the problems people actually hit.</p></div>
+      <div class="h-bundle">
+        <div><b>Get both and save $14.99</b><span>Pulse Phone + Orvix Admin for $74.99, one-time.</span></div>
+        <a class="btn btn-ghost" href="#pricing">See pricing</a>
       </div>
     </div>
   </section>
 
-  <section class="band" id="pricing" style="padding-top:20px">
+  <section class="h-band">
     <div class="wrap">
-      <div class="sec-head reveal"><span class="eyebrow">Pricing</span><h2>Pay once. <span class="grad">Keep every update.</span></h2><p>No subscriptions and no monthly fees.</p></div>
-      <div class="reveal"><div class="pricing"><div class="plan">
+      <div class="h-head"><span class="eyebrow">Why OrvixScripts</span><h2>Made to be easy.</h2></div>
+      <div class="h-why">
+        <div><span class="h-ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h7v9H3zM14 3h7v5h-7zM14 12h7v9h-7zM3 16h7v5H3z"/></svg></span><h3>Works out of the box</h3><p>Drop it in, add one line, start your server. ESX or QBCore is detected for you and the database sets itself up.</p></div>
+        <div><span class="h-ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><h3>Safe by design</h3><p>Money and actions are checked on the server, so players can't cheat their way around your scripts.</p></div>
+        <div><span class="h-ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M23 4v6h-6M1 20v-6h6M3.5 9a9 9 0 0 1 14.9-3.4L23 10M1 14l4.6 4.4A9 9 0 0 0 20.5 15"/></svg></span><h3>Pay once, keep updating</h3><p>No subscriptions. Every update for your script is free, forever.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="h-band">
+    <div class="wrap">
+      <div class="h-steps">
+        <div class="h-head" style="margin:0"><span class="eyebrow">Getting started</span><h2>Running in three steps.</h2><p>Most servers are set up in under ten minutes.</p><a class="btn btn-ghost" href="/pulse/install.html" style="margin-top:8px;align-self:flex-start">Install guide</a></div>
+        <ol>
+          <li><b>Buy</b><span>Checkout on Tebex and download your script.</span></li>
+          <li><b>Drop it in</b><span>Copy the folder to <code>resources</code> and add <code>ensure</code> to server.cfg.</span></li>
+          <li><b>Play</b><span>Start your server. That's it: no SQL files to import.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="h-band" id="pricing">
+    <div class="wrap">
+      <div class="h-head h-center"><span class="eyebrow">Pricing</span><h2>Simple, one-time prices.</h2><p>No monthly fees. One license per server.</p></div>
+      <div class="pricing"><div class="plan">
           <div><h3>Pulse Phone</h3><p class="muted" style="font-size:.92rem">The 25-app smartphone</p></div>
           <div class="amt">$49.99<small>one-time</small></div>
           <ul><li>25 apps incl. dating, rides, food, nav</li><li>Real calls over pma-voice</li><li>12 phone colors, photo wallpapers</li><li>One server license</li><li>Free updates</li><li>ESX Legacy + QBCore</li></ul>
@@ -115,31 +106,27 @@
           <div><h3>Orvix Admin</h3><p class="muted" style="font-size:.92rem">The staff panel</p></div>
           <div class="amt">$39.99<small>one-time</small></div>
           <ul><li>12-page panel, F2 command search</li><li>Live map, kill log, alerts, staff watch</li><li>Bans, jail, whitelist, queue, jobs</li><li>One server license</li><li>Free updates</li><li>ESX Legacy + QBCore</li></ul>
-          <span class="btn btn-primary" aria-disabled="true">Coming soon</span></div></div></div>
+          <span class="btn btn-primary" aria-disabled="true">Coming soon</span></div></div>
       <p class="fine">Prices in USD. Checkout runs through Tebex and opens at launch. Each license covers one server; buy again for a second server.</p>
     </div>
   </section>
 
-  <section class="band" style="padding-top:20px">
-    <div class="wrap" style="max-width:860px">
-      <div class="sec-head reveal"><span class="eyebrow">FAQ</span><h2>Before you buy</h2></div>
-      <div style="display:flex;flex-direction:column;gap:10px">
-        <details class="faq"><summary>Which frameworks are supported?</summary><div><p>ESX Legacy and QBCore. Both scripts detect which one you run when they start.</p></div></details>
-        <details class="faq"><summary>Is this a subscription?</summary><div><p>No. You pay once per server and get every update for that script.</p></div></details>
-        <details class="faq"><summary>Can I change how things work?</summary><div><p>Yes. Prices, jobs, ranks, keys, locations and limits all live in open config files, and the docs list every option.</p></div></details>
-        <details class="faq"><summary>Do I need both scripts?</summary><div><p>No. Each one works on its own. Together they share data: for example, Admin can look up a player's Pulse number in a report.</p></div></details>
-        <details class="faq"><summary>When can I buy?</summary><div><p>Checkout opens through Tebex at launch. Pulse is in final in-city testing, with Orvix Admin coming after it.</p></div></details>
-      </div>
+  <section class="h-band">
+    <div class="wrap h-faq">
+      <div class="h-head h-center"><span class="eyebrow">FAQ</span><h2>Questions? We've got answers.</h2></div>
+      <details class="faq"><summary>Which frameworks do you support?</summary><div><p>ESX Legacy and QBCore. Our scripts detect which one you run automatically.</p></div></details>
+      <details class="faq"><summary>Is it a subscription?</summary><div><p>No. You pay once per server and get every update for free.</p></div></details>
+      <details class="faq"><summary>Can I change how things work?</summary><div><p>Yes. Prices, jobs, keys, locations and limits are all in easy config files, and the docs explain every option.</p></div></details>
+      <details class="faq"><summary>When can I buy?</summary><div><p>Checkout opens on Tebex at launch. Pulse Phone is in final testing, and Orvix Admin comes right after.</p></div></details>
     </div>
   </section>
 
-  <section class="band" style="padding-top:20px">
+  <section class="h-band" style="padding-bottom:110px">
     <div class="wrap">
-      <div class="closer reveal">
-        <span class="eyebrow">OrvixScripts</span>
-        <h2>Give your players a city <span class="grad">worth logging into.</span></h2>
-        <p>Start with the phone, add the panel, or grab both and save $14.99.</p>
-        <div class="cta-row" style="justify-content:center"><a class="btn btn-primary" href="#shop">Shop scripts</a><a class="btn btn-ghost" href="/docs/">Read the docs</a></div>
+      <div class="h-final">
+        <h2>Ready to level up your city?</h2>
+        <p>Start with the phone, add the panel, or get both and save.</p>
+        <div class="cta-row" style="justify-content:center"><a class="btn btn-primary" href="#scripts">Browse scripts</a><a class="btn btn-ghost" href="/docs/">Read the docs</a></div>
       </div>
     </div>
   </section>
@@ -151,7 +138,7 @@
     <span class="legal">© 2026 OrvixScripts · Not affiliated with Rockstar Games, Take-Two or Cfx.re.</span>
   </div>
 </footer>
-<script src="/assets/site.js"></script>
+<script src="/assets/site.js?v=f73af44b"></script>
 
 </body>
 </html>

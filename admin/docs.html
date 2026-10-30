@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#0c0716">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/site.css?v=f73af44b">
 </head>
 <body class="sub admin has-sub">
 <header class="top">
@@ -98,7 +98,7 @@
           <tr><td>Whitelist &amp; queue</td><td>Applications, queue and VIP priority</td></tr>
           <tr><td>Server</td><td>Weather, time, traffic, restarts, cleanup, resources, console</td></tr>
         </tbody></table></div>
-        <img src="/img/shots/admin/players.webp" alt="Players page with Near you and a player profile" loading="lazy" data-zoom style="border-radius:14px;border:1px solid var(--line)">
+        <img src="/img/shots/admin/players.webp" alt="Players page with Near you and a player profile" decoding="async" data-zoom style="border-radius:14px;border:1px solid var(--line)">
       </section>
       <section id="commands">
         <h2>Commands &amp; keys</h2>
@@ -113,7 +113,7 @@
       <section id="reports">
         <h2>Reports</h2>
         <p>Players type <code>/report [what happened]</code>. On-duty staff get a notification, and the report shows on the Reports page. Claim it, then chat with the player right in the panel. When you close it, the player can rate the help from 1 to 5 stars.</p>
-        <img src="/img/shots/admin/reports.webp" alt="Reports page with a claimed report and chat" loading="lazy" data-zoom style="border-radius:14px;border:1px solid var(--line)">
+        <img src="/img/shots/admin/reports.webp" alt="Reports page with a claimed report and chat" decoding="async" data-zoom style="border-radius:14px;border:1px solid var(--line)">
       </section>
       <section id="punish">
         <h2>Bans, jail &amp; mute</h2>
@@ -148,7 +148,7 @@ Config.Escalation = { { warns = 3, ban = <span class="g">'1d'</span> }, { warns 
       <section id="map">
         <h2>Live map &amp; kill log</h2>
         <p>The map updates every 2 seconds. Positions are read on the server, so they can't be faked. Trails are kept for <code>Config.Map.TrailDays</code> (7 by default). The kill log records every death with weapon, distance, location and whether the two players talked first, and flags suspicious ones.</p>
-        <img src="/img/shots/admin/kills.webp" alt="Kill log with flagged kills" loading="lazy" data-zoom style="border-radius:14px;border:1px solid var(--line)">
+        <img src="/img/shots/admin/kills.webp" alt="Kill log with flagged kills" decoding="async" data-zoom style="border-radius:14px;border:1px solid var(--line)">
       </section>
       <section id="whitelist">
         <h2>Whitelist &amp; queue</h2>
@@ -222,7 +222,7 @@ exports.orvix_admin:<span class="k">IsNoclipping</span>()</pre></div>
     <span class="legal">© 2026 OrvixScripts · Not affiliated with Rockstar Games, Take-Two or Cfx.re.</span>
   </div>
 </footer>
-<script src="/assets/site.js"></script>
+<script src="/assets/site.js?v=f73af44b"></script>
 <script>
 const links = [...document.querySelectorAll('.toc a')];
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id)); }), { rootMargin: '-30% 0px -60% 0px' });
