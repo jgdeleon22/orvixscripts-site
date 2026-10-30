@@ -18,10 +18,10 @@
   <div class="wrap">
     <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span>Orvix<b>Scripts</b></span></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-    <nav class="links" id="site-nav" aria-label="Site"><a href="/">Store</a><a href="/pulse/" aria-current="page">Pulse Phone</a><a href="/admin/">Orvix Admin</a><a href="/docs/">Docs</a></nav>
+    <nav class="links" id="site-nav" aria-label="Site"><a href="/">Store</a><a href="/pulse/" aria-current="page">Orvix Pulse</a><a href="/admin/">Orvix Admin</a><a href="/docs/">Docs</a></nav>
   </div>
 </header>
-<div class="subnav"><div class="wrap"><b>Pulse Phone</b><a href="/pulse/">Overview</a><a href="/pulse/install.html">Install</a><a href="/pulse/specs.html" aria-current="page">Specs</a><a href="/pulse/docs.html">Docs</a><span class="sp"><span class="price">$49.99</span><span class="btn btn-primary btn-sm" aria-disabled="true">Coming soon</span></span></div></div>
+<div class="subnav"><div class="wrap"><b>Orvix Pulse</b><a href="/pulse/">Overview</a><a href="/pulse/install.html">Install</a><a href="/pulse/specs.html" aria-current="page">Specs</a><a href="/pulse/docs.html">Docs</a><span class="sp"><span class="price">$49.99</span><span class="btn btn-primary btn-sm" aria-disabled="true">Coming soon</span></span></div></div>
 <main>
   <section class="page-head"><div class="wrap">
     <span class="crumbs">Pulse / Specs</span>
@@ -75,18 +75,18 @@
       <h2>Developer exports</h2>
       <p class="muted">Let your jobs, banks and shops talk to players through the phone.</p>
       <div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>server exports</span><button class="copy" type="button" data-copy="ex1">Copy</button></div>
-<pre id="ex1">exports.pulse_phone:<span class="k">GetNumber</span>(source)
-exports.pulse_phone:<span class="k">GetSourceByNumber</span>(<span class="g">'555-1234'</span>)
-exports.pulse_phone:<span class="k">HasPhone</span>(source)
-exports.pulse_phone:<span class="k">IsInCall</span>(source)
-exports.pulse_phone:<span class="k">SendMessage</span>(<span class="g">'Fleeca'</span>, <span class="g">'555-1234'</span>, <span class="g">'Your loan was approved'</span>)
-exports.pulse_phone:<span class="k">Notify</span>(source, { app = <span class="g">'bank'</span>, title = <span class="g">'Fleeca'</span>, text = <span class="g">'Payment received'</span> })
-exports.pulse_phone:<span class="k">LogTransaction</span>(source, 2500, <span class="g">'Paycheck'</span>)
-exports.pulse_phone:<span class="k">SendMail</span>(source, { sender = <span class="g">'LSPD'</span>, subject = <span class="g">'Ticket issued'</span>, body = <span class="g">'You were fined $150.'</span> })</pre></div>
+<pre id="ex1">exports.orvix_pulse:<span class="k">GetNumber</span>(source)
+exports.orvix_pulse:<span class="k">GetSourceByNumber</span>(<span class="g">'555-1234'</span>)
+exports.orvix_pulse:<span class="k">HasPhone</span>(source)
+exports.orvix_pulse:<span class="k">IsInCall</span>(source)
+exports.orvix_pulse:<span class="k">SendMessage</span>(<span class="g">'Fleeca'</span>, <span class="g">'555-1234'</span>, <span class="g">'Your loan was approved'</span>)
+exports.orvix_pulse:<span class="k">Notify</span>(source, { app = <span class="g">'bank'</span>, title = <span class="g">'Fleeca'</span>, text = <span class="g">'Payment received'</span> })
+exports.orvix_pulse:<span class="k">LogTransaction</span>(source, 2500, <span class="g">'Paycheck'</span>)
+exports.orvix_pulse:<span class="k">SendMail</span>(source, { sender = <span class="g">'LSPD'</span>, subject = <span class="g">'Ticket issued'</span>, body = <span class="g">'You were fined $150.'</span> })</pre></div>
       <div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>client exports</span><button class="copy" type="button" data-copy="ex2">Copy</button></div>
-<pre id="ex2">exports.pulse_phone:<span class="k">IsOpen</span>()
-exports.pulse_phone:<span class="k">Open</span>()
-exports.pulse_phone:<span class="k">Close</span>()</pre></div>
+<pre id="ex2">exports.orvix_pulse:<span class="k">IsOpen</span>()
+exports.orvix_pulse:<span class="k">Open</span>()
+exports.orvix_pulse:<span class="k">Close</span>()</pre></div>
     </section>
     <div class="cta-strip"><p>Ready to set it up?</p><a class="btn btn-primary" href="/pulse/install.html">Install guide</a></div>
   </div>
@@ -94,7 +94,7 @@ exports.pulse_phone:<span class="k">Close</span>()</pre></div>
 <footer>
   <div class="wrap">
     <div class="foot-brand"><a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span>Orvix<b>Scripts</b></span></a><span>Scripts for serious FiveM roleplay servers.</span></div>
-    <nav aria-label="Footer"><a href="/pulse/">Pulse Phone</a><a href="/admin/">Orvix Admin</a><a href="/#pricing">Pricing</a><a href="/docs/">Docs</a><a href="/pulse/install.html">Install Pulse</a><a href="/admin/docs.html">Admin docs</a></nav>
+    <nav aria-label="Footer"><a href="/pulse/">Orvix Pulse</a><a href="/admin/">Orvix Admin</a><a href="/#pricing">Pricing</a><a href="/docs/">Docs</a><a href="/pulse/install.html">Install Pulse</a><a href="/admin/docs.html">Admin docs</a></nav>
     <span class="legal">© 2026 OrvixScripts · Not affiliated with Rockstar Games, Take-Two or Cfx.re.</span>
   </div>
 </footer>

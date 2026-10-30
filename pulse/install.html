@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Install Pulse · OrvixScripts</title>
-<meta name="description" content="How to install the Pulse phone on an ESX Legacy or QBCore FiveM server.">
+<meta name="description" content="How to install the Orvix Pulse on an ESX Legacy or QBCore FiveM server.">
 <meta property="og:title" content="Install Pulse · OrvixScripts">
-<meta property="og:description" content="How to install the Pulse phone on an ESX Legacy or QBCore FiveM server.">
+<meta property="og:description" content="How to install the Orvix Pulse on an ESX Legacy or QBCore FiveM server.">
 <meta property="og:image" content="https://orvixscripts.com/img/shots/home.webp">
 <meta name="theme-color" content="#0c0716">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,10 +18,10 @@
   <div class="wrap">
     <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span>Orvix<b>Scripts</b></span></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-    <nav class="links" id="site-nav" aria-label="Site"><a href="/">Store</a><a href="/pulse/" aria-current="page">Pulse Phone</a><a href="/admin/">Orvix Admin</a><a href="/docs/">Docs</a></nav>
+    <nav class="links" id="site-nav" aria-label="Site"><a href="/">Store</a><a href="/pulse/" aria-current="page">Orvix Pulse</a><a href="/admin/">Orvix Admin</a><a href="/docs/">Docs</a></nav>
   </div>
 </header>
-<div class="subnav"><div class="wrap"><b>Pulse Phone</b><a href="/pulse/">Overview</a><a href="/pulse/install.html" aria-current="page">Install</a><a href="/pulse/specs.html">Specs</a><a href="/pulse/docs.html">Docs</a><span class="sp"><span class="price">$49.99</span><span class="btn btn-primary btn-sm" aria-disabled="true">Coming soon</span></span></div></div>
+<div class="subnav"><div class="wrap"><b>Orvix Pulse</b><a href="/pulse/">Overview</a><a href="/pulse/install.html" aria-current="page">Install</a><a href="/pulse/specs.html">Specs</a><a href="/pulse/docs.html">Docs</a><span class="sp"><span class="price">$49.99</span><span class="btn btn-primary btn-sm" aria-disabled="true">Coming soon</span></span></div></div>
 <main>
   <section class="page-head"><div class="wrap">
     <span class="crumbs">Pulse / Install</span>
@@ -43,14 +43,14 @@
     <section>
       <h2>Step by step</h2>
       <ol class="big-steps">
-        <li><div><h3>Copy the folder</h3><p>Put <code>pulse_phone</code> in your <code>resources</code> folder. Keep the name exactly <code>pulse_phone</code>.</p></div></li>
+        <li><div><h3>Copy the folder</h3><p>Put <code>orvix_pulse</code> in your <code>resources</code> folder. Keep the name exactly <code>orvix_pulse</code>.</p></div></li>
         <li><div><h3>Add it to server.cfg</h3><p>After your framework, oxmysql, ox_lib and pma-voice:</p><div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>server.cfg</span><button class="copy" type="button" data-copy="c1">Copy</button></div>
-<pre id="c1"><span class="k">ensure</span> pulse_phone</pre></div></div></li>
+<pre id="c1"><span class="k">ensure</span> orvix_pulse</pre></div></div></li>
         <li><div><h3>Add your FiveManage token</h3><p>Turns on Camera, Photos, Blink and Voice Memos. Use <code>set</code>, never <code>setr</code>.</p><div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>server.cfg</span><button class="copy" type="button" data-copy="c2">Copy</button></div>
 <pre id="c2"><span class="c"># server-only: players never see this</span>
 <span class="k">set</span> pulse_fivemanage_token <span class="g">"your-token"</span></pre></div></div></li>
         <li><div><h3>Turn off your old phone</h3><p>Only one phone resource can run at a time. Comment out the old one.</p></div></li>
-        <li><div><h3>Start the server</h3><p>The console shows <code>[pulse_phone] framework: QBCore</code> or <code>ESX Legacy</code>. Give a player a <code>phone</code> item and press <b>F1</b>.</p></div></li>
+        <li><div><h3>Start the server</h3><p>The console shows <code>[orvix_pulse] framework: QBCore</code> or <code>ESX Legacy</code>. Give a player a <code>phone</code> item and press <b>F1</b>.</p></div></li>
       </ol>
     </section>
     <section>
@@ -58,7 +58,7 @@
       <p class="muted">Copy the new files over the old ones, then run these in the server console. Without <code>refresh</code>, newly added files are ignored.</p>
       <div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>server console</span><button class="copy" type="button" data-copy="c3">Copy</button></div>
 <pre id="c3"><span class="k">refresh</span>
-<span class="k">restart</span> pulse_phone</pre></div>
+<span class="k">restart</span> orvix_pulse</pre></div>
     </section>
     <div class="cta-strip"><p>Want to change fares, restaurants, the phone item or which jobs can drive? The docs cover every option.</p><a class="btn btn-primary" href="/pulse/docs.html">Open the docs</a></div>
   </div>
@@ -66,7 +66,7 @@
 <footer>
   <div class="wrap">
     <div class="foot-brand"><a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span>Orvix<b>Scripts</b></span></a><span>Scripts for serious FiveM roleplay servers.</span></div>
-    <nav aria-label="Footer"><a href="/pulse/">Pulse Phone</a><a href="/admin/">Orvix Admin</a><a href="/#pricing">Pricing</a><a href="/docs/">Docs</a><a href="/pulse/install.html">Install Pulse</a><a href="/admin/docs.html">Admin docs</a></nav>
+    <nav aria-label="Footer"><a href="/pulse/">Orvix Pulse</a><a href="/admin/">Orvix Admin</a><a href="/#pricing">Pricing</a><a href="/docs/">Docs</a><a href="/pulse/install.html">Install Pulse</a><a href="/admin/docs.html">Admin docs</a></nav>
     <span class="legal">© 2026 OrvixScripts · Not affiliated with Rockstar Games, Take-Two or Cfx.re.</span>
   </div>
 </footer>
