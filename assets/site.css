@@ -584,3 +584,8 @@ footer nav a:hover { color: var(--ink); }
 @media (min-width: 1061px) { .h-products.h-three .h-card-art { height: 230px; } .h-products.h-three .h-pulse .h-card-art img { bottom: -110px; } .h-products.h-three .h-card h3 { font-size: 1.55rem; } }
 .h-fold-card .h-card-art { background: radial-gradient(80% 90% at 50% 100%, rgba(255,140,60,.38), transparent 70%), linear-gradient(160deg, #2a1033, #120a22); }
 .h-fold-card .h-card-art img { position: absolute; left: 50%; top: 52%; width: 76%; transform: translate(-50%, -50%); filter: drop-shadow(0 18px 26px rgba(0,0,0,.55)); }
+
+.pricing.five { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 1000px) { .pricing.five { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .pricing.five { grid-template-columns: 1fr; } }
+.h-cad .h-card-art { background: radial-gradient(80% 90% at 50% 100%, rgba(96,165,250,.45), transparent 70%), linear-gradient(160deg, #0d1733, #0b0f22); }
