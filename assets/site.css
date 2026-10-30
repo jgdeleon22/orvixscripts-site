@@ -540,3 +540,28 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 footer nav { display: flex; flex-wrap: wrap; gap: 18px; }
 footer nav a { color: var(--haze); text-decoration: none; }
 footer nav a:hover { color: var(--ink); }
+
+/* Pulse Fold (coming soon) */
+.fold-feature { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 48px; align-items: center; padding: 48px; border-radius: 32px; position: relative; overflow: hidden;
+  background: radial-gradient(60% 80% at 100% 0%, rgba(255,61,154,.22), transparent 70%), radial-gradient(50% 70% at 0% 100%, rgba(56,189,248,.16), transparent 70%), var(--night-2); border: 1px solid var(--line); }
+.fold-copy { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.fold-copy h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.05; }
+.fold-copy p { color: var(--haze); font-size: 1.05rem; }
+.fold-points { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.fold-points li { display: flex; gap: 10px; color: #e6dcf5; }
+.fold-points li::before { content: "✓"; color: var(--ok, #34d399); font-weight: 800; }
+.fold-shots { position: relative; min-height: 420px; }
+.fold-shots img { position: absolute; filter: drop-shadow(0 30px 40px rgba(0,0,0,.55)); }
+.fold-shots .f-open { right: 0; top: 0; width: 88%; }
+.fold-shots .f-closed { left: 0; bottom: 0; width: 34%; }
+.fold-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 22px; }
+.fold-gallery figure { margin: 0; padding: 18px 18px 14px; border-radius: 22px; background: var(--night-2); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px; }
+.fold-gallery img { width: 100%; height: 220px; object-fit: contain; filter: drop-shadow(0 18px 24px rgba(0,0,0,.5)); }
+.fold-gallery figcaption { color: var(--haze); font-size: .9rem; } .fold-gallery figcaption b { color: #fff; }
+@media (max-width: 900px) { .fold-feature { grid-template-columns: 1fr; padding: 28px; gap: 28px; } .fold-shots { min-height: 0; aspect-ratio: 1.25; } .fold-gallery { grid-template-columns: 1fr; } }
+.h-fold { margin-top: 22px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 28px; align-items: center; padding: 28px 30px; border-radius: 26px; text-decoration: none;
+  background: radial-gradient(70% 90% at 100% 50%, rgba(255,61,154,.22), transparent 70%), var(--night-2); border: 1px solid var(--line); transition: border-color .25s, transform .25s; }
+.h-fold:hover { border-color: rgba(255,255,255,.2); transform: translateY(-3px); }
+.h-fold h3 { font-size: 1.7rem; font-weight: 800; margin: 6px 0 8px; } .h-fold p { color: var(--haze); }
+.h-fold img { width: 100%; filter: drop-shadow(0 24px 30px rgba(0,0,0,.5)); }
+@media (max-width: 760px) { .h-fold { grid-template-columns: 1fr; } }
