@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>OrvixScripts</title>
-<meta name="description" content="Pulse by OrvixScripts: a 25-app FiveM smartphone for ESX Legacy and QBCore. Dating, rides, food delivery, navigation, snaps and real calls.">
-<meta property="og:title" content="OrvixScripts">
-<meta property="og:description" content="Pulse by OrvixScripts: a 25-app FiveM smartphone for ESX Legacy and QBCore. Dating, rides, food delivery, navigation, snaps and real calls.">
-<meta property="og:image" content="https://orvixscripts.com/img/shots/home.webp">
+<title>OrvixScripts · FiveM scripts for ESX & QBCore</title>
+<meta name="description" content="OrvixScripts: Pulse Phone and Orvix Admin, premium FiveM scripts for ESX Legacy and QBCore servers.">
+<meta property="og:title" content="OrvixScripts · FiveM scripts for ESX & QBCore">
+<meta property="og:description" content="OrvixScripts: Pulse Phone and Orvix Admin, premium FiveM scripts for ESX Legacy and QBCore servers.">
+<meta property="og:image" content="https://orvixscripts.com/img/shots/admin/dashboard.webp">
 <meta name="theme-color" content="#0c0716">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
@@ -18,210 +18,140 @@
   <div class="wrap">
     <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span>Orvix<b>Scripts</b></span></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-    <nav class="links" id="site-nav" aria-label="Site"><a href="/" aria-current="page">Pulse</a><a href="/install.html">Install</a><a href="/specs.html">Specs</a><a href="/support.html">Support</a></nav>
+    <nav class="links" id="site-nav" aria-label="Site"><a href="/" aria-current="page">Store</a><a href="/pulse/">Pulse Phone</a><a href="/admin/">Orvix Admin</a><a href="/docs/">Docs</a></nav>
   </div>
 </header>
+
 <main>
-  <section class="hero">
-    <div class="hero-bg" aria-hidden="true"></div>
+  <section class="s-hero">
+    <div class="s-hero-bg" aria-hidden="true"></div>
     <div class="wrap">
       <div class="hero-copy">
-        <span class="eyebrow">OrvixScripts · Pulse phone</span>
-        <h1>The phone your city <span class="grad">lives on.</span></h1>
-        <p class="lede">25 apps in one resource. Dating, rides, food delivery, navigation, snaps, real voice calls and banking, for ESX Legacy and QBCore.</p>
-        <div class="cta-row"><span class="btn btn-primary" aria-disabled="true">Buy on Tebex <span class="soon">Coming soon</span></span><a class="btn btn-ghost" href="/install.html">Install guide</a></div>
-        <div class="chips"><span class="chip hot">ESX Legacy</span><span class="chip hot">QBCore</span><span class="chip">ox_inventory</span><span class="chip">pma-voice</span><span class="chip">oxmysql</span></div>
+        <span class="eyebrow">OrvixScripts · FiveM store</span>
+        <h1>Scripts that make your city <span class="grad">feel alive.</span></h1>
+        <p class="lede">A 25-app phone your players live on, and a staff panel that keeps the city in order. Built for ESX Legacy and QBCore.</p>
+        <div class="cta-row"><a class="btn btn-primary" href="#shop">Shop scripts</a><a class="btn btn-ghost" href="/docs/">Read the docs</a></div>
+        <div class="chips"><span class="chip hot">ESX Legacy</span><span class="chip hot">QBCore</span><span class="chip">ox_lib</span><span class="chip">oxmysql</span><span class="chip">One-time price</span></div>
       </div>
-      <div class="hero-phone">
-        <img src="/img/shots/home.webp" alt="Pulse home screen with apps, widgets and a neon city wallpaper" width="496" height="1040" fetchpriority="high">
+      <div class="stage" aria-hidden="true">
+        <img class="admin-shot" src="/img/shots/admin/dashboard.webp" alt="" width="1800" height="1085" fetchpriority="high">
+        <img class="phone-shot" src="/img/shots/home.webp" alt="" width="496" height="1040">
+        <div class="float-card fc-1"><span class="fi" style="background:rgba(255,61,154,.18)">💘</span><span><b>It's a match!</b><small>Spark · Pulse Phone</small></span></div>
+        <div class="float-card fc-2"><span class="fi" style="background:rgba(250,204,21,.16)">⭐</span><span><b>Watched player joined</b><small>Dante Moreno · ID 12</small></span></div>
+        <div class="float-card fc-3"><span class="fi" style="background:rgba(56,189,248,.18)">🧊</span><span><b>Froze 5 players near you</b><small>Orvix Admin</small></span></div>
       </div>
     </div>
   </section>
 
-  <div class="strip"><div class="wrap"><span><b>25</b> apps</span><span><b>ESX + QBCore</b> auto-detected</span><span><b>No SQL</b> to import</span><span><b>Server-checked</b> money and actions</span></div></div>
+  <div class="trust"><div class="wrap">
+    <div><span class="ti"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h7v9H3zM14 3h7v5h-7zM14 12h7v9h-7zM3 16h7v5H3z"/></svg></span><span><b>ESX + QBCore</b><small>Detected automatically</small></span></div>
+    <div><span class="ti"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8c4.4 0 8-1.3 8-3s-3.6-3-8-3-8 1.3-8 3 3.6 3 8 3zM4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span><b>No SQL to import</b><small>Tables set themselves up</small></span></div>
+    <div><span class="ti"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><span><b>Server-checked</b><small>Nothing trusted from players</small></span></div>
+    <div><span class="ti"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M23 4v6h-6M1 20v-6h6M3.5 9a9 9 0 0 1 14.9-3.4L23 10M1 14l4.6 4.4A9 9 0 0 0 20.5 15"/></svg></span><span><b>Free updates</b><small>Pay once, keep improving</small></span></div>
+  </div></div>
 
-  <section class="band" id="new">
+  <section class="band" id="shop">
     <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">New in Pulse</span>
-        <h2>Six apps that give your players <span class="grad">a reason to pull out their phone.</span></h2>
-        <p>These are real screens from Pulse, not mockups.</p>
+      <div class="sec-head reveal"><span class="eyebrow">The store</span><h2>Two scripts. <span class="grad">One city that runs itself.</span></h2><p>Every screenshot on this site is the real thing, not a mockup.</p></div>
+      <div class="products">
+        <article class="product p-pulse reveal">
+          <div class="p-top"><span class="p-badge">Smartphone</span><div class="p-price"><b>$49.99</b><small>one-time · 1 server</small></div></div>
+          <h3>Pulse Phone</h3>
+          <p class="tagline">The phone your city lives on. 25 apps: dating, rides, food delivery, navigation, snaps, real calls and banking.</p>
+          <ul class="p-list"><li>Spark &amp; Kindred dating</li><li>Ryde rides &amp; GrubGo delivery</li><li>Cruise nav with road reports</li><li>Calls over pma-voice</li><li>Chirp, Lens &amp; Blink social</li><li>12 colors &amp; photo wallpapers</li></ul>
+          <div class="p-cta"><a class="btn btn-primary" href="/pulse/">Explore Pulse</a><a class="btn btn-ghost" href="/pulse/install.html">Install guide</a></div>
+          <div class="p-visual" aria-hidden="true"><img src="/img/shots/spark.webp" alt="" loading="lazy"><img src="/img/shots/home.webp" alt="" loading="lazy"><img src="/img/shots/ryde.webp" alt="" loading="lazy"></div>
+        </article>
+        <article class="product p-admin reveal">
+          <div class="p-top"><span class="p-badge">Staff panel</span><div class="p-price"><b>$39.99</b><small>one-time · 1 server</small></div></div>
+          <h3>Orvix Admin</h3>
+          <p class="tagline">Run your whole city from one panel. Players, reports, a live map, cheat alerts, bans, jobs and your server, with an F2 search for everything.</p>
+          <ul class="p-list"><li>Live map + 7-day trails</li><li>Reports with chat &amp; ratings</li><li>Kill log &amp; cheat alerts</li><li>Bans, jail &amp; community service</li><li>Whitelist, queue &amp; jobs</li><li>Staff watch keeps staff honest</li></ul>
+          <div class="p-cta"><a class="btn btn-primary" href="/admin/">Explore Orvix Admin</a><a class="btn btn-ghost" href="/admin/docs.html">Docs</a></div>
+          <div class="p-visual" aria-hidden="true"><img src="/img/shots/admin/players.webp" alt="" loading="lazy"></div>
+        </article>
       </div>
-      <div class="show">
-      <article class="show-card" style="--glow:rgba(255,61,154,.4)">
-        <div class="show-top"><span class="show-ic" data-art="spark"></span><div><span class="tag">Dating</span><h3>Spark</h3></div></div>
-        <p>Swipe through the city. Mutual likes become matches with private in-app chat.</p>
-        <div class="show-shot"><img src="/img/shots/spark.webp" alt="Spark app screen" loading="lazy" width="496" height="1040"></div>
-      </article>
-      <article class="show-card" style="--glow:rgba(167,139,250,.45)">
-        <div class="show-top"><span class="show-ic" data-art="kindred"></span><div><span class="tag">Dating</span><h3>Kindred</h3></div></div>
-        <p>For players who want more than a photo: prompts, answers and likes with a note.</p>
-        <div class="show-shot"><img src="/img/shots/kindred.webp" alt="Kindred app screen" loading="lazy" width="496" height="1040"></div>
-      </article>
-      <article class="show-card" style="--glow:rgba(74,222,128,.3)">
-        <div class="show-top"><span class="show-ic" data-art="ryde"></span><div><span class="tag">Rides</span><h3>Ryde</h3></div></div>
-        <p>Request a ride from your waypoint, or go online and earn as a driver. Fares are held safely.</p>
-        <div class="show-shot"><img src="/img/shots/ryde.webp" alt="Ryde app screen" loading="lazy" width="496" height="1040"></div>
-      </article>
-      <article class="show-card" style="--glow:rgba(248,113,113,.4)">
-        <div class="show-top"><span class="show-ic" data-art="grubgo"></span><div><span class="tag">Food delivery</span><h3>GrubGo</h3></div></div>
-        <p>Order from city restaurants, or grab deliveries and keep every tip.</p>
-        <div class="show-shot"><img src="/img/shots/grubgo.webp" alt="GrubGo app screen" loading="lazy" width="496" height="1040"></div>
-      </article>
-      <article class="show-card" style="--glow:rgba(34,211,238,.4)">
-        <div class="show-top"><span class="show-ic" data-art="cruise"></span><div><span class="tag">Navigation</span><h3>Cruise</h3></div></div>
-        <p>Your GTA map, smarter. Saved places, community road reports and a driving overlay.</p>
-        <div class="show-shot"><img src="/img/shots/cruise.webp" alt="Cruise app screen" loading="lazy" width="496" height="1040"></div>
-      </article>
-      <article class="show-card" style="--glow:rgba(250,204,21,.35)">
-        <div class="show-top"><span class="show-ic" data-art="blink"></span><div><span class="tag">Snaps</span><h3>Blink</h3></div></div>
-        <p>Photos that open once and disappear, plus stories your contacts can watch for a day.</p>
-        <div class="show-shot"><img src="/img/shots/blink.webp" alt="Blink app screen" loading="lazy" width="496" height="1040"></div>
-      </article>
-      </div>
+      <div class="bundle reveal"><div class="bundle-in">
+        <div class="bundle-art" aria-hidden="true"><img src="/img/shots/admin/dashboard.webp" alt=""><img src="/img/shots/home.webp" alt=""></div>
+        <div><span class="eyebrow">Bundle</span><h3>Pulse Phone + Orvix Admin</h3><p>Everything both scripts do, for one price. Same license terms, same free updates.</p></div>
+        <div class="p-price"><div><s>$89.98</s><b>$74.99</b></div><span class="save">Save $14.99</span><div style="margin-top:12px"><span class="btn btn-primary" aria-disabled="true">Coming soon</span></div></div>
+      </div></div>
     </div>
   </section>
 
-  <section class="band" style="padding-top:0">
+  <section class="band" style="padding-top:20px">
     <div class="wrap">
-      <div class="drive">
-        <div class="drive-bg" aria-hidden="true"></div>
-        <div class="drive-in">
-          <div>
-            <span class="eyebrow">Cruise</span>
-            <h2>Directions on screen, <span class="grad">even with the phone away.</span></h2>
-            <p>Turn on drive mode and Cruise puts a compact overlay at the top of the screen while you drive.</p>
-            <ul>
-              <li>Route distance and ETA to your waypoint, from GTA's own GPS</li>
-              <li>Live speed and the street you're on</li>
-              <li>Warnings for police, crashes, hazards and closures ahead</li>
-              <li>Reports show as icons on the map and fade out on their own</li>
-            </ul>
-          </div>
-          <div class="drive-shots">
-            <img class="phone" src="/img/shots/cruise.webp" alt="Cruise app with drive mode on" loading="lazy" width="496" height="1040">
-            <img class="hud" src="/img/shots/hud.webp" alt="Cruise driving overlay showing speed, ETA and a police warning" loading="lazy">
-          </div>
-        </div>
-      </div>
+      <div class="sec-head reveal"><span class="eyebrow">In game</span><h2>See it before you buy it.</h2><p>Hover to pause, click any screen to zoom in.</p></div>
     </div>
+    <div class="marquee reveal"><div class="marquee-track"><img src="/img/shots/admin/dashboard.webp" alt="Orvix Admin dashboard" loading="lazy" data-zoom><img src="/img/shots/spark.webp" alt="Spark dating app on Pulse" loading="lazy" data-zoom><img src="/img/shots/admin/map.webp" alt="Orvix Admin live map with a 7-day trail" loading="lazy" data-zoom><img src="/img/shots/ryde.webp" alt="Ryde rides app on Pulse" loading="lazy" data-zoom><img src="/img/shots/admin/kills.webp" alt="Orvix Admin kill log" loading="lazy" data-zoom><img src="/img/shots/cruise.webp" alt="Cruise navigation on Pulse" loading="lazy" data-zoom><img src="/img/shots/admin/reports.webp" alt="Orvix Admin reports with chat" loading="lazy" data-zoom><img src="/img/shots/grubgo.webp" alt="GrubGo food delivery on Pulse" loading="lazy" data-zoom><img src="/img/shots/admin/alerts.webp" alt="Orvix Admin cheat alerts and rich list" loading="lazy" data-zoom><img src="/img/shots/blink.webp" alt="Blink snaps on Pulse" loading="lazy" data-zoom><img src="/img/shots/admin/players.webp" alt="Orvix Admin player profile" loading="lazy" data-zoom><img src="/img/shots/kindred.webp" alt="Kindred dating on Pulse" loading="lazy" data-zoom><img src="/img/shots/admin/dashboard.webp" alt="Orvix Admin dashboard" loading="lazy" data-zoom aria-hidden="true"><img src="/img/shots/spark.webp" alt="Spark dating app on Pulse" loading="lazy" data-zoom aria-hidden="true"><img src="/img/shots/admin/map.webp" alt="Orvix Admin live map with a 7-day trail" loading="lazy" data-zoom aria-hidden="true"><img src="/img/shots/ryde.webp" alt="Ryde rides app on Pulse" loading="lazy" data-zoom aria-hidden="true"><img src="/img/shots/admin/kills.webp" alt="Orvix Admin kill log" loading="lazy" data-zoom aria-hidden="true"><img src="/img/shots/cruise.webp" alt="Cruise navigation on Pulse" loading="lazy" data-zoom aria-hidden="true"><img src="/img/shots/admin/reports.webp" alt="Orvix Admin reports with chat" loading="lazy" data-zoom aria-hidden="true"><img src="/img/shots/grubgo.webp" alt="GrubGo food delivery on Pulse" loading="lazy" data-zoom aria-hidden="true"><img src="/img/shots/admin/alerts.webp" alt="Orvix Admin cheat alerts and rich list" loading="lazy" data-zoom aria-hidden="true"><img src="/img/shots/blink.webp" alt="Blink snaps on Pulse" loading="lazy" data-zoom aria-hidden="true"><img src="/img/shots/admin/players.webp" alt="Orvix Admin player profile" loading="lazy" data-zoom aria-hidden="true"><img src="/img/shots/kindred.webp" alt="Kindred dating on Pulse" loading="lazy" data-zoom aria-hidden="true"></div></div>
   </section>
 
-
-  <section class="band" id="colors" style="padding-top:0">
-    <div class="wrap colors">
-      <div class="color-stage" id="color-stage">
-        <div class="duo" id="duo" aria-hidden="true">
-          <div class="ph-back"><div class="ph-side"><i></i><i></i><i></i></div><div class="glass"><div class="cam"><i></i><i></i><i></i><b></b><s></s></div><div class="ph-logo"></div><div class="ph-word">PULSE</div></div></div>
-          <img class="ph-front" id="color-img" src="/img/shots/frame-neon.webp" alt="" width="420" height="880" loading="lazy">
-        </div>
-      </div>
-      <div>
-        <span class="eyebrow">12 colors</span>
-        <h2 style="font-size:clamp(2rem,4.2vw,3.1rem);font-weight:800;margin-top:12px">Pick a color that <span class="grad">fits your character.</span></h2>
-        <p class="muted" style="margin-top:14px;max-width:46ch">Players choose their phone color in Settings, plus photo wallpapers like Vice Nights, Golden Hour, Gold Silk and Orbit.</p>
-        <div class="color-name" id="color-name" style="margin-top:22px">Neon Pink</div>
-        <div class="swatches" id="swatches" role="group" aria-label="Phone colors"></div>
-      </div>
-    </div>
-  </section>
-  <section class="band" id="apps" style="padding-top:0">
+  <section class="band" style="padding-top:40px">
     <div class="wrap">
-      <div class="sec-head">
-        <span class="eyebrow">Every app</span>
-        <h2>Everything a citizen needs, in one pocket.</h2>
-        <p>Tap an app to see what it does. Players can hide any app from their home screen in the App Store.</p>
-      </div>
-      <div class="apps-layout">
-        <div class="app-grid" id="app-grid" role="group" aria-label="Pulse apps"></div>
-        <aside class="app-detail" id="app-detail" aria-live="polite"></aside>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" style="padding-top:0">
-    <div class="wrap">
-      <div class="sec-head"><span class="eyebrow">Why Pulse</span><h2>Built like a server owner would build it.</h2></div>
-      <div class="why">
-        <div><span class="num">01</span><h3>ESX or QBCore, no setup</h3><p>Pulse detects your framework on start: jobs, money, items, vehicles, bills and admins all just work.</p></div>
-        <div><span class="num">02</span><h3>Nothing trusted from the client</h3><p>Every text, payment, post and ride is checked on the server, and positions are read on the server, so they can't be faked.</p></div>
-        <div><span class="num">03</span><h3>Money that can't go missing</h3><p>Ryde fares and GrubGo orders are paid up front and refunded if cancelled, expired or the worker disconnects.</p></div>
-        <div><span class="num">04</span><h3>No SQL to import</h3><p>Pulse creates and upgrades its own tables. Copy the folder, add one line, start the server.</p></div>
-        <div><span class="num">05</span><h3>Your secrets stay secret</h3><p>Photos and voice memos upload from the server, so your FiveManage token never reaches a player's game.</p></div>
-        <div><span class="num">06</span><h3>Easy to extend</h3><p>Exports for texts, mail, notifications and bank history let your jobs and shops talk to players through the phone.</p></div>
+      <div class="sec-head reveal"><span class="eyebrow">Why OrvixScripts</span><h2>Built like a server owner <span class="grad">would build it.</span></h2></div>
+      <div class="why reveal">
+        <div><span class="num">01</span><h3>Both frameworks, no setup</h3><p>Every script detects ESX Legacy or QBCore on start. Jobs, money, items and vehicles just work.</p></div>
+        <div><span class="num">02</span><h3>Nothing trusted from the client</h3><p>Money, bans, teleports and positions are checked or read on the server, so cheaters can't fake them.</p></div>
+        <div><span class="num">03</span><h3>Made to work together</h3><p>Admin reads Pulse and Orvix Characters: CK a character from a player's profile, or check who they texted in a report.</p></div>
+        <div><span class="num">04</span><h3>Drop in and start</h3><p>Copy the folder, add one line to server.cfg. Tables are created and upgraded for you.</p></div>
+        <div><span class="num">05</span><h3>Secrets stay on the server</h3><p>Tokens and webhooks go in server.cfg with <code>set</code>, so they never reach a player's game.</p></div>
+        <div><span class="num">06</span><h3>Real docs</h3><p>Every config option, command and export is written down, with fixes for the problems people actually hit.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="band" style="padding-top:0">
+  <section class="band" id="pricing" style="padding-top:20px">
     <div class="wrap">
-      <div class="closer">
-        <span class="eyebrow">Launching soon</span>
-        <h2>Pulse is almost here.</h2>
-        <p>We're finishing in-city testing now. Pulse will be on Tebex at launch.</p>
-        <div class="cta-row" style="justify-content:center"><span class="btn btn-primary" aria-disabled="true">Buy on Tebex <span class="soon">Coming soon</span></span><a class="btn btn-ghost" href="/specs.html">See the specs</a></div>
+      <div class="sec-head reveal"><span class="eyebrow">Pricing</span><h2>Pay once. <span class="grad">Keep every update.</span></h2><p>No subscriptions and no monthly fees.</p></div>
+      <div class="reveal"><div class="pricing"><div class="plan">
+          <div><h3>Pulse Phone</h3><p class="muted" style="font-size:.92rem">The 25-app smartphone</p></div>
+          <div class="amt">$49.99<small>one-time</small></div>
+          <ul><li>25 apps incl. dating, rides, food, nav</li><li>Real calls over pma-voice</li><li>12 phone colors, photo wallpapers</li><li>One server license</li><li>Free updates</li><li>ESX Legacy + QBCore</li></ul>
+          <span class="btn btn-primary" aria-disabled="true">Coming soon</span></div><div class="plan featured"><span class="ribbon">Best value</span>
+          <div><h3>Pulse + Admin bundle</h3><p class="muted" style="font-size:.92rem">Both scripts, one price</p></div>
+          <div class="amt">$74.99<small>one-time</small></div>
+          <ul><li>Everything in Pulse Phone</li><li>Everything in Orvix Admin</li><li>Save $14.99</li><li>One server license</li><li>Free updates</li><li>ESX Legacy + QBCore</li></ul>
+          <span class="btn btn-primary" aria-disabled="true">Coming soon</span></div><div class="plan">
+          <div><h3>Orvix Admin</h3><p class="muted" style="font-size:.92rem">The staff panel</p></div>
+          <div class="amt">$39.99<small>one-time</small></div>
+          <ul><li>12-page panel, F2 command search</li><li>Live map, kill log, alerts, staff watch</li><li>Bans, jail, whitelist, queue, jobs</li><li>One server license</li><li>Free updates</li><li>ESX Legacy + QBCore</li></ul>
+          <span class="btn btn-primary" aria-disabled="true">Coming soon</span></div></div></div>
+      <p class="fine">Prices in USD. Checkout runs through Tebex and opens at launch. Each license covers one server; buy again for a second server.</p>
+    </div>
+  </section>
+
+  <section class="band" style="padding-top:20px">
+    <div class="wrap" style="max-width:860px">
+      <div class="sec-head reveal"><span class="eyebrow">FAQ</span><h2>Before you buy</h2></div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <details class="faq"><summary>Which frameworks are supported?</summary><div><p>ESX Legacy and QBCore. Both scripts detect which one you run when they start.</p></div></details>
+        <details class="faq"><summary>Is this a subscription?</summary><div><p>No. You pay once per server and get every update for that script.</p></div></details>
+        <details class="faq"><summary>Can I change how things work?</summary><div><p>Yes. Prices, jobs, ranks, keys, locations and limits all live in open config files, and the docs list every option.</p></div></details>
+        <details class="faq"><summary>Do I need both scripts?</summary><div><p>No. Each one works on its own. Together they share data: for example, Admin can look up a player's Pulse number in a report.</p></div></details>
+        <details class="faq"><summary>When can I buy?</summary><div><p>Checkout opens through Tebex at launch. Pulse is in final in-city testing, with Orvix Admin coming after it.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" style="padding-top:20px">
+    <div class="wrap">
+      <div class="closer reveal">
+        <span class="eyebrow">OrvixScripts</span>
+        <h2>Give your players a city <span class="grad">worth logging into.</span></h2>
+        <p>Start with the phone, add the panel, or grab both and save $14.99.</p>
+        <div class="cta-row" style="justify-content:center"><a class="btn btn-primary" href="#shop">Shop scripts</a><a class="btn btn-ghost" href="/docs/">Read the docs</a></div>
       </div>
     </div>
   </section>
 </main>
 <footer>
   <div class="wrap">
-    <span>© 2026 OrvixScripts · Not affiliated with Rockstar Games, Take-Two or Cfx.re.</span>
-    <nav aria-label="Footer"><a href="/">Pulse</a><a href="/install.html">Install</a><a href="/specs.html">Specs</a><a href="/support.html">Support</a></nav>
+    <div class="foot-brand"><a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span>Orvix<b>Scripts</b></span></a><span>Scripts for serious FiveM roleplay servers.</span></div>
+    <nav aria-label="Footer"><a href="/pulse/">Pulse Phone</a><a href="/admin/">Orvix Admin</a><a href="/#pricing">Pricing</a><a href="/docs/">Docs</a><a href="/pulse/install.html">Install Pulse</a><a href="/admin/docs.html">Admin docs</a></nav>
+    <span class="legal">© 2026 OrvixScripts · Not affiliated with Rockstar Games, Take-Two or Cfx.re.</span>
   </div>
 </footer>
 <script src="/assets/site.js"></script>
-<script type="module">
-import { appArt, hasArt } from '/assets/icons.js';
-const APPS = [["phone", "Phone", "Real voice calls over pma-voice.", ["Keypad, recents and favorites", "Live call bar while you use other apps", "911 and 912 open Police or EMS requests"], false], ["messages", "Messages", "Texts, group chats, photos and locations.", ["Group chats with names on every message", "Share your location, tap to set GPS", "Photos and voice messages"], false], ["contacts", "Contacts", "Your people, searchable.", ["Favorites and A to Z search", "Block numbers from calling or texting", "AirShare a contact to someone nearby"], false], ["camera", "Camera", "GTA's camera with selfie mode.", ["Photos and selfies", "HUD hides while you shoot", "Uploads from the server, token stays private"], false], ["photos", "Photos", "A gallery for everything you shoot.", ["Set any photo as wallpaper", "Send in chats or AirShare nearby", "Post to Lens, Blink and Market"], false], ["chirp", "Chirp", "The city's short-post feed.", ["Posts, replies and likes", "@mentions notify the player", "Admins can remove posts"], false], ["lens", "Lens", "A photo feed for the city.", ["Double-tap to like", "Comments on every post", "Profile grid of your shots"], false], ["blink", "Blink", "Disappearing snaps and 24-hour stories.", ["A snap opens once, then it is gone", "Send to up to 10 friends at once", "Stories your contacts see for 24 hours"], true], ["spark", "Spark", "Swipe dating. Match, then chat.", ["Swipe right to like, left to pass", "Instant \u201cIt's a match\u201d when it's mutual", "Chat in-app, numbers stay private"], true], ["kindred", "Kindred", "Dating with prompts and real conversation.", ["Profiles built from prompts and answers", "Like a specific answer with a note", "Limited likes a day, plus Likes You"], true], ["market", "Market", "Classified ads with photos.", ["Categories and prices", "Buyers call or text the seller", "Listings expire after a week"], false], ["mail", "Mail", "Email for players and businesses.", ["Write to any phone number", "Your scripts can send mail too", "Unread badges"], false], ["bank", "Bank", "Your bank account in your pocket.", ["Send money by phone number", "Pay bills and invoices in one tap", "Recent activity history"], false], ["garage", "Garage", "Every vehicle you own.", ["In garage, out or impounded", "GPS to the car or its garage", "ESX and QBCore vehicle tables"], false], ["ryde", "Ryde", "Get a ride, or drive for cash.", ["Fare quoted from your map waypoint", "Paid up front, refunded if cancelled", "Drivers go online and earn, with ratings"], true], ["grubgo", "GrubGo", "Food delivered, or deliver for cash.", ["Burger Shot, Cluckin\u2019 Bell, Pizza This and more", "Courier gets the delivery fee and 100% of tips", "Restaurants and menus set in config"], true], ["cruise", "Cruise", "Navigation with live road reports.", ["Sets your GTA map GPS for you", "Report police, crashes, hazards, traffic", "Driving overlay: speed, distance, ETA, alerts"], true], ["services", "Services", "Call for help, or answer it.", ["Police, EMS, mechanic and taxi", "Location read by the server", "On-duty players get a dispatch list"], false], ["weather", "Weather", "The real in-game weather.", ["Area name and wind speed", "Home screen widget", "Day and night looks"], false], ["clock", "Clock", "Stopwatch and timer.", ["Laps on the stopwatch", "Timer rings when done", "Keeps running with the phone away"], false], ["notes", "Notes", "Notes that save themselves.", ["Autosaves as you type", "Saved to your number", "Search by title"], false], ["voice", "Voice Memos", "Record and send voice clips.", ["Up to 60 seconds", "Send in chats and groups", "Rename and delete"], false], ["calculator", "Calculator", "Works with the keyboard too.", ["Standard operations", "Percent and sign keys", "Type on your keyboard"], false], ["store", "App Store", "Choose what's on your home screen.", ["Remove apps you don\u2019t use", "Get them back any time", "Data stays put"], false], ["settings", "Settings", "Make the phone yours.", ["Photo wallpapers and 12 phone colors", "Passcode, Airplane mode, Do Not Disturb", "Ringtones, volume, phone size"], false]];
-const tile = id => { const t = document.createElement('span'); t.className = 'tile'; if (hasArt(id)) t.append(appArt(id)); return t; };
-document.querySelectorAll('[data-art]').forEach(e => { if (hasArt(e.dataset.art)) e.append(appArt(e.dataset.art)); });
-const grid = document.getElementById('app-grid'), detail = document.getElementById('app-detail');
-function show(id) {
-  const i = APPS.findIndex(a => a[0] === id), a = APPS[i];
-  grid.querySelectorAll('.app-btn').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.id === id)));
-  detail.replaceChildren();
-  const row = document.createElement('div'); row.className = 'row';
-  const head = document.createElement('div');
-  const eb = document.createElement('span'); eb.className = 'eyebrow'; eb.textContent = `App ${i + 1}/${APPS.length}${a[4] ? ' · New' : ''}`;
-  const h = document.createElement('h3'); h.textContent = a[1];
-  head.append(eb, h); row.append(tile(a[0]), head);
-  const p = document.createElement('p'); p.textContent = a[2];
-  const ul = document.createElement('ul'); a[3].forEach(x => { const li = document.createElement('li'); li.textContent = x; ul.append(li); });
-  detail.append(row, p, ul);
-}
-APPS.forEach(a => {
-  const b = document.createElement('button'); b.type = 'button'; b.className = 'app-btn'; b.dataset.id = a[0]; b.setAttribute('aria-pressed', 'false');
-  b.append(tile(a[0]), document.createTextNode(a[1]));
-  if (a[4]) { const n = document.createElement('span'); n.className = 'new'; n.textContent = 'NEW'; b.append(n); }
-  b.addEventListener('click', () => show(a[0]));
-  grid.append(b);
-});
-show('spark');
-</script><script>
-// [id, name, swatch, new, light, dark, mid, rim]
-const COLORS = [
-  ['neon','Neon Pink','#ff3d9a',1,'#ff7cc0','#b0105f','#ff4fa6','#ff6fb6'], ['teal','Vice Teal','#22c3d6',1,'#7ee7f2','#0b7285','#3cc9da','#5fd6e4'],
-  ['sunset','Sunset','#ff8a3d',1,'#ffc08a','#c2470f','#ff9a52','#ffab6e'], ['sand','Sand','#c8b293',1,'#eadcc6','#8f7a5d','#d6c3a5','#dccab0'],
-  ['graphite','Graphite','#2a2a30',0,'#4a4a54','#121216','#2c2c33','#55555e'], ['silver','Silver','#d4d4d8',0,'#f4f4f5','#a1a1aa','#e4e4e7','#d4d4d8'],
-  ['gold','Gold','#e7c992',0,'#f6e3bd','#b8925a','#ead2a4','#e7c992'], ['blue','Pacific Blue','#2f4a6b',0,'#4d6c92','#1e3048','#3d5a7d','#56789f'],
-  ['purple','Deep Purple','#4c3a5e',0,'#6f5884','#2f2140','#5a4570','#7a6290'], ['red','Red','#a3202c',0,'#d1404d','#6d0f18','#b8303c','#c93642'],
-  ['green','Alpine Green','#3b4f45',0,'#5a7366','#22302a','#4b6157','#607a6d'], ['pink','Pink','#f2c5cf',0,'#fbe0e6','#d39aa8','#f4cdd6','#f2c5cf'],
-];
-const sw = document.getElementById('swatches'), cimg = document.getElementById('color-img'), cname = document.getElementById('color-name'), stage = document.getElementById('color-stage'), duo = document.getElementById('duo');
-const paint = c => { const [, name, hex, , b1, b2, b3, rim] = c;
-  duo.style.setProperty('--b1', b1); duo.style.setProperty('--b2', b2); duo.style.setProperty('--b3', b3); duo.style.setProperty('--rim', rim);
-  stage.style.setProperty('--swatch', hex); cname.textContent = name; cimg.src = `/img/shots/frame-${c[0]}.webp`; };
-COLORS.forEach(c => {
-  const [id, name, hex, isNew] = c;
-  new Image().src = `/img/shots/frame-${id}.webp`;
-  const b = document.createElement('button'); b.type = 'button'; b.className = 'swatch'; b.style.background = hex; b.title = name; b.setAttribute('aria-label', name);
-  b.setAttribute('aria-pressed', String(id === 'neon'));
-  if (isNew) { const n = document.createElement('span'); n.className = 'new'; n.textContent = 'NEW'; b.append(n); }
-  b.addEventListener('click', () => { sw.querySelectorAll('.swatch').forEach(x => x.setAttribute('aria-pressed', String(x === b))); paint(c); });
-  sw.append(b);
-});
-paint(COLORS[0]);
-</script>
+
 </body>
 </html>

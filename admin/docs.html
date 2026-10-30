@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Orvix Admin Docs · OrvixScripts</title>
+<meta name="description" content="Orvix Admin docs: install, owners, ranks and permissions, commands, reports, bans, alerts, Discord, configuration and exports.">
+<meta property="og:title" content="Orvix Admin Docs · OrvixScripts">
+<meta property="og:description" content="Orvix Admin docs: install, owners, ranks and permissions, commands, reports, bans, alerts, Discord, configuration and exports.">
+<meta property="og:image" content="https://orvixscripts.com/img/shots/admin/dashboard.webp">
+<meta name="theme-color" content="#0c0716">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body class="sub admin has-sub">
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span>Orvix<b>Scripts</b></span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="links" id="site-nav" aria-label="Site"><a href="/">Store</a><a href="/pulse/">Pulse Phone</a><a href="/admin/">Orvix Admin</a><a href="/docs/" aria-current="page">Docs</a></nav>
+  </div>
+</header>
+<div class="subnav"><div class="wrap"><b>Orvix Admin</b><a href="/admin/">Overview</a><a href="/admin/#screens">Screenshots</a><a href="/admin/#pricing">Pricing</a><a href="/admin/docs.html" aria-current="page">Docs</a><span class="sp"><span class="price">$39.99</span><span class="btn btn-primary btn-sm" aria-disabled="true">Coming soon</span></span></div></div>
+<main>
+  <section class="page-head"><div class="wrap">
+    <span class="crumbs">Orvix Admin / Docs</span>
+    <h1>Orvix Admin docs</h1>
+    <p>Install it, make yourself owner, set up ranks, and learn every page, command and option.</p>
+  </div></section>
+  <div class="wrap docs">
+    <nav class="toc" aria-label="On this page"><span class="eyebrow">Docs</span><a href="#start">Getting started</a><a href="#requirements">Requirements</a><a href="#install">Installation</a><a href="#owner">Make yourself owner</a><a href="#ranks">Ranks & permissions</a><a href="#using">Using the panel</a><a href="#commands">Commands & keys</a><a href="#reports">Reports</a><a href="#punish">Bans, jail & mute</a><a href="#alerts">Alerts & staff watch</a><a href="#map">Live map & kill log</a><a href="#whitelist">Whitelist & queue</a><a href="#discord">Discord & screenshots</a><a href="#config">Configuration</a><a href="#integrations">Works with</a><a href="#exports">Exports</a><a href="#troubleshooting">Troubleshooting</a><a href="#faq">FAQ</a></nav>
+    <article class="doc">
+      <section id="start">
+        <div class="note"><b>Preview</b><span>Orvix Admin launches after Pulse. These docs describe the launch version; small details may change before release.</span></div>
+        <h2>Getting started</h2>
+        <p>Orvix Admin is one resource, <code>orvix_admin</code>. It runs on ESX Legacy or QBCore, creates its own database tables, and gives your staff a 12-page panel in game.</p>
+        <div class="help-cards">
+          <a href="#install"><b>Install</b><span>Running in five steps</span></a>
+          <a href="#ranks"><b>Ranks</b><span>Who can do what</span></a>
+          <a href="#commands"><b>Commands</b><span>Every command and key</span></a>
+        </div>
+      </section>
+      <section id="requirements">
+        <h2>Requirements</h2>
+        <div class="req-grid">
+          <div class="req"><span class="tag">Required · one of</span><span class="name">es_extended · qb-core</span><p>ESX Legacy 1.12+ or QBCore. Detected automatically.</p></div>
+          <div class="req"><span class="tag">Required</span><span class="name">oxmysql · ox_lib</span><p>Database and callbacks. Tables are created for you.</p></div>
+          <div class="req"><span class="tag">Required</span><span class="name">OneSync</span><p>On by default with txAdmin. Needed for the live map and Near you.</p></div>
+          <div class="req"><span class="tag opt">Optional</span><span class="name">screenshot-basic</span><p>Screenshots for bans, alerts and reports (with a FiveManage token).</p></div>
+          <div class="req"><span class="tag opt">Optional</span><span class="name">pma-voice</span><p>Voice mute.</p></div>
+          <div class="req"><span class="tag opt">Optional</span><span class="name">Inventories · appearance</span><p>ox, qs, qb or ESX inventory; illenium, fivem-appearance, qb-clothing or esx_skin.</p></div>
+        </div>
+      </section>
+      <section id="install">
+        <h2>Installation</h2>
+        <ol class="big-steps">
+          <li><div><h3>Copy the folder</h3><p>Put <code>orvix_admin</code> in your <code>resources</code> folder and keep that exact name.</p></div></li>
+          <li><div><h3>Add it to server.cfg</h3><p>After your framework, oxmysql and ox_lib:</p><div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>server.cfg</span><button class="copy" type="button" data-copy="a1">Copy</button></div>
+<pre id="a1"><span class="k">ensure</span> orvix_admin</pre></div></div></li>
+          <li><div><h3>Turn off your old admin menu</h3><p>Two admin menus fight over the same keys and commands. Comment out the old one.</p></div></li>
+          <li><div><h3>Make yourself owner</h3><p>Add your license to <code>Config.Owners</code> (see the next section).</p></div></li>
+          <li><div><h3>Start the server</h3><p>The console shows <code>[orvix_admin] framework: ESX Legacy</code> or <code>QBCore</code>. Join and press <b>F9</b>.</p></div></li>
+        </ol>
+      </section>
+      <section id="owner">
+        <h2>Make yourself owner</h2>
+        <p>Join your server once, then find your license in the server console (or in txAdmin under Players). Put it in <code>config.lua</code>:</p>
+        <div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>config.lua</span><button class="copy" type="button" data-copy="a2">Copy</button></div>
+<pre id="a2">Config.Owners = {
+  <span class="g">'license:1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b'</span>,  <span class="c">-- you</span>
+}</pre></div>
+        <p>Owners can do everything and can't be removed in game. Give everyone else a rank from <b>Staff &amp; ranks</b> in the panel.</p>
+      </section>
+      <section id="ranks">
+        <h2>Ranks &amp; permissions</h2>
+        <p>There are four ranks out of the box: <b>Helper</b>, <b>Moderator</b>, <b>Admin</b> and <b>Owner</b>. In <b>Staff &amp; ranks</b>, flip switches to decide what each rank can do. Changes apply right away, no restart.</p>
+        <ul>
+          <li>A lower rank can never warn, kick, ban, freeze or teleport a higher rank.</li>
+          <li>Bans longer than 7 days, unbans, giving money and editing ranks are Admin and Owner by default.</li>
+          <li>Turn on <a href="#discord">Discord role sync</a> to give ranks automatically from Discord roles.</li>
+        </ul>
+      </section>
+      <section id="using">
+        <h2>Using the panel</h2>
+        <p>Press <b>F9</b>. The sidebar has every page; the top bar has <b>F2</b> search, staff chat and your own tools (noclip, god mode, invisible, IDs over heads, look-at card).</p>
+        <div class="table-wrap"><table><thead><tr><th>Page</th><th>What it's for</th></tr></thead><tbody>
+          <tr><td>Dashboard</td><td>Players online, open reports, staff on duty, activity, quick actions, things that need attention</td></tr>
+          <tr><td>Players</td><td>Near you, filters, watchlist, offline players and a full profile with 15 actions</td></tr>
+          <tr><td>Live map</td><td>Everyone on the map, with a 7-day trail per player</td></tr>
+          <tr><td>Reports</td><td>Claim, chat, go to, bring, sit room, close</td></tr>
+          <tr><td>Alerts</td><td>Cheat alerts, rich list, watch rules, automatic punishments, staff watch</td></tr>
+          <tr><td>Kill log</td><td>Every death with weapon, distance and flags</td></tr>
+          <tr><td>Bans &amp; jail</td><td>All bans with evidence, plus who is jailed or doing community service</td></tr>
+          <tr><td>Audit log</td><td>Every staff action, searchable</td></tr>
+          <tr><td>Staff &amp; ranks</td><td>Staff hours and ratings, punishment guide, Discord sync, permissions</td></tr>
+          <tr><td>Jobs</td><td>Company money, grades, pay and employees</td></tr>
+          <tr><td>Whitelist &amp; queue</td><td>Applications, queue and VIP priority</td></tr>
+          <tr><td>Server</td><td>Weather, time, traffic, restarts, cleanup, resources, console</td></tr>
+        </tbody></table></div>
+        <img src="/img/shots/admin/players.webp" alt="Players page with Near you and a player profile" loading="lazy" data-zoom style="border-radius:14px;border:1px solid var(--line)">
+      </section>
+      <section id="commands">
+        <h2>Commands &amp; keys</h2>
+        <p>Everything in the panel also works as a command. The last column is the permission needed.</p>
+        <div class="table-wrap"><table><thead><tr><th>Command</th><th>What it does</th><th>Permission</th></tr></thead><tbody><tr><td><code>/admin</code></td><td>Open the panel (or press F9)</td><td><code>Any staff</code></td></tr><tr><td><code>/report [message]</code></td><td>Open a report for staff</td><td><code>Everyone</code></td></tr><tr><td><code>/goto [id]</code></td><td>Teleport to a player</td><td><code>teleport</code></td></tr><tr><td><code>/bring [id]</code></td><td>Bring a player to you</td><td><code>teleport</code></td></tr><tr><td><code>/tpm</code></td><td>Teleport to your map waypoint</td><td><code>teleport</code></td></tr><tr><td><code>/freeze [id]</code></td><td>Freeze or unfreeze a player</td><td><code>freeze</code></td></tr><tr><td><code>/revive [id | all]</code></td><td>Revive one player or everyone</td><td><code>revive</code></td></tr><tr><td><code>/heal [id]</code></td><td>Heal a player</td><td><code>revive</code></td></tr><tr><td><code>/spectate [id]</code></td><td>Spectate a player</td><td><code>spectate</code></td></tr><tr><td><code>/warn [id] [reason]</code></td><td>Warn a player</td><td><code>warn</code></td></tr><tr><td><code>/kick [id] [reason]</code></td><td>Kick a player</td><td><code>kick</code></td></tr><tr><td><code>/ban [id] [1h|1d|3d|1w|30d|perm] [reason]</code></td><td>Ban a player</td><td><code>ban</code></td></tr><tr><td><code>/unban [ban id]</code></td><td>Lift a ban</td><td><code>unban</code></td></tr><tr><td><code>/jail [id] [minutes] [reason]</code></td><td>Send to admin jail</td><td><code>jail</code></td></tr><tr><td><code>/unjail [id]</code></td><td>Release from jail</td><td><code>jail</code></td></tr><tr><td><code>/mute [id] [minutes]</code></td><td>Mute voice and chat</td><td><code>mute</code></td></tr><tr><td><code>/sitroom [id]</code></td><td>Pull a player into the sit room</td><td><code>teleport</code></td></tr><tr><td><code>/noclip</code></td><td>Toggle noclip (or F10)</td><td><code>noclip</code></td></tr><tr><td><code>/ids</code></td><td>Show names and IDs over heads</td><td><code>Any staff</code></td></tr><tr><td><code>/sc [message]</code></td><td>Message all staff</td><td><code>Any staff</code></td></tr><tr><td><code>/announce [text]</code></td><td>Announcement to everyone</td><td><code>announce</code></td></tr><tr><td><code>/duty</code></td><td>Go on or off staff duty</td><td><code>Any staff</code></td></tr></tbody></table></div>
+        <div class="table-wrap"><table><thead><tr><th>Key</th><th>What it does</th></tr></thead><tbody>
+          <tr><td><span class="kbd">F9</span></td><td>Open or close the panel</td></tr><tr><td><span class="kbd">F2</span></td><td>Command search (inside the panel)</td></tr>
+          <tr><td><span class="kbd">F10</span></td><td>Noclip</td></tr><tr><td><span class="kbd">Left Alt</span> (hold)</td><td>Look-at card on the player you aim at, then F freeze, G go to, B bring, E profile</td></tr>
+          <tr><td><span class="kbd">← →</span></td><td>Next or previous player while spectating</td></tr><tr><td><span class="kbd">Esc</span></td><td>Close a window, stop spectating, close the panel</td></tr>
+        </tbody></table></div>
+      </section>
+      <section id="reports">
+        <h2>Reports</h2>
+        <p>Players type <code>/report [what happened]</code>. On-duty staff get a notification, and the report shows on the Reports page. Claim it, then chat with the player right in the panel. When you close it, the player can rate the help from 1 to 5 stars.</p>
+        <img src="/img/shots/admin/reports.webp" alt="Reports page with a claimed report and chat" loading="lazy" data-zoom style="border-radius:14px;border:1px solid var(--line)">
+      </section>
+      <section id="punish">
+        <h2>Bans, jail &amp; mute</h2>
+        <ul>
+          <li><b>Ban</b>: pick an offense and the punishment guide suggests a length based on their record. Turn on <i>Attach a screenshot</i> to save evidence. Bans save every identifier, including hardware tokens.</li>
+          <li><b>Jail</b>: a locked room with a countdown (5 to 60 minutes) or community service (10 to 100 tasks). Relogging doesn't reset it.</li>
+          <li><b>Mute</b>: voice, text chat or both, for a few minutes or until they relog.</li>
+          <li><b>Offline</b>: warn, jail or ban someone who already left; it applies when they join.</li>
+        </ul>
+        <p>Set your server's punishments in <code>Config.Guide</code>:</p>
+        <div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>config.lua</span><button class="copy" type="button" data-copy="a3">Copy</button></div>
+<pre id="a3">Config.Guide = {
+  { offense = <span class="g">'RDM'</span>,  steps = { <span class="g">'Warn'</span>, <span class="g">'Jail 15 min'</span>, <span class="g">'Ban 1 day'</span>, <span class="g">'Ban 7 days'</span> } },
+  { offense = <span class="g">'VDM'</span>,  steps = { <span class="g">'Warn'</span>, <span class="g">'Ban 1 day'</span>, <span class="g">'Ban 3 days'</span>, <span class="g">'Ban 7 days'</span> } },
+  { offense = <span class="g">'Cheating'</span>, steps = { <span class="g">'Permanent ban'</span> } },
+}</pre></div>
+      </section>
+      <section id="alerts">
+        <h2>Alerts &amp; staff watch</h2>
+        <p>The server watches for things that shouldn't happen and posts an alert with Spectate, Screenshot, Freeze and Ban buttons. Limits live in <code>Config.Watch</code> and can also be changed on the Alerts page.</p>
+        <div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>config.lua</span><button class="copy" type="button" data-copy="a4">Copy</button></div>
+<pre id="a4">Config.Watch = {
+  MoneyJump = 100000, MoneyMinutes = 5,   <span class="c">-- alert if money rises this much this fast</span>
+  ItemsAtOnce = 100,                     <span class="c">-- one item, this many at once</span>
+  StaffEvents = true,                    <span class="c">-- non-staff triggering staff-only events</span>
+  StaffSelfGive = true,                  <span class="c">-- staff giving themselves money or items</span>
+  MinReasonLength = 12,                  <span class="c">-- flag lazy ban reasons</span>
+}
+Config.Escalation = { { warns = 3, ban = <span class="g">'1d'</span> }, { warns = 5, ban = <span class="g">'1w'</span> } }</pre></div>
+        <p><b>Staff watch</b> is a second tab only owners see. Each flag has <i>Undo it</i>, <i>Ask them</i> and <i>It's fine</i>.</p>
+      </section>
+      <section id="map">
+        <h2>Live map &amp; kill log</h2>
+        <p>The map updates every 2 seconds. Positions are read on the server, so they can't be faked. Trails are kept for <code>Config.Map.TrailDays</code> (7 by default). The kill log records every death with weapon, distance, location and whether the two players talked first, and flags suspicious ones.</p>
+        <img src="/img/shots/admin/kills.webp" alt="Kill log with flagged kills" loading="lazy" data-zoom style="border-radius:14px;border:1px solid var(--line)">
+      </section>
+      <section id="whitelist">
+        <h2>Whitelist &amp; queue</h2>
+        <p>With the whitelist on, new players see your application questions when they connect and wait for approval. The queue lets priority players (staff, Discord roles, supporters) skip the line; give priority by hand on the Priority tab with an expiry date.</p>
+      </section>
+      <section id="discord">
+        <h2>Discord &amp; screenshots</h2>
+        <p>All optional. Add these to <code>server.cfg</code>. Always use <code>set</code>, never <code>setr</code>.</p>
+        <div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>server.cfg</span><button class="copy" type="button" data-copy="a5">Copy</button></div>
+<pre id="a5"><span class="c"># staff action logs</span>
+<span class="k">set</span> orvix_admin_webhook <span class="g">"https://discord.com/api/webhooks/..."</span>
+<span class="c"># Discord role sync (bot in your Discord with the Server Members intent)</span>
+<span class="k">set</span> orvix_admin_discord_token <span class="g">"your-bot-token"</span>
+<span class="k">set</span> orvix_admin_guild <span class="g">"your-server-id"</span>
+<span class="c"># screenshots for bans, alerts and reports</span>
+<span class="k">set</span> orvix_admin_fivemanage <span class="g">"your-fivemanage-token"</span></pre></div>
+        <div class="note warn"><b>Use set</b><span><code>setr</code> sends the value to every player's game, including your bot token.</span></div>
+      </section>
+      <section id="config">
+        <h2>Configuration</h2>
+        <p>Everything lives in <code>config.lua</code>. Ranks, watch limits and the punishment guide can also be changed in the panel.</p>
+        <div class="table-wrap"><table><thead><tr><th>Option</th><th>Default</th><th>What it does</th></tr></thead><tbody><tr><td><code>Config.Framework</code></td><td><code>'auto'</code></td><td>'auto' detects qb-core or es_extended. Force with 'esx' or 'qb'</td></tr><tr><td><code>Config.OpenKey</code></td><td><code>'F9'</code></td><td>Opens the panel. Staff can rebind it in Key Bindings › FiveM</td></tr><tr><td><code>Config.Owners</code></td><td><code>{ }</code></td><td>License IDs that are always Owner. Everyone else gets a rank in the panel</td></tr><tr><td><code>Config.Ranks</code></td><td><code>table</code></td><td>Rank names, colors and order (helper, mod, admin, owner by default)</td></tr><tr><td><code>Config.NoclipKey</code></td><td><code>'F10'</code></td><td>Noclip toggle for staff with the noclip permission</td></tr><tr><td><code>Config.LookAtKey</code></td><td><code>'LMENU'</code></td><td>Hold to show the look-at card (Left Alt)</td></tr><tr><td><code>Config.Report</code></td><td><code>table</code></td><td>Cooldown, max open reports per player, quick replies, ratings on/off</td></tr><tr><td><code>Config.Jail</code></td><td><code>table</code></td><td>Jail room and community service park coordinates, task count options</td></tr><tr><td><code>Config.SitRoom</code></td><td><code>vector4</code></td><td>Where staff and the player go for a private chat</td></tr><tr><td><code>Config.Guide</code></td><td><code>table</code></td><td>Offenses and the punishment for 1st, 2nd, 3rd and later times</td></tr><tr><td><code>Config.Watch</code></td><td><code>table</code></td><td>Alert limits: money jump, items at once, speed, staff self-give, reason length</td></tr><tr><td><code>Config.Escalation</code></td><td><code>table</code></td><td>Automatic punishments by warning count</td></tr><tr><td><code>Config.Map</code></td><td><code>table</code></td><td>Update rate (2 s default) and how many days of trail to keep</td></tr><tr><td><code>Config.Whitelist</code></td><td><code>table</code></td><td>On/off, application questions, minimum age</td></tr><tr><td><code>Config.Queue</code></td><td><code>table</code></td><td>Priority levels and who gets them (ranks, Discord roles, manual)</td></tr><tr><td><code>Config.Restarts</code></td><td><code>table</code></td><td>Daily restart times and warning minutes</td></tr><tr><td><code>Config.Logs</code></td><td><code>table</code></td><td>Which actions go to which Discord webhook</td></tr></tbody></table></div>
+      </section>
+      <section id="integrations">
+        <h2>Works with</h2>
+        <div class="table-wrap"><table><thead><tr><th>Resource</th><th>What Orvix Admin does with it</th></tr></thead><tbody>
+          <tr><td><code>orvix_characters</code></td><td>CK a character from the profile; see all of a player's characters</td></tr>
+          <tr><td><code>pulse_phone</code></td><td>See a player's phone number in reports and profiles</td></tr>
+          <tr><td><code>ox_inventory</code> · <code>qs-inventory</code> · <code>qb-inventory</code></td><td>Inventory tab: view, remove and give items</td></tr>
+          <tr><td><code>illenium-appearance</code> · <code>fivem-appearance</code> · <code>qb-clothing</code> · <code>esx_skin</code></td><td>Appearance tab: clothing menu, reset, reload skin</td></tr>
+          <tr><td><code>pma-voice</code></td><td>Voice mute</td></tr>
+          <tr><td><code>screenshot-basic</code></td><td>Evidence screenshots</td></tr>
+          <tr><td>txAdmin</td><td>Runs alongside it; txAdmin still handles starting and stopping the server</td></tr>
+        </tbody></table></div>
+      </section>
+      <section id="exports">
+        <h2>Exports</h2>
+        <p>Let your other scripts check staff, log actions or raise alerts.</p>
+        <div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>server exports</span><button class="copy" type="button" data-copy="a6">Copy</button></div>
+<pre id="a6">exports.orvix_admin:<span class="k">IsStaff</span>(source)                     <span class="c">-- true / false</span>
+exports.orvix_admin:<span class="k">GetRank</span>(source)                     <span class="c">-- 'helper' | 'mod' | 'admin' | 'owner' | nil</span>
+exports.orvix_admin:<span class="k">HasPermission</span>(source, <span class="g">'ban'</span>)
+exports.orvix_admin:<span class="k">AddLog</span>(source, <span class="g">'money'</span>, <span class="g">'Paid out $5,000 lottery win'</span>)
+exports.orvix_admin:<span class="k">SendAlert</span>(source, { title = <span class="g">'Bank exploit?'</span>, text = <span class="g">'Withdrew 3x in 1s'</span>, severity = <span class="g">'high'</span> })
+exports.orvix_admin:<span class="k">Ban</span>(target, <span class="g">'1d'</span>, <span class="g">'Exploiting the bank job'</span>)</pre></div>
+        <div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>client exports</span><button class="copy" type="button" data-copy="a7">Copy</button></div>
+<pre id="a7">exports.orvix_admin:<span class="k">IsOpen</span>()
+exports.orvix_admin:<span class="k">IsNoclipping</span>()</pre></div>
+      </section>
+      <section id="troubleshooting">
+        <h2>Troubleshooting</h2>
+        <details class="faq"><summary>F9 does nothing</summary><div><p>Only staff can open the panel. Check your license is in <code>Config.Owners</code>, or that an owner gave you a rank. Also check you didn't rebind the key in Key Bindings › FiveM.</p></div></details>
+        <details class="faq"><summary>Console says "framework: none"</summary><div><p>Orvix Admin started before your framework. Put <code>ensure orvix_admin</code> after <code>es_extended</code> or <code>qb-core</code>.</p></div></details>
+        <details class="faq"><summary>The live map is empty</summary><div><p>Turn on OneSync (txAdmin › Settings › FXServer). Without it the server can't read player positions.</p></div></details>
+        <details class="faq"><summary>Screenshots don't attach</summary><div><p>Start <code>screenshot-basic</code> and set <code>orvix_admin_fivemanage</code> with <code>set</code>, then restart.</p></div></details>
+        <details class="faq"><summary>Discord ranks don't sync</summary><div><p>The bot must be in your Discord with the <b>Server Members</b> intent on, and <code>orvix_admin_guild</code> must be your server ID.</p></div></details>
+      </section>
+      <section id="faq">
+        <h2>FAQ</h2>
+        <details class="faq"><summary>Can I rename ranks or add more?</summary><div><p>Yes, in <code>Config.Ranks</code>. The panel picks them up on restart.</p></div></details>
+        <details class="faq"><summary>Does it work without Pulse or Orvix Characters?</summary><div><p>Yes. Those are optional; their buttons just stay hidden.</p></div></details>
+        <details class="faq"><summary>Where is data stored?</summary><div><p>In your own database through oxmysql: bans, warnings, notes, reports, logs and trails. Nothing leaves your server unless you add a Discord webhook.</p></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot-brand"><a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span>Orvix<b>Scripts</b></span></a><span>Scripts for serious FiveM roleplay servers.</span></div>
+    <nav aria-label="Footer"><a href="/pulse/">Pulse Phone</a><a href="/admin/">Orvix Admin</a><a href="/#pricing">Pricing</a><a href="/docs/">Docs</a><a href="/pulse/install.html">Install Pulse</a><a href="/admin/docs.html">Admin docs</a></nav>
+    <span class="legal">© 2026 OrvixScripts · Not affiliated with Rockstar Games, Take-Two or Cfx.re.</span>
+  </div>
+</footer>
+<script src="/assets/site.js"></script>
+<script>
+const links = [...document.querySelectorAll('.toc a')];
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id)); }), { rootMargin: '-30% 0px -60% 0px' });
+document.querySelectorAll('.doc section[id]').forEach(s => io.observe(s));
+</script>
+</body>
+</html>
