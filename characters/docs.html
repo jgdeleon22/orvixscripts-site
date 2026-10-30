@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Orvix Characters Docs · OrvixScripts</title>
+<meta name="description" content="Orvix Characters docs: install, commands, scenes, look studio, starter pack, Discord and configuration.">
+<meta property="og:title" content="Orvix Characters Docs · OrvixScripts">
+<meta property="og:description" content="Orvix Characters docs: install, commands, scenes, look studio, starter pack, Discord and configuration.">
+<meta property="og:image" content="https://orvixscripts.com/img/shots/chars/select.webp">
+<meta name="theme-color" content="#0c0716">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="/assets/site.css?v=324b909b">
+</head>
+<body class="sub admin has-sub">
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span>Orvix<b>Scripts</b></span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="links" id="site-nav" aria-label="Site"><a href="/">Store</a><a href="/pulse/">Pulse Phone</a><a href="/characters/">Characters</a><a href="/admin/">Orvix Admin</a><a href="/docs/" aria-current="page">Docs</a></nav>
+  </div>
+</header>
+<div class="subnav"><div class="wrap"><b>Orvix Characters</b><a href="/characters/">Overview</a><a href="/characters/#screens">Screenshots</a><a href="/characters/#pricing">Pricing</a><a href="/characters/docs.html" aria-current="page">Docs</a><span class="sp"><span class="price">$24.99</span><span class="btn btn-primary btn-sm" aria-disabled="true">Coming soon</span></span></div></div>
+<main>
+  <section class="page-head"><div class="wrap"><span class="crumbs">Orvix Characters / Docs</span><h1>Orvix Characters docs</h1><p>Install it, set up your scenes and spawns, and learn every option.</p></div></section>
+  <div class="wrap docs">
+    <nav class="toc" aria-label="On this page"><span class="eyebrow">Docs</span><a href="#start">Getting started</a><a href="#install">Installation</a><a href="#commands">Commands</a><a href="#scenes">Scenes & spots</a><a href="#studio">Look studio</a><a href="#starter">Starter pack & apartments</a><a href="#discord">Discord & logs</a><a href="#config">Configuration</a><a href="#exports">Exports</a><a href="#troubleshooting">Troubleshooting</a></nav>
+    <article class="doc">
+      <section id="start"><h2>Getting started</h2><p>Orvix Characters is one resource, <code>orvix_characters</code>, for ESX Legacy or QBCore. It needs <code>oxmysql</code> and <code>ox_lib</code>, and works with illenium-appearance, fivem-appearance, qb-clothing, esx_skin / skinchanger or crm-appearance.</p></section>
+      <section id="install"><h2>Installation</h2>
+        <ol class="big-steps">
+          <li><div><h3>Remove your old multicharacter</h3><p>Stop esx_multicharacter, qb-multicharacter, crm-multicharacter or similar, and qb-spawn on QBCore. Only one character screen can run.</p></div></li>
+          <li><div><h3>Copy and ensure</h3><p>Put <code>orvix_characters</code> in <code>resources</code> and add it after your framework:</p><div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>server.cfg</span><button class="copy" type="button" data-copy="cc1">Copy</button></div>
+<pre id="cc1"><span class="k">ensure</span> orvix_characters</pre></div></div></li>
+          <li><div><h3>ESX only: turn on multichar</h3><p>In <code>es_extended/shared/config/main.lua</code>:</p><div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>config.lua</span><button class="copy" type="button" data-copy="cc2">Copy</button></div>
+<pre id="cc2">Config.Multichar = <span class="k">true</span></pre></div></div></li>
+          <li><div><h3>Start the server</h3><p>Tables are created automatically. Existing characters show up as they are.</p></div></li>
+        </ol></section>
+      <section id="commands"><h2>Commands</h2><div class="table-wrap"><table><thead><tr><th>Command</th><th>Who</th><th>What it does</th></tr></thead><tbody>
+        <tr><td><code>/logout</code></td><td>Players</td><td>Back to character select (if <code>Config.AllowPlayerLogout</code>)</td></tr>
+        <tr><td><code>/logoutplayer [id]</code></td><td>Admins</td><td>Send a player back to character select</td></tr>
+        <tr><td><code>/ck [id or charId] [reason]</code></td><td>Admins</td><td>Character kill: shows “In memory” and can't be played</td></tr>
+        <tr><td><code>/unck [charId]</code></td><td>Admins</td><td>Undo a CK</td></tr>
+        <tr><td><code>/orvixslots [id] [amount]</code></td><td>Admins</td><td>Give permanent bonus slots</td></tr>
+        <tr><td><code>/ocpos</code></td><td>Admins</td><td>Print your position and heading for scenes and spawns</td></tr></tbody></table></div></section>
+      <section id="scenes"><h2>Scenes &amp; spots</h2><p>Each scene has stands where characters wait, an overview camera and optional interiors. If a character floats or stands in a wall, stand where they should be, type <code>/ocpos</code> and paste the line into <code>Config.Scenes</code>. Spawns and the dressing room work the same way.</p>
+        <img src="/img/shots/chars/select.webp" alt="Character select scene" decoding="async" data-zoom style="border-radius:14px;border:1px solid var(--line)"></section>
+      <section id="studio"><h2>Look studio</h2><p>After the ID card, new characters build their look in a private dressing room, then pick a spawn. The look is saved where your clothing script reads it. Admins get a <b>Copy outfit for config</b> button that prints a ready-to-paste starter outfit in F8. Set <code>Config.Studio.Enabled = false</code> to skip it, or <code>ThenOpenFullCreator = true</code> to also open your clothing script after spawning.</p>
+        <img src="/img/shots/chars/studio.webp" alt="Look studio" decoding="async" data-zoom style="border-radius:14px;border:1px solid var(--line)"></section>
+      <section id="starter"><h2>Starter pack &amp; apartments</h2><p><code>Config.Starter</code> sets where new characters may spawn, starter apartments (plain spawns, qb-apartments or ps-housing), and a one-time pack of cash, bank money and items.</p>
+        <div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>config.lua</span><button class="copy" type="button" data-copy="cc3">Copy</button></div>
+<pre id="cc3">Config.Starter = {
+  Cash = 500, Bank = 2500,
+  Items = { { name = <span class="g">'phone'</span>, count = 1 }, { name = <span class="g">'water'</span>, count = 2 } },
+  ApartmentSystem = <span class="g">'none'</span>,  <span class="c">-- or 'qb-apartments', 'ps-housing'</span>
+}</pre></div></section>
+      <section id="discord"><h2>Discord &amp; logs</h2><p>Optional. Use <code>set</code>, never <code>setr</code>.</p>
+        <div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>server.cfg</span><button class="copy" type="button" data-copy="cc4">Copy</button></div>
+<pre id="cc4"><span class="k">set</span> orvix_characters_webhook <span class="g">"https://discord.com/api/webhooks/..."</span>  <span class="c"># create, delete, CK logs</span>
+<span class="k">set</span> orvix_discord_token <span class="g">"your-bot-token"</span>  <span class="c"># extra slots from Discord roles</span></pre></div>
+        <p>Then turn on <code>Config.DiscordRoles</code> and map role IDs to extra slots.</p></section>
+      <section id="config"><h2>Configuration</h2><div class="table-wrap"><table><thead><tr><th>Option</th><th>Default</th><th>What it does</th></tr></thead><tbody><tr><td><code>Config.Framework</code></td><td><code>'auto'</code></td><td>'auto', 'esx' or 'qb'</td></tr><tr><td><code>Config.ServerName / ServerTag</code></td><td><code>'Orvix RP'</code></td><td>Shown at the top of every screen</td></tr><tr><td><code>Config.Slots</code></td><td><code>3</code></td><td>Free character slots per player</td></tr><tr><td><code>Config.MaxSlots</code></td><td><code>5</code></td><td>Slots shown in total; extras show locked until unlocked</td></tr><tr><td><code>Config.AllowDelete</code></td><td><code>true</code></td><td>Players can delete their own characters (they type the full name)</td></tr><tr><td><code>Config.MinAge / MaxAge</code></td><td><code>18 / 90</code></td><td>Allowed ages on the ID card</td></tr><tr><td><code>Config.Nationalities</code></td><td><code>list</code></td><td>Choices on the ID card</td></tr><tr><td><code>Config.BlockedNames</code></td><td><code>list</code></td><td>Words that can't be part of a name</td></tr><tr><td><code>Config.Welcome</code></td><td><code>table</code></td><td>Rules, news, RulesVersion, ShowEveryLogin</td></tr><tr><td><code>Config.Scenes</code></td><td><code>table</code></td><td>Penthouse, loft and rooftop: stands, camera, time, weather</td></tr><tr><td><code>Config.Spawns / JobSpawns</code></td><td><code>table</code></td><td>Spawn points, and job-only spawns</td></tr><tr><td><code>Config.Starter</code></td><td><code>table</code></td><td>Starter spawns, apartments, cash, bank and items</td></tr><tr><td><code>Config.Studio</code></td><td><code>table</code></td><td>Dressing room location, starter outfits, ThenOpenFullCreator</td></tr><tr><td><code>Config.Guide</code></td><td><code>table</code></td><td>City guide stops and seconds per stop</td></tr><tr><td><code>Config.DiscordRoles</code></td><td><code>table</code></td><td>Guild ID and role ID → extra slots</td></tr><tr><td><code>Config.AdminGroups</code></td><td><code>{ 'admin', 'superadmin' }</code></td><td>Who can use admin commands</td></tr></tbody></table></div></section>
+      <section id="exports"><h2>Exports</h2><div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>server exports</span><button class="copy" type="button" data-copy="cc5">Copy</button></div>
+<pre id="cc5">exports.orvix_characters:<span class="k">SendToSelection</span>(source)  <span class="c">-- log a player out to the character screen</span></pre></div></section>
+      <section id="troubleshooting"><h2>Troubleshooting</h2>
+        <details class="faq"><summary>Players spawn straight in without the character screen</summary><div><p>Another multicharacter or spawn script is still running, or on ESX <code>Config.Multichar</code> is still false.</p></div></details>
+        <details class="faq"><summary>Characters stand in default clothes</summary><div><p>Check your clothing script is started before <code>orvix_characters</code> and that it saves to <code>users.skin</code> (ESX) or <code>playerskins</code> (QBCore).</p></div></details>
+        <details class="faq"><summary>A character floats or is inside a wall</summary><div><p>Stand where they should be, use <code>/ocpos</code>, and paste the line over that stand in <code>Config.Scenes</code>.</p></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot-brand"><a class="brand" href="/"><span class="brand-mark" aria-hidden="true"></span><span>Orvix<b>Scripts</b></span></a><span>Scripts for serious FiveM roleplay servers.</span></div>
+    <nav aria-label="Footer"><a href="/pulse/">Pulse Phone</a><a href="/characters/">Orvix Characters</a><a href="/admin/">Orvix Admin</a><a href="/#pricing">Pricing</a><a href="/docs/">Docs</a><a href="/pulse/install.html">Install Pulse</a><a href="/admin/docs.html">Admin docs</a></nav>
+    <span class="legal">© 2026 OrvixScripts · Not affiliated with Rockstar Games, Take-Two or Cfx.re.</span>
+  </div>
+</footer>
+<script src="/assets/site.js?v=324b909b"></script>
+<script>
+const links = [...document.querySelectorAll('.toc a')];
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id)); }), { rootMargin: '-30% 0px -60% 0px' });
+document.querySelectorAll('.doc section[id]').forEach(s => io.observe(s));
+</script>
+</body>
+</html>
