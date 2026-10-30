@@ -66,10 +66,21 @@
       </section>
       <section id="camera">
         <h2>Camera &amp; voice memos</h2>
-        <p>Photos, Blink snaps and voice memos are stored on FiveManage. Create a token in your FiveManage dashboard and add it to <code>server.cfg</code>:</p>
+        <p>Photos, Blink snaps and voice memos are uploaded by the server to the place you choose in <code>Config.Media.Upload</code>: <b>FiveManage</b> (default), your own <b>Discord</b> channel, or any upload site (<code>'custom'</code>). For FiveManage, create a token in your dashboard and add it to <code>server.cfg</code>:</p>
         <div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>server.cfg</span><button class="copy" type="button" data-copy="d1">Copy</button></div>
 <pre id="d1"><span class="k">set</span> pulse_fivemanage_token <span class="g">"your-token"</span></pre></div>
+        <p>For Discord, set <code>Config.Media.Upload = 'discord'</code> and add a channel webhook. Discord's file links expire after a day; Pulse refreshes them by itself, so old photos keep working.</p>
+        <div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>server.cfg</span><button class="copy" type="button" data-copy="d1b">Copy</button></div>
+<pre id="d1b"><span class="k">set</span> pulse_discord_webhook <span class="g">"https://discord.com/api/webhooks/..."</span>
+<span class="c"># optional: voice memos in another channel</span>
+<span class="k">set</span> pulse_discord_audio_webhook <span class="g">"https://discord.com/api/webhooks/..."</span></pre></div>
+        <p>Type <code>pulsemedia</code> in the server console to send a test picture and check your setup.</p>
         <div class="note warn"><b>Use set</b><span>Never <code>setr</code>. That sends the token to every player's game.</span></div>
+        <h3>Department logs</h3>
+        <p>Requests from the Services app (and 911 / 912) can post to each department's Discord channel with the caller, street and message, plus who responds. Use the job name from <code>Config.Services</code>:</p>
+        <div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>server.cfg</span><button class="copy" type="button" data-copy="d1c">Copy</button></div>
+<pre id="d1c"><span class="k">set</span> pulse_webhook_police <span class="g">"https://discord.com/api/webhooks/..."</span>
+<span class="k">set</span> pulse_webhook_ambulance <span class="g">"https://discord.com/api/webhooks/..."</span></pre></div>
       </section>
       <section id="item">
         <h2>Phone item &amp; key</h2>
@@ -117,7 +128,7 @@
         <h2>Troubleshooting</h2>
         <details class="faq"><summary>Console says "framework: none"</summary><div><p>Pulse started before your framework. Put <code>ensure orvix_pulse</code> after <code>es_extended</code> or <code>qb-core</code>, or set <code>Config.Framework</code> to <code>'esx'</code> or <code>'qb'</code>.</p></div></details>
         <details class="faq"><summary>The phone won't open with F1</summary><div><p>Check the player has a phone item (or set <code>Config.RequireItem = false</code>), that they didn't rebind the key, and that no other phone resource is running.</p></div></details>
-        <details class="faq"><summary>Photos, snaps or voice memos don't upload</summary><div><p>Make sure <code>screenshot-basic</code> is started and the token is set with <code>set pulse_fivemanage_token</code>. Restart after adding it and check the console for a FiveManage error.</p></div></details>
+        <details class="faq"><summary>Photos, snaps or voice memos don't upload</summary><div><p>Make sure <code>screenshot-basic</code> is started and your upload method is set up (FiveManage token or Discord webhook). Type <code>pulsemedia</code> in the server console: it tells you what's wrong. Restart after adding it and check the console for a FiveManage error.</p></div></details>
         <details class="faq"><summary>Calls connect with no voice</summary><div><p>Start pma-voice before Pulse and make sure no radio uses the channels from <code>Config.CallChannelOffset</code> (5000).</p></div></details>
         <details class="faq"><summary>Nobody gets Ryde or GrubGo jobs</summary><div><p>Drivers and couriers must tap "Go online" in the app. If you set a job in config, they also need that job.</p></div></details>
         <details class="faq"><summary>Restaurant pickups say "not close enough"</summary><div><p>Check the restaurant's <code>coords</code> in <code>Config.GrubGo.Restaurants</code> match your map, or raise <code>PickupRange</code>.</p></div></details>

@@ -36,7 +36,7 @@
         <div class="req"><span class="tag">Required</span><span class="name">oxmysql</span><p>Database driver. Tables are created for you.</p></div>
         <div class="req"><span class="tag">Required</span><span class="name">ox_lib</span><p>Callbacks and shared helpers.</p></div>
         <div class="req"><span class="tag">Required</span><span class="name">pma-voice</span><p>Voice for phone calls.</p></div>
-        <div class="req"><span class="tag">For camera</span><span class="name">screenshot-basic</span><p>Plus a FiveManage token for photos and voice memos.</p></div>
+        <div class="req"><span class="tag">For camera</span><span class="name">screenshot-basic</span><p>Plus a FiveManage token or a Discord webhook for photos and voice memos.</p></div>
         <div class="req"><span class="tag opt">Optional</span><span class="name">cd_garage · billing · inventories</span><p>Garage spots, esx_billing or QBCore invoices, ox_inventory or qs-inventory.</p></div>
       </div>
     </section>
@@ -46,7 +46,7 @@
         <li><div><h3>Copy the folder</h3><p>Put <code>orvix_pulse</code> in your <code>resources</code> folder. Keep the name exactly <code>orvix_pulse</code>.</p></div></li>
         <li><div><h3>Add it to server.cfg</h3><p>After your framework, oxmysql, ox_lib and pma-voice:</p><div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>server.cfg</span><button class="copy" type="button" data-copy="c1">Copy</button></div>
 <pre id="c1"><span class="k">ensure</span> orvix_pulse</pre></div></div></li>
-        <li><div><h3>Add your FiveManage token</h3><p>Turns on Camera, Photos, Blink and Voice Memos. Use <code>set</code>, never <code>setr</code>.</p><div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>server.cfg</span><button class="copy" type="button" data-copy="c2">Copy</button></div>
+        <li><div><h3>Add your upload method</h3><p>Turns on Camera, Photos, Blink and Voice Memos. FiveManage token below, or a Discord webhook (see the docs). Use <code>set</code>, never <code>setr</code>.</p><div class="console"><div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span>server.cfg</span><button class="copy" type="button" data-copy="c2">Copy</button></div>
 <pre id="c2"><span class="c"># server-only: players never see this</span>
 <span class="k">set</span> pulse_fivemanage_token <span class="g">"your-token"</span></pre></div></div></li>
         <li><div><h3>Turn off your old phone</h3><p>Only one phone resource can run at a time. Comment out the old one.</p></div></li>
