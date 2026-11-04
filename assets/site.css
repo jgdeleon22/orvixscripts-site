@@ -501,6 +501,7 @@ footer .legal { width: 100%; padding-top: 18px; border-top: 1px solid var(--line
 .h-admin .h-card-art { background: radial-gradient(80% 90% at 50% 100%, rgba(56,189,248,.45), transparent 70%), linear-gradient(160deg, #0d1b33, #0c1022); }
 .h-pulse .h-card-art img { position: absolute; bottom: -120px; width: 30%; filter: drop-shadow(0 16px 26px rgba(0,0,0,.5)); }
 .h-pulse .h-card-art img:nth-child(1) { left: 8%; transform: rotate(-8deg); } .h-pulse .h-card-art img:nth-child(2) { left: 35%; bottom: -90px; z-index: 2; } .h-pulse .h-card-art img:nth-child(3) { right: 8%; transform: rotate(8deg); }
+.h-hud .h-card-art img { left: 0 !important; top: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; }
 .h-admin .h-card-art img { position: absolute; left: 8%; top: 40px; width: 115%; border-radius: 12px; border: 1px solid rgba(125,211,252,.25); box-shadow: 0 20px 40px -10px rgba(0,0,0,.6); }
 .h-card-body { padding: 26px 28px 28px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
 .h-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
